@@ -44,6 +44,7 @@ import com.ds.morganmovies.core.presentation.theme.Gray
 import com.ds.morganmovies.core.presentation.theme.Gray_op
 import com.ds.morganmovies.core.presentation.theme.Red
 import com.ds.morganmovies.core.presentation.theme.SemiGray
+import com.ds.morganmovies.core.presentation.ui.Screen
 import com.ds.morganmovies.feature_auth.domian.model.OnBoardingData
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -63,7 +64,12 @@ fun OnBoardingScreen(
             "Easily browse and discover movies in various categories, from action and drama to comedy and thriller"
         )
     )
-    items.add(OnBoardingData(R.drawable.onboarding_2, "Rate and review your favorite films With our app, you'll never miss out on finding the perfect movie for any occasion"))
+    items.add(
+        OnBoardingData(
+            R.drawable.onboarding_2,
+            "Rate and review your favorite films With our app, you'll never miss out on finding the perfect movie for any occasion"
+        )
+    )
 
     val pagerState = rememberPagerState(
         pageCount = items.size,
@@ -71,17 +77,24 @@ fun OnBoardingScreen(
         infiniteLoop = false,
         initialPage = 0,
     )
-    OnBoardingPager(items = items, pageState = pagerState, modifier = Modifier.fillMaxSize())
+    OnBoardingPager(
+        items = items,
+        pageState = pagerState,
+        modifier = Modifier.fillMaxSize(),
+        navController
+    )
 }
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun OnBoardingPager(
-    items: ArrayList<OnBoardingData>, pageState: PagerState, modifier: Modifier
+    items: ArrayList<OnBoardingData>,
+    pageState: PagerState,
+    modifier: Modifier,
+    navController: NavController
 ) {
     val screenHeight = LocalConfiguration.current.screenHeightDp.dp
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
-    val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
     Box(
         modifier = modifier
@@ -147,7 +160,11 @@ fun OnBoardingPager(
                             if (pageState.currentPage != 1) {
 
                                 TextButton(onClick = {
-
+                                    navController.navigate(Screen.Welcome.route) {
+                                        popUpTo(Screen.OnBoarding.route) {
+                                            inclusive = true
+                                        }
+                                    }
                                 }) {
                                     Text(
                                         text = "Skip Now",
@@ -170,12 +187,21 @@ fun OnBoardingPager(
                                     ),
                                     modifier = Modifier.size(50.dp)
                                 ) {
-                                    Icon(painter = painterResource(id = R.drawable.ic_right_arrow), contentDescription = "",modifier= Modifier.size(20.dp))
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.ic_right_arrow),
+                                        contentDescription = "",
+                                        modifier = Modifier.size(20.dp)
+                                    )
                                 }
-                            }
-                            else{
+                            } else {
                                 Button(
-                                    onClick = { /*TODO*/ },
+                                    onClick = {
+                                        navController.navigate(Screen.Welcome.route) {
+                                            popUpTo(Screen.OnBoarding.route) {
+                                                inclusive = true
+                                            }
+                                        }
+                                    },
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .padding(bottom = 20.dp),

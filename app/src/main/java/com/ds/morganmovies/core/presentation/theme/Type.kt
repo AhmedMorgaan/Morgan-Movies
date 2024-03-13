@@ -15,6 +15,16 @@ val ComicSansFontFamily = FontFamily(
     Font(R.font.comic_sans_bold, FontWeight.Bold)
 )
 
+val SephirFontFamily = FontFamily(
+    Font(R.font.sephir_regular, FontWeight.Normal)
+)
+
+val MulheimFontFamily = FontFamily(
+    Font(R.font.mulheim, FontWeight.Normal)
+)
+
+
+
 val Typography = Typography(
     h1 = TextStyle(
         fontFamily = FontFamily.Default,

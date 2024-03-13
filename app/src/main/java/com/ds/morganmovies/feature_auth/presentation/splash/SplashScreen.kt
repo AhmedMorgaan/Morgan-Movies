@@ -2,7 +2,6 @@ package com.ds.morganmovies.feature_auth.presentation.splash
 
 
 import android.os.Build.VERSION.SDK_INT
-import android.widget.VideoView
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -11,15 +10,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.R
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 import coil.ImageLoader
 import coil.compose.rememberAsyncImagePainter
@@ -29,10 +22,6 @@ import coil.request.ImageRequest
 import coil.size.Size
 import com.ds.morganmovies.core.presentation.theme.Black_op
 import com.ds.morganmovies.core.presentation.ui.Screen
-import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.Player
-import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.ui.PlayerView
 import kotlinx.coroutines.delay
 
 //@Composable
@@ -114,9 +103,10 @@ fun SplashScreen(
     ) {
         Image(
             painter = rememberAsyncImagePainter(
-                ImageRequest.Builder(context).data(data = com.ds.morganmovies.R.drawable.splash_gif).apply(block = {
-                    size(Size.ORIGINAL)
-                }).build(), imageLoader = imageLoader
+                ImageRequest.Builder(context).data(data = com.ds.morganmovies.R.drawable.splash_gif)
+                    .apply(block = {
+                        size(Size.ORIGINAL)
+                    }).build(), imageLoader = imageLoader
             ),
             contentDescription = null,
             modifier = Modifier.fillMaxWidth(),
@@ -125,7 +115,11 @@ fun SplashScreen(
 
     LaunchedEffect(Unit){
         delay(3000)
-        navController.navigate(Screen.OnBoarding.route)
+        navController.navigate(Screen.OnBoarding.route){
+            popUpTo(Screen.Splash.route){
+                inclusive = true
+            }
+        }
     }
 
 }
