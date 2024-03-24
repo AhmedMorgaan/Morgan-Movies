@@ -79,6 +79,7 @@ fun StanderOutlineTextFiled(
             .fillMaxWidth()
             .height(50.sdp)
             .bringIntoViewRequester(bringIntoViewRequester)
+            .clearFocusOnKeyboardDismiss()
             .onFocusEvent {
                 if (it.isFocused || it.hasFocus) {
                     coroutineScope.launch {
@@ -132,7 +133,6 @@ fun StanderOutlineTextFiled(
             unfocusedLabelColor = Red,
             textColor = SemiGray,
             cursorColor = Red,
-
         ),
         trailingIcon = if (isPasswordField) {
             {

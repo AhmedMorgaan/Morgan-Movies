@@ -16,11 +16,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.ds.morganmovies.R
 import com.ds.morganmovies.core.presentation.component.WelcomeButton
@@ -45,7 +42,7 @@ fun WelcomeScreen(navController: NavController){
         Column(
             Modifier
                 .fillMaxWidth()
-                .padding(top = 50.sdp),
+                .padding(top = 80.sdp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
@@ -55,7 +52,7 @@ fun WelcomeScreen(navController: NavController){
                 fontWeight = FontWeight.Bold,
                 letterSpacing = 20.ssp
             )
-            Spacer(modifier = Modifier.size(30.sdp))
+            Spacer(modifier = Modifier.size(60.sdp))
             Image(
                 painter = painterResource(id = R.drawable.logo_welcome), contentDescription = "",
                 Modifier

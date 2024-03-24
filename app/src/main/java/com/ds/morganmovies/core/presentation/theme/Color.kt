@@ -3,9 +3,9 @@ package com.ds.morganmovies.core.presentation.theme
 import androidx.compose.ui.graphics.Color
 
 val Red = Color(0xffe3514c)
-val Gray_op = Color(0xffff3c3f41)
-val Gray = Color(0xffff5a5e60)
-val Transparent = Color(0xFF00D3D3D3)
+val Gray_op = Color(0xff3c3f41)
+val Gray = Color(0xff5a5e60)
+val Transparent = Color(0x00D3D3D3)
 val Yellow = Color(0xFFFFEB3B)
 val SemiWhite = Color(0xFFE3DEDE)
 val SemiGray = Color(0xffbcbcbb)

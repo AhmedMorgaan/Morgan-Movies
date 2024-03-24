@@ -25,7 +25,7 @@ fun MainNavigation(navController: NavHostController) {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Splash.route,
+        startDestination = Screen.Welcome.route,
         enterTransition = {
             EnterTransition.None
         },
@@ -56,20 +56,20 @@ private fun SystemUiComponent(navController: NavHostController) {
     val systemUiController = rememberSystemUiController()
     val context = LocalContext.current
     val window = context.findActivity()?.window
-    if (
-        mainNavControllerCurrentBackStack?.destination?.route?.contains(Screen.SignUp.route) == true
-        || mainNavControllerCurrentBackStack?.destination?.route?.equals(Screen.Login.route) == true
-    ) {
+//    if (
+//        mainNavControllerCurrentBackStack?.destination?.route?.contains(Screen.SignUp.route) == true
+//        || mainNavControllerCurrentBackStack?.destination?.route?.equals(Screen.Login.route) == true
+//    ) {
         systemUiController.setStatusBarColor(
             color = Color.Transparent,
             darkIcons = false
         )
         WindowCompat.setDecorFitsSystemWindows(window!!, false)
-    } else {
-        systemUiController.setStatusBarColor(
-            color = Color.Black,
-            darkIcons = false
-        )
-        WindowCompat.setDecorFitsSystemWindows(window!!, false)
-    }
+//    } else {
+//        systemUiController.setStatusBarColor(
+//            color = Color.Black,
+//            darkIcons = false
+//        )
+//        WindowCompat.setDecorFitsSystemWindows(window!!, false)
+//    }
 }

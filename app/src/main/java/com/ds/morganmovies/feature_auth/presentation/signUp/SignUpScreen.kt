@@ -23,8 +23,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Start
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -123,7 +123,7 @@ fun SignUpScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "SIGN UP",
+                text = stringResource(R.string.sign_up),
                 fontFamily = SephirFontFamily,
                 fontSize = 40.ssp,
                 color = Color(0xffe84755),
@@ -152,7 +152,7 @@ fun SignUpScreen(navController: NavController) {
                         firstName.value = it
                     },
                     text = firstName.value,
-                    label = "First Name",
+                    label = stringResource(R.string.first_name),
                     hasNext = true
                 )
                 Spacer(modifier = Modifier.size(10.sdp))
@@ -162,7 +162,7 @@ fun SignUpScreen(navController: NavController) {
                                     lastName.value = it
                     },
                     text = lastName.value,
-                    label = "Last Name",
+                    label = stringResource(R.string.last_name),
                     hasNext = true
                 )
             }
@@ -172,7 +172,7 @@ fun SignUpScreen(navController: NavController) {
                     email.value = it
                 },
                 text = email.value,
-                label = "Email",
+                label = stringResource(R.string.Email),
                 hasNext = true,
                 keyboardType = KeyboardType.Email
             )
@@ -182,7 +182,7 @@ fun SignUpScreen(navController: NavController) {
                                 password.value = it
                 },
                 text = password.value,
-                label = "Password",
+                label = stringResource(R.string.password),
                 hasNext = true,
                 isPasswordField = true,
                 keyboardType = KeyboardType.Password
@@ -193,7 +193,7 @@ fun SignUpScreen(navController: NavController) {
                     phone.value = it
                 },
                 text = phone.value,
-                label = "Phone Number",
+                label = stringResource(R.string.phone_number),
                 hasNext = false,
                 keyboardType = KeyboardType.Phone
             )
@@ -208,7 +208,7 @@ fun SignUpScreen(navController: NavController) {
             Spacer(modifier = Modifier.size(10.sdp))
             Text(
                 modifier = Modifier.align(Start),
-                text = "Date of Birth ",
+                text = stringResource(R.string.date_of_birth),
                 style = TextStyle(
                     fontWeight = FontWeight.ExtraBold,
                     fontFamily = ComicSansFontFamily,
@@ -234,7 +234,7 @@ fun SignUpScreen(navController: NavController) {
             Spacer(modifier = Modifier.size(20.sdp))
             StandardButton(
                 modifier = Modifier.fillMaxWidth(),
-                text = "Continue"
+                text = stringResource(R.string.Continue)
             )
 
         }

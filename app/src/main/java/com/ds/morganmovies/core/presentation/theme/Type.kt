@@ -23,6 +23,12 @@ val MulheimFontFamily = FontFamily(
     Font(R.font.mulheim, FontWeight.Normal)
 )
 
+ val comicStyleBold = TextStyle(
+     fontFamily = ComicSansFontFamily,
+     fontWeight = FontWeight.Bold,
+
+ )
+
 
 
 val Typography = Typography(
