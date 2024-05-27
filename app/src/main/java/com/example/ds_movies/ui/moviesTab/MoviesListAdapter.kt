@@ -8,7 +8,7 @@ import com.example.ds_movies.core.utils.Constant
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.databinding.ItemMovieCardBinding
 
-class MoviesListAdapter(val items: MutableList<MovieItem?>?) : RecyclerView.Adapter<MoviesListAdapter.MyViewHolder>() {
+class MoviesListAdapter(val items: MutableList<MovieItem>?) : RecyclerView.Adapter<MoviesListAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(ItemMovieCardBinding.inflate(LayoutInflater.from(parent.context),parent,false))
@@ -24,10 +24,14 @@ class MoviesListAdapter(val items: MutableList<MovieItem?>?) : RecyclerView.Adap
 
     inner class MyViewHolder(var binding: ItemMovieCardBinding):RecyclerView.ViewHolder(binding.root){
         fun onBind(position :Int){
-            binding.model = items?.get(position)
+            val movie = items?.get(position)
+            binding.model = movie
             Glide.with(itemView.context)
-                .load("${Constant.BASE_POSTER_IMAGE_URL}${items?.get(position)?.posterPath}")
+                .load("${Constant.BASE_POSTER_IMAGE_URL}${movie?.posterPath}")
                 .into(binding.movieImage)
+
+           binding.movieVoteRate.text = String.format("%.1f", movie?.voteAverage)
+           // binding.progressBar.visibility = View.VISIBLE
         }
     }
 }

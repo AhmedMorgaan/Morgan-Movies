@@ -6,7 +6,7 @@ import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.data.repositories.MoviesRepository
 import retrofit2.HttpException
 
-class TopRatedMovieSource(
+class UpComingMovieSource(
     private val moviesRepository: MoviesRepository) : PagingSource<Int, MovieItem>() {
 
     override fun getRefreshKey(state: PagingState<Int, MovieItem>): Int? {
@@ -16,7 +16,7 @@ class TopRatedMovieSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieItem> {
         return  try {
             val currentPage = params.key ?:1
-            val response = moviesRepository.getTopRatedMoviesPaging(currentPage)
+            val response = moviesRepository.getUpComingMovies(currentPage)
             val data = response.body()?.results?.toList()
             val responseData = mutableListOf<MovieItem>()
             responseData.addAll(data!!.toList())

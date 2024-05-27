@@ -1,15 +1,13 @@
 package com.example.d_note.Base
 
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.example.ds_movies.ui.base.BaseActivity
 import com.example.ds_movies.ui.base.BaseViewModel
-import kotlinx.android.synthetic.main.fragment_login_tap.view.progress_bar
+import kotlinx.android.synthetic.main.fragment_movies_tab.view.main_progress_bar
 
 abstract class BaseFragment<T : ViewDataBinding , VM : BaseViewModel>(resId :Int) : Fragment(resId) {
      private var baseActivity : BaseActivity<*,*>? = null
@@ -33,23 +31,32 @@ abstract class BaseFragment<T : ViewDataBinding , VM : BaseViewModel>(resId :Int
     }
 
     private fun showHideProgressBar(){
-        viewModel.progressBar.observe(viewLifecycleOwner, Observer {
-            if(it){
-                binding.root.progress_bar.visibility = View.VISIBLE
-            }else{
-                binding.root.progress_bar.visibility = View.GONE
+        viewModel.progressBar.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.root.main_progress_bar.visibility = View.VISIBLE
+            } else {
+                binding.root.main_progress_bar.visibility = View.GONE
             }
-        })
+        }
     }
 
     private fun showHideMassage(){
-        viewModel.showMessage.observe(viewLifecycleOwner, Observer {
-            if (baseActivity != null){
-                baseActivity!!.showMessage("Error",it,"ok", DialogInterface.OnClickListener { dialogInterface, i ->
-                    dialogInterface.dismiss() },null,null,false)
+        viewModel.showMessage.observe(viewLifecycleOwner) {
+            if (baseActivity != null) {
+                baseActivity!!.showMessage(
+                    "Error",
+                    it,
+                    "ok",
+                    { dialogInterface, _ ->
+                        dialogInterface.dismiss()
+                    },
+                    null,
+                    null,
+                    false
+                )
             }
 
-        })
+        }
     }
 
 

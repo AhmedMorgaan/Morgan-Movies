@@ -10,10 +10,10 @@
     <color name="black_op">#323232</color>
     <color name="white">#FFFFFFFF</color>
     <color name="silver">#C0C0C0</color>
-    <color name="semi_gray">#A59F9F</color>
+    <color name="semi_gray">#8E8E8E</color>
     <color name="semi_white">#E3DEDE</color>
     <color name="yellow">#FFEB3B</color>
-    <color name="Red">#830303</color>
+    <color name="Red">#e3514c</color>
     <color name="Gray">#D3D3D3</color>
     <color name="gray_op">#1AD3D3D3</color>
     <color name="transparent">#00D3D3D3</color>
