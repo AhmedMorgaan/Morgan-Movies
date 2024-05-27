@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,87 +9,558 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.moviesTab.MoviesTabFragment">
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/_16sdp"
+                tools:context=".ui.moviesTab.MoviesTabFragment">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="@dimen/_16sdp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="@dimen/_16sdp" />
+
+                <TextView
+                    android:id="@+id/txt_trending"
+                    style="@style/Theme.HomeTitleTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:text="@string/trending"
+                    app:layout_constraintStart_toStartOf="@id/guideline_start"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/txt_trending_see_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_for_button"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_trending"
+                    app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                    app:layout_constraintTop_toTopOf="@id/txt_trending" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/trending_recyclerview"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_230sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/guideline_start"
+                    app:layout_constraintTop_toBottomOf="@id/txt_trending"
+                    tools:listitem="@layout/item_movie_card" />
+
+                <ProgressBar
+                    android:id="@+id/trending_progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:indeterminate="true"
+                    android:indeterminateTintMode="src_atop"
+                    android:indeterminateTint="@color/Red"
+                    app:layout_constraintBottom_toBottomOf="@id/trending_recyclerview"
+                    app:layout_constraintEnd_toEndOf="@id/trending_recyclerview"
+                    app:layout_constraintStart_toStartOf="@id/trending_recyclerview"
+                    app:layout_constraintTop_toTopOf="@id/trending_recyclerview" />
+
+                <LinearLayout
+                    android:id="@+id/trending_error_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/trending_recyclerview"
+                    app:layout_constraintEnd_toEndOf="@id/trending_recyclerview"
+                    app:layout_constraintStart_toStartOf="@id/trending_recyclerview"
+                    app:layout_constraintTop_toTopOf="@id/trending_recyclerview">
+
+                    <ImageView
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
+                        android:src="@drawable/icon_warning"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:textColor="@color/semi_gray"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_12ssp"
+                        android:text="@string/something_went_wrong"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/trending_no_movies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/trending_recyclerview"
+                    app:layout_constraintEnd_toEndOf="@id/trending_recyclerview"
+                    app:layout_constraintStart_toStartOf="@id/trending_recyclerview"
+                    app:layout_constraintTop_toTopOf="@id/trending_recyclerview">
+
+                    <ImageView
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
+                        android:src="@drawable/no_movies_image"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:textColor="@color/semi_gray"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_12ssp"
+                        android:text="@string/there_are_no_movies_to_show"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txt_genres"
+                    style="@style/Theme.HomeTitleTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:text="@string/genres"
+                    app:layout_constraintStart_toStartOf="@id/guideline_start"
+                    app:layout_constraintTop_toBottomOf="@+id/trending_recyclerview" />
+
+                <ImageView
+                    android:id="@+id/txt_top_rated_see_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_for_button"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_top_rated"
+                    app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                    app:layout_constraintTop_toTopOf="@id/txt_top_rated" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/genres_tabs"
+                    style="@style/AppTabLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@color/black_op"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/guideline_start"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_genres"
+                    app:tabBackground="@drawable/background_indicator"
+                    app:tabGravity="fill"
+                    app:tabIndicator="@drawable/layout_indicator_genres"
+                    app:tabIndicatorAnimationMode="fade"
+                    app:tabIndicatorGravity="stretch"
+                    app:tabMode="scrollable"
+                    app:tabRippleColor="@null" />
+
+
+                <TextView
+                    android:id="@+id/txt_top_rated"
+                    style="@style/Theme.HomeTitleTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:text="@string/top_rated"
+                    app:layout_constraintStart_toStartOf="@id/guideline_start"
+                    app:layout_constraintTop_toBottomOf="@+id/genres_tabs" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/top_rated_recyclerview"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_230sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/guideline_start"
+                    app:layout_constraintTop_toBottomOf="@id/txt_top_rated"
+                    tools:listitem="@layout/item_movie_card" />
+
+                <LinearLayout
+                    android:id="@+id/top_rated_no_movies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/top_rated_recyclerview"
+                    app:layout_constraintEnd_toEndOf="@id/top_rated_recyclerview"
+                    app:layout_constraintStart_toStartOf="@id/top_rated_recyclerview"
+                    app:layout_constraintTop_toTopOf="@id/top_rated_recyclerview">
+
+                    <ImageView
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
+                        android:src="@drawable/no_movies_image"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:textColor="@color/semi_gray"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_12ssp"
+                        android:text="@string/there_are_no_movies_to_show"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/top_rated_error_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/top_rated_recyclerview"
+                    app:layout_constraintEnd_toEndOf="@id/top_rated_recyclerview"
+                    app:layout_constraintStart_toStartOf="@id/top_rated_recyclerview"
+                    app:layout_constraintTop_toTopOf="@id/top_rated_recyclerview">
+
+                    <ImageView
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
+                        android:src="@drawable/icon_warning"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:textColor="@color/semi_gray"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_12ssp"
+                        android:text="@string/something_went_wrong"/>
+                </LinearLayout>
+
+
+
+                <ProgressBar
+                    android:id="@+id/top_rated_progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:indeterminate="true"
+                    android:indeterminateTintMode="src_atop"
+                    android:indeterminateTint="@color/Red"
+                    app:layout_constraintBottom_toBottomOf="@id/top_rated_recyclerview"
+                    app:layout_constraintEnd_toEndOf="@id/top_rated_recyclerview"
+                    app:layout_constraintStart_toStartOf="@id/top_rated_recyclerview"
+                    app:layout_constraintTop_toTopOf="@id/top_rated_recyclerview" />
+
+                <TextView
+                    android:id="@+id/txt_popular"
+                    style="@style/Theme.HomeTitleTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:text="@string/popular"
+                    app:layout_constraintStart_toStartOf="@id/guideline_start"
+                    app:layout_constraintTop_toBottomOf="@+id/top_rated_recyclerview" />
+
+                <ImageView
+                    android:id="@+id/txt_popular_see_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_for_button"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_popular"
+                    app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                    app:layout_constraintTop_toTopOf="@id/txt_popular" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/popular_recyclerview"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_230sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/guideline_start"
+                    app:layout_constraintTop_toBottomOf="@id/txt_popular"
+                    tools:listitem="@layout/item_movie_card" />
+
+                <LinearLayout
+                    android:id="@+id/popular_no_movies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/popular_recyclerview"
+                    app:layout_constraintEnd_toEndOf="@id/popular_recyclerview"
+                    app:layout_constraintStart_toStartOf="@id/popular_recyclerview"
+                    app:layout_constraintTop_toTopOf="@id/popular_recyclerview">
+
+                    <ImageView
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
+                        android:src="@drawable/no_movies_image"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:textColor="@color/semi_gray"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_12ssp"
+                        android:text="@string/there_are_no_movies_to_show"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/popular_error_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/popular_recyclerview"
+                    app:layout_constraintEnd_toEndOf="@id/popular_recyclerview"
+                    app:layout_constraintStart_toStartOf="@id/popular_recyclerview"
+                    app:layout_constraintTop_toTopOf="@id/popular_recyclerview">
+
+                    <ImageView
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
+                        android:src="@drawable/icon_warning"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:textColor="@color/semi_gray"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_12ssp"
+                        android:text="@string/something_went_wrong"/>
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/popular_progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:indeterminate="true"
+                    android:indeterminateTintMode="src_atop"
+                    android:indeterminateTint="@color/Red"
+                    app:layout_constraintBottom_toBottomOf="@id/popular_recyclerview"
+                    app:layout_constraintEnd_toEndOf="@id/popular_recyclerview"
+                    app:layout_constraintStart_toStartOf="@id/popular_recyclerview"
+                    app:layout_constraintTop_toTopOf="@id/popular_recyclerview" />
+
+                <TextView
+                    android:id="@+id/txt_now_Playing"
+                    style="@style/Theme.HomeTitleTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:text="@string/now_playing"
+                    app:layout_constraintStart_toStartOf="@id/guideline_start"
+                    app:layout_constraintTop_toBottomOf="@+id/popular_recyclerview" />
+
+                <ImageView
+                    android:id="@+id/txt_now_playing_see_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_for_button"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_now_Playing"
+                    app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                    app:layout_constraintTop_toTopOf="@id/txt_now_Playing" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/now_playing_recyclerview"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_230sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/guideline_start"
+                    app:layout_constraintTop_toBottomOf="@id/txt_now_Playing"
+                    tools:listitem="@layout/item_movie_card" />
+
+                <LinearLayout
+                    android:id="@+id/now_playing_no_movies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/now_playing_recyclerview"
+                    app:layout_constraintEnd_toEndOf="@id/now_playing_recyclerview"
+                    app:layout_constraintStart_toStartOf="@id/now_playing_recyclerview"
+                    app:layout_constraintTop_toTopOf="@id/now_playing_recyclerview">
+
+                    <ImageView
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
+                        android:src="@drawable/no_movies_image"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:textColor="@color/semi_gray"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_12ssp"
+                        android:text="@string/there_are_no_movies_to_show"/>
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/now_playing_progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:indeterminate="true"
+                    android:indeterminateTintMode="src_atop"
+                    android:indeterminateTint="@color/Red"
+                    app:layout_constraintBottom_toBottomOf="@id/now_playing_recyclerview"
+                    app:layout_constraintEnd_toEndOf="@id/now_playing_recyclerview"
+                    app:layout_constraintStart_toStartOf="@id/now_playing_recyclerview"
+                    app:layout_constraintTop_toTopOf="@id/now_playing_recyclerview" />
+
+                <LinearLayout
+                    android:id="@+id/now_playing_error_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/now_playing_recyclerview"
+                    app:layout_constraintEnd_toEndOf="@id/now_playing_recyclerview"
+                    app:layout_constraintStart_toStartOf="@id/now_playing_recyclerview"
+                    app:layout_constraintTop_toTopOf="@id/now_playing_recyclerview">
+
+                    <ImageView
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
+                        android:src="@drawable/icon_warning"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:textColor="@color/semi_gray"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_12ssp"
+                        android:text="@string/something_went_wrong"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/txt_up_coming"
+                    style="@style/Theme.HomeTitleTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:text="@string/up_coming"
+                    app:layout_constraintStart_toStartOf="@id/guideline_start"
+                    app:layout_constraintTop_toBottomOf="@+id/now_playing_recyclerview" />
+
+                <ImageView
+                    android:id="@+id/txt_up_coming_see_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_for_button"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_up_coming"
+                    app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                    app:layout_constraintTop_toTopOf="@id/txt_up_coming" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/up_coming_recyclerview"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_230sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/guideline_start"
+                    app:layout_constraintTop_toBottomOf="@id/txt_up_coming"
+                    tools:listitem="@layout/item_movie_card" />
+
+                <LinearLayout
+                    android:id="@+id/up_coming_no_movies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/up_coming_recyclerview"
+                    app:layout_constraintEnd_toEndOf="@id/up_coming_recyclerview"
+                    app:layout_constraintStart_toStartOf="@id/up_coming_recyclerview"
+                    app:layout_constraintTop_toTopOf="@id/up_coming_recyclerview">
+
+                    <ImageView
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
+                        android:src="@drawable/no_movies_image"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:textColor="@color/semi_gray"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_12ssp"
+                        android:text="@string/there_are_no_movies_to_show"/>
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/up_coming_progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:indeterminate="true"
+                    android:indeterminateTintMode="src_atop"
+                    android:indeterminateTint="@color/Red"
+                    app:layout_constraintBottom_toBottomOf="@id/up_coming_recyclerview"
+                    app:layout_constraintEnd_toEndOf="@id/up_coming_recyclerview"
+                    app:layout_constraintStart_toStartOf="@id/up_coming_recyclerview"
+                    app:layout_constraintTop_toTopOf="@id/up_coming_recyclerview" />
+
+                <LinearLayout
+                    android:id="@+id/up_coming_error_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/up_coming_recyclerview"
+                    app:layout_constraintEnd_toEndOf="@id/up_coming_recyclerview"
+                    app:layout_constraintStart_toStartOf="@id/up_coming_recyclerview"
+                    app:layout_constraintTop_toTopOf="@id/up_coming_recyclerview">
+
+                    <ImageView
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
+                        android:src="@drawable/icon_warning"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:textColor="@color/semi_gray"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_12ssp"
+                        android:text="@string/something_went_wrong"/>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
 
         <ProgressBar
-            android:id="@+id/progress_bar"
+            android:id="@+id/main_progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:outlineSpotShadowColor="@color/Red"
-            android:visibility="gone"
+            android:visibility="visible"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/Red"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="20dp"/>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="20dp"/>
-
-        <TextView
-            style="@style/Theme.HomeTitleTextStyle"
-            android:id="@+id/txt_genres"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/genres"
-            app:layout_constraintStart_toStartOf="@id/guideline_start"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.tabs.TabLayout
-            style="@style/AppTabLayout"
-            android:id="@+id/genres_tabs"
-            android:layout_width="0dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/black_op"
-            app:tabGravity="fill"
-            app:tabRippleColor="@null"
-            app:tabBackground="@drawable/background_indicator"
-            app:tabIndicator="@drawable/layout_indicator_genres"
-            app:tabIndicatorAnimationMode="fade"
-            app:tabIndicatorGravity="stretch"
-            app:tabMode="scrollable"
-            app:layout_constraintStart_toStartOf="@id/guideline_start"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_genres"/>
-
-        <TextView
-            style="@style/Theme.HomeTitleTextStyle"
-            android:id="@+id/txt_top_rated"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/top_rated"
-            app:layout_constraintStart_toStartOf="@id/guideline_start"
-            app:layout_constraintTop_toBottomOf="@+id/genres_tabs" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/top_rated_recyclerview"
-            android:layout_width="0dp"
-            android:layout_height="250dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/txt_top_rated"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/guideline_start"
-            tools:listitem="@layout/item_movie_card"/>
-
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

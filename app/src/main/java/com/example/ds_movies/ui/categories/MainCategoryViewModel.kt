@@ -23,10 +23,10 @@ class MainCategoryViewModel @Inject constructor(
 
 
 
-     suspend fun getPopularMovies():MutableList<MovieItem?>?{
-         var movieslist:MutableList<MovieItem?>? = null
+     suspend fun getPopularMovies():MutableList<MovieItem>?{
+         var movieslist:MutableList<MovieItem>? = null
 
-            val response = moviesRepository.getPopularMovies()
+            val response = moviesRepository.getPopularMovies(1)
             try {
                 if (response.isSuccessful) {
                     withContext(Dispatchers.Main) {
@@ -47,8 +47,8 @@ class MainCategoryViewModel @Inject constructor(
         return movieslist
     }
 
-    suspend fun getMoviesWithCategoryId(genreId :Int):MutableList<MovieItem?>? {
-        var movieslist:MutableList<MovieItem?>? = null
+    suspend fun getMoviesWithCategoryId(genreId :Int):MutableList<MovieItem>? {
+        var movieslist:MutableList<MovieItem>? = null
 
             val response = moviesRepository.getMoviesWithGenres(genreId)
             try {
@@ -76,7 +76,7 @@ class MainCategoryViewModel @Inject constructor(
 
     fun getMoviesCategory(){
         viewModelScope.launch {
-            val response = moviesRepository.getMoviesCategory()
+            val response = moviesRepository.getMoviesMainCategory()
             try {
             if (response.isSuccessful){
                 withContext(Dispatchers.Main) {

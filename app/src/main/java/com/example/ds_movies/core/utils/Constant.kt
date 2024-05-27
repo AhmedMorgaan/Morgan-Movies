@@ -6,7 +6,14 @@ class Constant {
         const val BASE_URL= "https://api.themoviedb.org/3/"
         const val BASE_BACKDROP_IMAGE_URL = "https://image.tmdb.org/t/p/w780/"
         const val BASE_POSTER_IMAGE_URL = "https://image.tmdb.org/t/p/w500/"
-        const val apiToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZWJmYmI4YWM0NzA0Njk3NzMzYjE0MGI4ZDVlMWU1OSIsInN1YiI6IjYwODMyNDEwZTg2MDE3MDA1OGVmYThjNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VN_DR2KSYAVRciUrdrLLLc18XtUXcgGCZz5jdBFlTX4"
-        const val apiKay  ="7ebfbb8ac4704697733b140b8d5e1e59"
+        const val apiToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYTRlNGIzOWI5YzIyZjA2N2I1NGNkNWVmNjNjYjUzOSIsInN1YiI6IjYwODMyNDEwZTg2MDE3MDA1OGVmYThjNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-FL0ieejzoxmGlKRw7Q5MfF_f4Cl8dSTzRmzol_dkPs"
+        const val MOVIE_TYPE = "MOVIE_TYPE"
+        const val TRENDING = "Trending"
+        const val TOP_RATED = "Top_Rated"
+        const val POPULAR = "Popular"
+        const val NOW_PLAYING = "Now_Playing"
+        const val UP_COMING = "Up_Coming"
+        const val MOVIE = "MOVIE"
+        const val CATEGORIES_DATA = "CATEGORIES_DATA"
     }
 }

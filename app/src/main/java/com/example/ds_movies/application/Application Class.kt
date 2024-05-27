@@ -11,6 +11,4 @@ class MyApplicationClass : Application() {
         SharedPreference.init(this)
     }
 
-
-
 }

@@ -16,9 +16,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TV SHOWS"
+            android:text="Coming Soon"
             android:textSize="50sp"
-            android:textColor="@color/yellow"
+            android:textColor="@color/Red"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
