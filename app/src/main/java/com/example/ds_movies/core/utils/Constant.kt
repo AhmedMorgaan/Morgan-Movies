@@ -14,6 +14,7 @@ class Constant {
         const val NOW_PLAYING = "Now_Playing"
         const val UP_COMING = "Up_Coming"
         const val MOVIE = "MOVIE"
+        const val MOVIE_DETAILS = "MOVIE_DETAILS"
         const val CATEGORIES_DATA = "CATEGORIES_DATA"
     }
 }

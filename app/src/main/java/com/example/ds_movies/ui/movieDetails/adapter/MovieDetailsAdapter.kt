@@ -1,18 +1,19 @@
-package com.example.ds_movies.ui.movieDetails
+package com.example.ds_movies.ui.movieDetails.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ds_movies.R
 import com.example.ds_movies.core.SharedPreference
-import com.example.ds_movies.core.utils.Constant
+import com.example.ds_movies.core.utils.Constant.Companion.BASE_POSTER_IMAGE_URL
+import com.example.ds_movies.core.utils.Constant.Companion.CATEGORIES_DATA
 import com.example.ds_movies.data.models.CategoryResponse
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.databinding.ItemMovieBinding
+import com.example.ds_movies.ui.movieDetails.MoviesDetailsViewModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -21,27 +22,23 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MoviesDetailsListAdapterPaging(
-    private var viewModel:MoviesDetailsViewModel
-) : PagingDataAdapter<MovieItem,MoviesDetailsListAdapterPaging.MyViewHolder>(diffCallBack) {
+class MovieDetailsAdapter(
+    private var movie :MovieItem?,
+    private var viewModel: MoviesDetailsViewModel
+)
+    :RecyclerView.Adapter<MovieDetailsAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(
-            ItemMovieBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+        return MyViewHolder(ItemMovieBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     @OptIn(DelicateCoroutinesApi::class)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentItem = getItem(position)
-        holder.onBind(currentItem)
-        holder.setIsRecyclable(false)
+
+        holder.onBind()
         GlobalScope.launch(Dispatchers.IO) {
-            val castList = viewModel.getMovieCast(movieId = currentItem?.id)
+            val castList = viewModel.getMovieCast(movieId = movie?.id)
+            Log.e("castList", "onBindViewHolder: ${castList?.get(0)}", )
             val adapter = MovieCastsAdapter(castList)
             withContext(Dispatchers.Main) {
                 holder.binding.castRecycler.adapter = adapter
@@ -62,42 +59,44 @@ class MoviesDetailsListAdapterPaging(
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
         }
         holder.binding.castRecycler.addOnItemTouchListener(mScrollChangeListener)
-    }
-
-    inner class MyViewHolder(var binding: ItemMovieBinding):RecyclerView.ViewHolder(binding.root){
-        fun onBind(moviesItem :MovieItem?){
-            binding.model = moviesItem
-            Glide.with(binding.root)
-                .load(Constant.BASE_POSTER_IMAGE_URL +moviesItem?.posterPath)
-                .placeholder(R.drawable.ic_launcher_foreground)
-                .into(binding.movieImage)
-
-            binding.movieVoteRate.text = String.format("%.1f", moviesItem?.voteAverage)
-
-            val categoriesList = Gson().fromJson<CategoryResponse>(
-                SharedPreference.getString(Constant.CATEGORIES_DATA, ""),
-                object : TypeToken<CategoryResponse>() {}.type
-            ).genres
-
-            val categoriesFilter =  categoriesList.filter {
-                moviesItem?.genreIds!!.contains(it.id)
-                // it.id in movie?.genreIds
-            }.map {
-                it.name
-            }
-
-            binding.movieCategories.text = categoriesFilter.toString()
+        holder.binding.btnMovieTrailer.setOnClickListener {
+            onItemClickListener?.onItemClick(position,movie)
         }
     }
 
-    companion object {
-        val diffCallBack = object : DiffUtil.ItemCallback<MovieItem>(){
-            override fun areItemsTheSame(oldItem: MovieItem, newItem: MovieItem): Boolean {
-                return oldItem.id == newItem.id
-            }
-            override fun areContentsTheSame(oldItem: MovieItem, newItem: MovieItem): Boolean {
-                return oldItem == newItem
-            }
+    override fun getItemCount(): Int {
+        return 1
+    }
+
+    var onItemClickListener : OnItemClickListener? = null
+    interface OnItemClickListener{
+        fun onItemClick(pos: Int, movie: MovieItem?)
+    }
+
+   inner class MyViewHolder(var binding:ItemMovieBinding): RecyclerView.ViewHolder(binding.root){
+        fun onBind(){
+            val movie = movie
+            binding.model = movie
+            Glide.with(binding.root)
+                .load(BASE_POSTER_IMAGE_URL+movie?.posterPath)
+                .placeholder(R.drawable.ic_launcher_foreground)
+                .into(binding.movieImage)
+
+            binding.movieVoteRate.text = String.format("%.1f", movie?.voteAverage)
+
+            val categoriesList = Gson().fromJson<CategoryResponse>(
+                SharedPreference.getString(CATEGORIES_DATA, ""),
+                object : TypeToken<CategoryResponse>() {}.type
+            ).genres
+
+           val categoriesFilter =  categoriesList.filter {
+                movie?.genreIds!!.contains(it.id)
+               // it.id in movie?.genreIds
+            }.map {
+               it.name
+           }
+
+            binding.movieCategories.text = categoriesFilter.toString()
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.ds_movies.ui.moviesTab
+package com.example.ds_movies.ui.moviesTab.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

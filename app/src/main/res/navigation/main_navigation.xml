@@ -48,14 +48,10 @@
     </fragment>
     <fragment
         android:id="@+id/videoTrailerFragment"
-        android:name="com.example.ds_movies.ui.movieDetails.VideoTrailerFragment"
+        android:name="com.example.ds_movies.ui.videoTrailer.VideoTrailerFragment"
         android:label="fragment_video_trailer"
         tools:layout="@layout/fragment_video_trailer">
-        <action
-            android:id="@+id/action_videoTrailerFragment_to_moviesPopularFragment"
-            app:destination="@id/movieDetailsFragment"
-            app:popUpTo="@id/movieDetailsFragment"
-            app:popUpToInclusive="true"/>
+
     </fragment>
 
     <fragment

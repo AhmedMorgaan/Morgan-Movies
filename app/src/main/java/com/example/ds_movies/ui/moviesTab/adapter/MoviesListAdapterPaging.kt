@@ -1,4 +1,4 @@
-package com.example.ds_movies.ui.moviesTab
+package com.example.ds_movies.ui.moviesTab.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +10,10 @@ import com.example.ds_movies.core.utils.Constant
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.databinding.ItemMovieCardBinding
 
-class MoviesListAdapterPaging() : PagingDataAdapter<MovieItem,MoviesListAdapterPaging.MyViewHolder>(diffCallBack) {
+class MoviesListAdapterPaging() :
+    PagingDataAdapter<
+            MovieItem,
+            MoviesListAdapterPaging.MyViewHolder>(diffCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(

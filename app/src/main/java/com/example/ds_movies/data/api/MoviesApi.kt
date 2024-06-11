@@ -3,6 +3,7 @@ package com.example.ds_movies.data.api
 import com.example.ds_movies.data.models.CastResponse
 import com.example.ds_movies.data.models.CategoryResponse
 import com.example.ds_movies.data.models.MoviesResponse
+import com.example.ds_movies.data.models.VideoResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -57,5 +58,10 @@ interface MoviesApi {
     suspend fun getMoviesWithGenres(
         @Query("with_genres") genreId:Int
     ): Response<MoviesResponse>
+
+    @GET("movie/{movie_id}/videos")
+    suspend fun getMovieVideo(
+        @Path("movie_id") movie_id: Int?
+    ): Response<VideoResponse>
 
 }
