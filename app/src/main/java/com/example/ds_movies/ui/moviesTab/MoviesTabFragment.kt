@@ -13,7 +13,7 @@ import androidx.paging.LoadState
 import androidx.paging.filter
 import com.example.d_note.Base.BaseFragment
 import com.example.ds_movies.R
-import com.example.ds_movies.core.utils.Constant
+import com.example.ds_movies.core.utils.Constant.Companion.MOVIE
 import com.example.ds_movies.core.utils.Constant.Companion.MOVIE_TYPE
 import com.example.ds_movies.core.utils.Constant.Companion.NOW_PLAYING
 import com.example.ds_movies.core.utils.Constant.Companion.POPULAR
@@ -23,6 +23,8 @@ import com.example.ds_movies.core.utils.Constant.Companion.UP_COMING
 import com.example.ds_movies.data.models.Genre
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.databinding.FragmentMoviesTabBinding
+import com.example.ds_movies.ui.moviesTab.adapter.MoviesListAdapterPaging
+import com.example.ds_movies.ui.moviesTab.adapter.TrendingMoviesListAdapterPaging
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -108,8 +110,8 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding,MoviesTabViewMod
         adapter.onItemClickListener = object : TrendingMoviesListAdapterPaging.OnItemClickListener{
             override fun onItemClick(pos: Int, movie: MovieItem?) {
                 val bundle = Bundle()
-                bundle.putParcelable(Constant.MOVIE,movie)
-                bundle.putString(MOVIE_TYPE, Constant.MOVIE)
+                bundle.putParcelable(MOVIE,movie)
+                bundle.putString(MOVIE_TYPE, MOVIE)
                 findNavController().navigate(R.id.action_homeFragment_to_movieDetailsFragment,bundle)
             }
         }
@@ -280,8 +282,8 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding,MoviesTabViewMod
         adapter.onItemClickListener = object : MoviesListAdapterPaging.OnItemClickListener{
             override fun onItemClick(pos: Int, movie: MovieItem?) {
                 val bundle = Bundle()
-                bundle.putParcelable(Constant.MOVIE,movie)
-                bundle.putString(MOVIE_TYPE, Constant.MOVIE)
+                bundle.putParcelable(MOVIE,movie)
+                bundle.putString(MOVIE_TYPE, MOVIE)
                 findNavController().navigate(R.id.action_homeFragment_to_movieDetailsFragment,bundle)
             }
         }
