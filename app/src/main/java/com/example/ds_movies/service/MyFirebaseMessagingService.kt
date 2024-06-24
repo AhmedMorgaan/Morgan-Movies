@@ -1,17 +1,17 @@
 package com.example.ds_movies.service
 
+import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.util.Log
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.ds_movies.R
-import com.example.ds_movies.ui.SomaActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
@@ -33,8 +33,13 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             nm.createNotificationChannel(channel)
         }
 
-        val intent = Intent(this, SomaActivity::class.java)
-        val pi :PendingIntent = PendingIntent.getActivity(this,0,intent,0)
+//        val intent = Intent(this, SomaActivity::class.java)
+//        val pi :PendingIntent = PendingIntent.getActivity(
+//            this,
+//            0,
+//            intent,
+//            PendingIntent.FLAG_IMMUTABLE
+//        )
         val bitmap :Bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.love_you)
         val bitmapLargeIcon :Bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.ds)
 
@@ -45,11 +50,25 @@ val build = NotificationCompat.Builder(this,CHANNEL_ID)
             .setAutoCancel(true)
             .setLargeIcon(bitmapLargeIcon)
             .setStyle(NotificationCompat.BigPictureStyle().bigPicture(bitmap))
-            .setContentIntent(pi)
+           // .setContentIntent(pi)
             .setContentText(text).priority = NotificationCompat.PRIORITY_MAX
 
 
         val nmc = NotificationManagerCompat.from(this)
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
         nmc.notify(1,build.build())
     }
 
