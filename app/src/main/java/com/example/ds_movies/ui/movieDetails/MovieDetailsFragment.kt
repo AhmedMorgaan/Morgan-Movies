@@ -18,7 +18,6 @@ import com.example.ds_movies.core.utils.Constant.Companion.TRENDING
 import com.example.ds_movies.core.utils.Constant.Companion.UP_COMING
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.databinding.FragmentMovieDetailsBinding
-import com.example.ds_movies.service.MyBroadcastReceiver
 import com.example.ds_movies.ui.movieDetails.adapter.MovieDetailsAdapter
 import com.example.ds_movies.ui.movieDetails.adapter.MoviesDetailsListAdapterPaging
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,7 +28,6 @@ class MovieDetailsFragment :
     BaseFragment<FragmentMovieDetailsBinding, MoviesDetailsViewModel>(R.layout.fragment_movie_details) {
 
     override val viewModel: MoviesDetailsViewModel by viewModels()
-    private val receiver = MyBroadcastReceiver()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -140,21 +138,6 @@ class MovieDetailsFragment :
         binding.moviesRecyclerView.adapter = adapter
         PagerSnapHelper().attachToRecyclerView(binding.moviesRecyclerView)
     }
-
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        //        val intent = Intent(activity,MyService::class.java)
-////        stopService(intent)
-//        //  requireActivity().unregisterReceiver(receiver)
-//    }
-//    private fun initService(){
-//        val intent = Intent(activity, MyService::class.java)
-//       // startService(intent)
-//    }
-//    private fun initBroadcastReceiver() {
-//        val filter = IntentFilter("android.intent.action.HEADSET_PLUG")
-//        requireActivity().registerReceiver(receiver, filter)
-//    }
 
     override fun getViewBinding(v: View): FragmentMovieDetailsBinding {
         return FragmentMovieDetailsBinding.bind(v)

@@ -47,9 +47,6 @@
             android:name=".ui.MainLoginActivity"
             android:exported="true" >
         </activity>
-        <activity
-            android:name=".ui.SomaActivity"
-            android:exported="false" />
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
@@ -63,10 +60,6 @@
             android:exported="true" />
 
         <service
-            android:name=".service.MyService"
-            android:enabled="true"
-            android:exported="true" />
-        <service
             android:name=".service.MyFirebaseMessagingService"
             android:exported="false"
             tools:ignore="Instantiatable" >
@@ -75,10 +68,7 @@
             </intent-filter>
         </service>
 
-        <receiver
-            android:name=".service.MyBroadcastReceiver"
-            android:enabled="true"
-            android:exported="true" />
+
     </application>
 
 </manifest>
