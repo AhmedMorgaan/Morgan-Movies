@@ -16,5 +16,6 @@ class Constant {
         const val MOVIE = "MOVIE"
         const val MOVIE_DETAILS = "MOVIE_DETAILS"
         const val CATEGORIES_DATA = "CATEGORIES_DATA"
+        const val GENRE_ID = "GENRE_ID"
     }
 }
