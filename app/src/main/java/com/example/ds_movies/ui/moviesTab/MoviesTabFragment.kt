@@ -13,6 +13,7 @@ import androidx.paging.LoadState
 import androidx.paging.filter
 import com.example.d_note.Base.BaseFragment
 import com.example.ds_movies.R
+import com.example.ds_movies.core.utils.Constant.Companion.GENRE_ID
 import com.example.ds_movies.core.utils.Constant.Companion.MOVIE
 import com.example.ds_movies.core.utils.Constant.Companion.MOVIE_TYPE
 import com.example.ds_movies.core.utils.Constant.Companion.NOW_PLAYING
@@ -36,12 +37,13 @@ import kotlinx.coroutines.launch
 class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding,MoviesTabViewModel>(R.layout.fragment_movies_tab) {
 
     override val viewModel: MoviesTabViewModel by viewModels()
-
+    lateinit var tabInfo :Genre
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initGenresTabs()
         initTrendingRecyclerViewPaging()
         handelSeeMoreClicks()
+        handelCategoryNameClicks()
     }
 
     private fun initGenresTabs() {
@@ -66,6 +68,7 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding,MoviesTabViewMod
             TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val genre = tab?.tag as Genre
+                tabInfo = genre
                 initTopRatedRecyclerViewPaging(genre.id)
                 initPopularRecyclerViewPaging(genre.id)
                 initNowPlayingRecyclerViewPaging(genre.id)
@@ -206,7 +209,6 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding,MoviesTabViewMod
         val adapter = MoviesListAdapterPaging()
         binding.apply {
             lifecycleScope.launch() {
-
                 if(genreId !=0) {
                     viewModel.nowPlayingMoviesListPaging.map { pagingData ->
                         pagingData.filter {
@@ -221,7 +223,6 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding,MoviesTabViewMod
                         adapter.notifyDataSetChanged()
                         adapter.submitData(it)
                     }
-
                 }
             }
         }
@@ -244,7 +245,6 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding,MoviesTabViewMod
         val adapter = MoviesListAdapterPaging()
         binding.apply {
             lifecycleScope.launch() {
-
                 if(genreId !=0) {
                     viewModel.upComingMoviesListPaging.map { pagingData ->
                         pagingData.filter {
@@ -259,7 +259,6 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding,MoviesTabViewMod
                         adapter.notifyDataSetChanged()
                         adapter.submitData(it)
                     }
-
                 }
             }
         }
@@ -283,7 +282,6 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding,MoviesTabViewMod
             override fun onItemClick(pos: Int, movie: MovieItem?) {
                 val bundle = Bundle()
                 bundle.putParcelable(MOVIE,movie)
-                bundle.putString(MOVIE_TYPE, MOVIE)
                 findNavController().navigate(R.id.action_homeFragment_to_movieDetailsFragment,bundle)
             }
         }
@@ -293,30 +291,83 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding,MoviesTabViewMod
             txtTrendingSeeMore.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString(MOVIE_TYPE, TRENDING)
-                findNavController().navigate(R.id.action_homeFragment_to_movieDetailsFragment,bundle)
+                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
             }
             txtTopRatedSeeMore.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString(MOVIE_TYPE, TOP_RATED)
-                findNavController().navigate(R.id.action_homeFragment_to_movieDetailsFragment,bundle)
+                if (tabInfo.id != 0) {
+                    bundle.putInt(GENRE_ID, tabInfo.id)
+                }
+                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
             }
             txtPopularSeeMore.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString(MOVIE_TYPE, POPULAR)
-                findNavController().navigate(R.id.action_homeFragment_to_movieDetailsFragment,bundle)
+                if (tabInfo.id != 0) {
+                    bundle.putInt(GENRE_ID, tabInfo.id)
+                }
+                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
             }
             txtNowPlayingSeeMore.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString(MOVIE_TYPE, NOW_PLAYING)
-                findNavController().navigate(R.id.action_homeFragment_to_movieDetailsFragment,bundle)
+                if (tabInfo.id != 0) {
+                    bundle.putInt(GENRE_ID, tabInfo.id)
+                }
+                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
             }
             txtUpComingSeeMore.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString(MOVIE_TYPE, UP_COMING)
-                findNavController().navigate(R.id.action_homeFragment_to_movieDetailsFragment,bundle)
+                if (tabInfo.id != 0) {
+                    bundle.putInt(GENRE_ID, tabInfo.id)
+                }
+                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
             }
         }
+    }
+    private fun handelCategoryNameClicks(){
+        binding.apply {
+            txtTrending.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString(MOVIE_TYPE, TRENDING)
+                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
 
+            }
+            txtTopRated.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString(MOVIE_TYPE, TOP_RATED)
+                if (tabInfo.id != 0) {
+                    bundle.putInt(GENRE_ID, tabInfo.id)
+                }
+                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment, bundle)
+            }
+            txtPopular.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString(MOVIE_TYPE, POPULAR)
+                if (tabInfo.id != 0) {
+                    bundle.putInt(GENRE_ID, tabInfo.id)
+                }
+                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
+            }
+            txtNowPlaying.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString(MOVIE_TYPE, NOW_PLAYING)
+                if (tabInfo.id != 0) {
+                    bundle.putInt(GENRE_ID, tabInfo.id)
+                }
+                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
+            }
+            txtUpComing.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString(MOVIE_TYPE, UP_COMING)
+                if (tabInfo.id != 0) {
+                    bundle.putInt(GENRE_ID, tabInfo.id)
+                }
+                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
+            }
+        }
     }
 
     override fun getViewBinding(v: View): FragmentMoviesTabBinding {

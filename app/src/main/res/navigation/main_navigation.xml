@@ -54,15 +54,7 @@
 
     </fragment>
 
-    <fragment
-        android:id="@+id/mainCategoryFragment"
-        android:name="com.example.ds_movies.ui.categories.MainCategoryFragment"
-        android:label="fragment_main_category"
-        tools:layout="@layout/fragment_main_category" >
-        <action
-            android:id="@+id/action_mainCategoryFragment_to_movieDetailsFragment"
-            app:destination="@id/movieDetailsFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/movieDetailsFragment"
         android:name="com.example.ds_movies.ui.movieDetails.MovieDetailsFragment"
@@ -81,7 +73,17 @@
             android:id="@+id/action_homeFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_mainCategoryFragment"
-            app:destination="@id/mainCategoryFragment" />
+            android:id="@+id/action_homeFragment_to_categoryMoviesListFragment"
+            app:destination="@id/categoryMoviesListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryMoviesListFragment"
+        android:name="com.example.ds_movies.ui.categoryMoviesList.CategoryMoviesListFragment"
+        android:label="CategoryMoviesListFragment"
+        tools:layout="@layout/fragment_category_movies_list">
+
+        <action
+            android:id="@+id/action_categoryMoviesListFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
     </fragment>
 </navigation>
