@@ -29,13 +29,6 @@ class VideoTrailerFragment :
     private var isFullscreen = false
     private lateinit var youTubePlayer: YouTubePlayer
 
-//    //live stream
-//    val url = "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8"
-//     var player :ExoPlayer? = null
-//    var playWhenReady = true
-//    var currentItem = 0
-//    var playBackPosition =0L
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
        // initYouTubePlayer()
@@ -47,10 +40,14 @@ class VideoTrailerFragment :
         val movieDetails = arguments?.getParcelable(MOVIE_DETAILS) as MovieItem?
         lifecycleScope.launch {
            val list =  viewModel.getMovieVideo(movieId = movieDetails?.id)
-            val filterlist = list?.filter {
+            val filterList = list?.filter {
                 it.type == "Trailer"
             }?.toMutableList()
-            val adapter = VideosTrailerListAdapter(filterlist,lifecycle)
+            if (filterList.isNullOrEmpty()){
+                binding.trailerVideosRecyclerview.visibility = View.GONE
+                binding.errorMessageNoVideos.visibility = View.VISIBLE
+            }
+            val adapter = VideosTrailerListAdapter(filterList,lifecycle)
             binding.trailerVideosRecyclerview.adapter = adapter
             enterFullScreenMode(adapter)
         }
@@ -194,71 +191,10 @@ class VideoTrailerFragment :
         }
     }
 
-//    override fun onStart() {
-//        Log.e("here", "on start")
-//        super.onStart()
-//        //  intiPlayer()
-//    }
-
     override fun onResume() {
         super.onResume()
-        // activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-//        if (player==null) {
-//            intiPlayer()
-//        }
         handelBackPress()
     }
-
-//    override fun onPause() {
-//        super.onPause()
-//        Log.e("here", "on pause")
-//        //  releasePlayer()
-//    }
-
-//    override fun onStop() {
-//        super.onStop()
-//        Log.e("here", "on stop")
-//        //  releasePlayer()
-//    }
-
-//    @SuppressLint("SuspiciousIndentation")
-//    private fun intiPlayer() {
-//
-//            player = ExoPlayer.Builder(requireContext())
-//                .build()
-//                .also { exoPlayer ->
-//
-//                    Log.e("play video","on play video")
-//               // binding.playerView.player = exoPlayer
-//              //  dataBinding.playerView.useController = false
-//
-////            val dataSourceFactory = DefaultHttpDataSource.Factory()
-////                    val mediaSource = DashMediaSource.Factory(dataSourceFactory)
-////                .createMediaSource(MediaItem.fromUri(url))
-//
-////            val mediaItem = MediaItem.Builder()
-////                .setUri(url)
-////                .setMimeType(MimeTypes.VIDEO_MPEG)
-////                .build()
-//
-//                var mediaItem = MediaItem.fromUri(url)
-//                    exoPlayer.setMediaItem(mediaItem)
-//                    exoPlayer.playWhenReady = playWhenReady
-//                    exoPlayer.seekTo(currentItem,playBackPosition)
-//                    exoPlayer.prepare()
-//                    exoPlayer.play()
-//            }
-//    }
-//
-//    private fun releasePlayer(){
-//        player?.let { exoPlayer ->
-//        playWhenReady = exoPlayer.playWhenReady
-//        currentItem = exoPlayer.currentMediaItemIndex
-//        playBackPosition = exoPlayer.currentPosition
-//        exoPlayer.release()
-//        }
-//        player = null
-//    }
 
     override fun getViewBinding(v: View): FragmentVideoTrailerBinding {
         return FragmentVideoTrailerBinding.bind(v)

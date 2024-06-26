@@ -2,6 +2,7 @@ package com.example.ds_movies.data.api
 
 import com.example.ds_movies.data.models.CastResponse
 import com.example.ds_movies.data.models.CategoryResponse
+import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.data.models.MoviesResponse
 import com.example.ds_movies.data.models.VideoResponse
 import retrofit2.Response
@@ -50,6 +51,13 @@ interface MoviesApi {
         @Path("movie_id") movie_id:Int?,
         @Query("language") language:String = "en"
     ) : Response<CastResponse>
+
+
+    @GET("movie/{movie_id}")
+    suspend fun getArabicMovieDetails(
+        @Path("movie_id") movie_id:Int?,
+        @Query("language") language:String = "ar"
+    ) : Response<MovieItem>
 
     @GET("genre/movie/list")
     suspend fun getMoviesCategory() : Response<CategoryResponse>

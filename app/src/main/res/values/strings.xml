@@ -33,4 +33,7 @@
     <string name="arrow"><![CDATA[>]]></string>
     <string name="comedy">Comedy</string>
     <string name="there_are_no_movies_to_show">There are no movies to show</string>
+    <string name="there_are_no_videos_to_show">There are no videos to show</string>
+    <string name="arabic">Arabic</string>
+    <string name="english">English</string>
 </resources>
