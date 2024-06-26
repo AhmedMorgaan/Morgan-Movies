@@ -21,5 +21,6 @@ class MoviesRepository @Inject constructor(
     suspend fun getMovieCast (movieId:Int?) = retrofitExecutor.makeRequest { moviesApi.getMovieCast(movieId) }
     suspend fun getMoviesCategory() = retrofitExecutor.makeRequest { moviesApi.getMoviesCategory() }
     suspend fun getMovieVideo(movieId: Int?) = retrofitExecutor.makeRequest { moviesApi.getMovieVideo(movieId) }
+    suspend fun getArabicMovieDetails(movieId: Int?) = retrofitExecutor.makeRequest { moviesApi.getArabicMovieDetails(movieId) }
 
 }

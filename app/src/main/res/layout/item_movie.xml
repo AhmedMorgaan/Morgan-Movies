@@ -173,35 +173,73 @@
                 android:layout_marginTop="@dimen/_16sdp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/movie_release_date"
-                app:layout_constraintStart_toStartOf="@id/guideline_start"
                 app:layout_constraintEnd_toEndOf="@id/guideline_end"
-                tools:listitem="@layout/item_cast"/>
+                app:layout_constraintStart_toStartOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@id/movie_release_date"
+                tools:listitem="@layout/item_cast" />
 
+            <TextView
+                android:id="@+id/over_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/comic_sans"
+                android:text="@string/overview"
+                android:textColor="@color/Red"
+                android:textColorHint="@color/Red"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@+id/cast_recycler" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_lang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_4sdp"
+                android:paddingBottom="@dimen/_4sdp"
+                android:paddingStart="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:background="@drawable/rounded_black_op_corner_50"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintTop_toTopOf="@+id/over_view"
+                app:layout_constraintBottom_toBottomOf="@+id/over_view">
+
+                <ImageView
+                    android:id="@+id/ic_lang"
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_12sdp"
+                    android:src="@drawable/ic_language"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
                 <TextView
-                    android:id="@+id/over_view"
+                    android:id="@+id/txt_language"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
                     android:fontFamily="@font/comic_sans"
-                    android:text="@string/overview"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:text="@string/arabic"
                     android:textColor="@color/Red"
                     android:textColorHint="@color/Red"
-                    android:textSize="@dimen/_12ssp"
-                    app:layout_constraintStart_toStartOf="@id/guideline_start"
-                    app:layout_constraintTop_toBottomOf="@+id/cast_recycler"/>
+                    android:textSize="@dimen/_8ssp"
+                    app:layout_constraintStart_toEndOf="@+id/ic_lang"
+                    app:layout_constraintTop_toTopOf="@id/ic_lang"
+                    app:layout_constraintBottom_toBottomOf="@id/ic_lang"
+                    />
 
-                        <TextView
-                            android:id="@+id/movie_description"
-                            style="@style/Theme.MovieTextStyle"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/description"
-                            android:text="@{model.overview}"
-                            android:textSize="@dimen/_12ssp"
-                            app:layout_constraintStart_toStartOf="@id/guideline_start"
-                            app:layout_constraintEnd_toEndOf="@id/guideline_end"
-                            app:layout_constraintTop_toBottomOf="@+id/over_view"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/movie_description"
+                style="@style/Theme.MovieTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:hint="@string/description"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintStart_toStartOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@+id/over_view" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

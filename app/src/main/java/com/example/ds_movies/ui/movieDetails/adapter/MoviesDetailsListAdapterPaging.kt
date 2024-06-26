@@ -1,5 +1,6 @@
 package com.example.ds_movies.ui.movieDetails.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
@@ -25,7 +26,7 @@ import kotlinx.coroutines.withContext
 class MoviesDetailsListAdapterPaging(
     private var viewModel: MoviesDetailsViewModel
 ) : PagingDataAdapter<MovieItem, MoviesDetailsListAdapterPaging.MyViewHolder>(diffCallBack) {
-
+    var isArLanguage = false
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
             ItemMovieBinding.inflate(
@@ -64,20 +65,23 @@ class MoviesDetailsListAdapterPaging(
         }
         holder.binding.castRecycler.addOnItemTouchListener(mScrollChangeListener)
         holder.binding.btnMovieTrailer.setOnClickListener {
-            onItemClickListener?.onItemClick(position,currentItem)
+            onItemClickListener?.onItemClick(position, currentItem)
         }
     }
 
     var onItemClickListener: OnItemClickListener? = null
+
     interface OnItemClickListener {
         fun onItemClick(pos: Int, movie: MovieItem?)
     }
 
-    inner class MyViewHolder(var binding: ItemMovieBinding):RecyclerView.ViewHolder(binding.root){
-        fun onBind(moviesItem :MovieItem?){
+    inner class MyViewHolder(var binding: ItemMovieBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
+        fun onBind(moviesItem: MovieItem?) {
             binding.model = moviesItem
             Glide.with(binding.root)
-                .load(Constant.BASE_POSTER_IMAGE_URL +moviesItem?.posterPath)
+                .load(Constant.BASE_POSTER_IMAGE_URL + moviesItem?.posterPath)
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(binding.movieImage)
 
@@ -87,23 +91,43 @@ class MoviesDetailsListAdapterPaging(
                 SharedPreference.getString(Constant.CATEGORIES_DATA, ""),
                 object : TypeToken<CategoryResponse>() {}.type
             ).genres
-
-            val categoriesFilter =  categoriesList.filter {
+            val categoriesFilter = categoriesList.filter {
                 moviesItem?.genreIds!!.contains(it.id)
-                // it.id in movie?.genreIds
             }.map {
                 it.name
             }
+            val categories = categoriesFilter.toString().replace("[", "").replace("]", "")
+            binding.movieCategories.text = categories
 
-            binding.movieCategories.text = categoriesFilter.toString()
+            binding.btnLang.setOnClickListener {
+                isArLanguage = !isArLanguage
+                if (isArLanguage) {
+                    GlobalScope.launch(Dispatchers.IO) {
+                        val newMovieItem = viewModel.getArabicMovieDetails(moviesItem?.id)
+                        withContext(Dispatchers.Main) {
+                            if (newMovieItem?.overview.isNullOrEmpty()){
+                                binding.movieDescription.text = "للأسف لا يوجد ترجمة للغة العربية "
+                            }else {
+                                binding.movieDescription.text = newMovieItem?.overview
+                            }
+                            binding.txtLanguage.text = "English"
+                        }
+                    }
+                } else {
+                    binding.movieDescription.text = moviesItem?.overview
+                    binding.txtLanguage.text = "Arabic"
+                }
+
+            }
         }
     }
 
     companion object {
-        val diffCallBack = object : DiffUtil.ItemCallback<MovieItem>(){
+        val diffCallBack = object : DiffUtil.ItemCallback<MovieItem>() {
             override fun areItemsTheSame(oldItem: MovieItem, newItem: MovieItem): Boolean {
                 return oldItem.id == newItem.id
             }
+
             override fun areContentsTheSame(oldItem: MovieItem, newItem: MovieItem): Boolean {
                 return oldItem == newItem
             }
