@@ -1,12 +1,10 @@
-package com.example.d_note.Base
+package com.example.ds_movies.ui.base
 
 import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.example.ds_movies.ui.base.BaseActivity
-import com.example.ds_movies.ui.base.BaseViewModel
 import kotlinx.android.synthetic.main.fragment_movies_tab.view.main_progress_bar
 
 abstract class BaseFragment<T : ViewDataBinding , VM : BaseViewModel>(resId :Int) : Fragment(resId) {
@@ -37,6 +35,12 @@ abstract class BaseFragment<T : ViewDataBinding , VM : BaseViewModel>(resId :Int
             } else {
                 binding.root.main_progress_bar.visibility = View.GONE
             }
+        }
+    }
+
+    fun hideKeyboard() {
+        if (baseActivity != null) {
+            baseActivity!!.hideKeyboard()
         }
     }
 

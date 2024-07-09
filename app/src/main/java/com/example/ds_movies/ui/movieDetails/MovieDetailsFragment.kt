@@ -5,12 +5,12 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.PagerSnapHelper
-import com.example.d_note.Base.BaseFragment
 import com.example.ds_movies.R
 import com.example.ds_movies.core.utils.Constant.Companion.MOVIE
 import com.example.ds_movies.core.utils.Constant.Companion.MOVIE_DETAILS
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.databinding.FragmentMovieDetailsBinding
+import com.example.ds_movies.ui.base.BaseFragment
 import com.example.ds_movies.ui.movieDetails.adapter.MovieDetailsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 

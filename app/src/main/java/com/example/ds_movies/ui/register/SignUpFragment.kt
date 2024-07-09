@@ -3,7 +3,7 @@ package com.example.ds_movies.ui.register
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import com.example.d_note.Base.BaseFragment
+import com.example.ds_movies.ui.base.BaseFragment
 import com.example.ds_movies.R
 import com.example.ds_movies.databinding.FragmentSignUpTapBinding
 

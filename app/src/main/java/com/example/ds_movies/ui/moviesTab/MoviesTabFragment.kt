@@ -11,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.paging.filter
-import com.example.d_note.Base.BaseFragment
 import com.example.ds_movies.R
 import com.example.ds_movies.core.utils.Constant.Companion.GENRE_ID
 import com.example.ds_movies.core.utils.Constant.Companion.MOVIE
@@ -24,6 +23,7 @@ import com.example.ds_movies.core.utils.Constant.Companion.UP_COMING
 import com.example.ds_movies.data.models.Genre
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.databinding.FragmentMoviesTabBinding
+import com.example.ds_movies.ui.base.BaseFragment
 import com.example.ds_movies.ui.moviesTab.adapter.MoviesListAdapterPaging
 import com.example.ds_movies.ui.moviesTab.adapter.TrendingMoviesListAdapterPaging
 import com.google.android.material.tabs.TabLayout
@@ -34,7 +34,7 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding,MoviesTabViewModel>(R.layout.fragment_movies_tab) {
+class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding, MoviesTabViewModel>(R.layout.fragment_movies_tab) {
 
     override val viewModel: MoviesTabViewModel by viewModels()
     lateinit var tabInfo :Genre
@@ -114,7 +114,6 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding,MoviesTabViewMod
             override fun onItemClick(pos: Int, movie: MovieItem?) {
                 val bundle = Bundle()
                 bundle.putParcelable(MOVIE,movie)
-                bundle.putString(MOVIE_TYPE, MOVIE)
                 findNavController().navigate(R.id.action_homeFragment_to_movieDetailsFragment,bundle)
             }
         }

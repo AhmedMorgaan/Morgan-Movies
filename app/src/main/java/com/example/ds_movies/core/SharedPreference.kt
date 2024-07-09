@@ -7,7 +7,7 @@ class SharedPreference {
     companion object{
         private lateinit var sharedPreferences: SharedPreferences
         private val preferenceName = "Morgan-Preferences"
-        val keyID = "key_id"
+       // val keyID = "key_id"
 
         fun init (context : Context){
             sharedPreferences = context.getSharedPreferences(preferenceName,Context.MODE_PRIVATE)

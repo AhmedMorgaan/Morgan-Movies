@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.filter
-import com.example.d_note.Base.BaseFragment
+import com.example.ds_movies.ui.base.BaseFragment
 import com.example.ds_movies.R
 import com.example.ds_movies.core.utils.Constant
 import com.example.ds_movies.core.utils.Constant.Companion.GENRE_ID
@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CategoryMoviesListFragment : BaseFragment<FragmentCategoryMoviesListBinding,CategoryMoviesListViewModel>(R.layout.fragment_category_movies_list) {
+class CategoryMoviesListFragment : BaseFragment<FragmentCategoryMoviesListBinding, CategoryMoviesListViewModel>(R.layout.fragment_category_movies_list) {
 
     override val viewModel: CategoryMoviesListViewModel by viewModels()
 

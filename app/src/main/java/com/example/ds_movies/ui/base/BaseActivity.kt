@@ -1,8 +1,10 @@
 package com.example.ds_movies.ui.base
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -42,6 +44,13 @@ abstract class BaseActivity<T : ViewDataBinding , VM : BaseViewModel> : AppCompa
 
     }
 
+    fun hideKeyboard() {
+        val view = this.currentFocus
+        if (view != null) {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+    }
 
 
     @SuppressLint("SuspiciousIndentation")
