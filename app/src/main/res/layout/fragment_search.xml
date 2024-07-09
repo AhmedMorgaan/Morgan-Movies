@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
+        android:background="@color/black_op">
+
+        <com.mancj.materialsearchbar.MaterialSearchBar
+            style="@style/MaterialSearchBarLight"
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:textSize="@dimen/_8sdp"
+            app:mt_searchIconTint="@color/Red"
+            app:mt_backIconTint="@color/Red"
+            app:mt_clearIconTint="@color/Red"
+            app:mt_hint="Search"
+            app:mt_hintColor="@color/semi_gray"
+            app:mt_placeholder="Search"
+            app:mt_textColor="@color/semi_gray"
+            app:mt_placeholderColor="@color/semi_gray"
+            app:mt_searchBarColor="@color/black_op"
+            app:mt_maxSuggestionsCount="3"
+            app:mt_roundedSearchBarEnabled="true"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_result_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="@dimen/_4sdp"
+            android:orientation="vertical"
+            app:spanCount="2"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/searchBar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_movie_search"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -101,6 +101,8 @@ dependencies {
     //YoutubePlayer
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0'
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:custom-ui:12.1.0'
+    //SearchBar
+    implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
 }
 kapt {
     correctErrorTypes = true

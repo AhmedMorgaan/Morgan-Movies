@@ -10,14 +10,12 @@ class MoviesRepository @Inject constructor(
     private val moviesApi :MoviesApi,
     private val retrofitExecutor: RetrofitExecutor
     ) {
-    suspend fun getMoviesMainCategory() = moviesApi.getMoviesCategory()
-    suspend fun getMoviesWithGenres(genreId:Int) = moviesApi.getMoviesWithGenres(genreId)
-
     suspend fun getTrendingMovies (page:Int) = moviesApi.getTrendingMoviesPaging(page = page)
     suspend fun getTopRatedMoviesPaging(page:Int) = moviesApi.getTopRatedMoviesPaging(page)
     suspend fun getPopularMovies (page:Int) = moviesApi.getPopularMovies(page)
     suspend fun getNowPlayingMovies (page:Int) = moviesApi.getNowPlayingMoviesPaging(page)
     suspend fun getUpComingMovies (page:Int) = moviesApi.getUpComingMoviesPaging(page)
+    suspend fun getSearchResult (query:String ,page:Int) = moviesApi.getSearchResult(query,page)
     suspend fun getMovieCast (movieId:Int?) = retrofitExecutor.makeRequest { moviesApi.getMovieCast(movieId) }
     suspend fun getMoviesCategory() = retrofitExecutor.makeRequest { moviesApi.getMoviesCategory() }
     suspend fun getMovieVideo(movieId: Int?) = retrofitExecutor.makeRequest { moviesApi.getMovieVideo(movieId) }

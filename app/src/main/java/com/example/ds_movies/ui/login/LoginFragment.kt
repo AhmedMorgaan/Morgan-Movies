@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.example.d_note.Base.BaseFragment
 import com.example.ds_movies.R
 import com.example.ds_movies.databinding.FragmentLoginTapBinding
-import kotlinx.android.synthetic.main.fragment_login_tap.*
+import com.example.ds_movies.ui.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_login_tap.et_email_login
+import kotlinx.android.synthetic.main.fragment_login_tap.tv_email_login
 
-class LoginFragment :BaseFragment<FragmentLoginTapBinding,LoginViewModel>(R.layout.fragment_login_tap) {
+class LoginFragment : BaseFragment<FragmentLoginTapBinding, LoginViewModel>(R.layout.fragment_login_tap) {
 
     override val viewModel by viewModels<LoginViewModel>()
 
@@ -20,9 +20,9 @@ class LoginFragment :BaseFragment<FragmentLoginTapBinding,LoginViewModel>(R.layo
         binding.vm = viewModel
        // binding.setLifecycleOwner { this.lifecycle }
 
-        viewModel.authUser.observe(viewLifecycleOwner, Observer {
+        viewModel.authUser.observe(viewLifecycleOwner) {
             findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-        })
+        }
 
 
         val slideInLeft = AnimationUtils.loadAnimation(context,R.anim.slide_in_left)

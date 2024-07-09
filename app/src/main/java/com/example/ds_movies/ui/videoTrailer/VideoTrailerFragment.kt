@@ -7,12 +7,12 @@ import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.d_note.Base.BaseFragment
 import com.example.ds_movies.R
 import com.example.ds_movies.core.utils.Constant.Companion.MOVIE_DETAILS
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.data.models.VideoItem
 import com.example.ds_movies.databinding.FragmentVideoTrailerBinding
+import com.example.ds_movies.ui.base.BaseFragment
 import com.example.ds_movies.ui.videoTrailer.adapter.VideosTrailerListAdapter
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.FullscreenListener

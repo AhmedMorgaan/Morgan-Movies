@@ -34,7 +34,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/black_op"
                 app:navigationIcon="@drawable/baseline_menu_24"
-                app:title="MorGan"
+                app:title="Morgan Movies"
                 app:titleTextAppearance="@style/AppTabTextAppearance"
                 app:titleTextColor="@color/semi_gray"
                 app:titleCentered="true"

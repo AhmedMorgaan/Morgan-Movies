@@ -72,4 +72,10 @@ interface MoviesApi {
         @Path("movie_id") movie_id: Int?
     ): Response<VideoResponse>
 
+    @GET("search/movie")
+    suspend fun getSearchResult(
+        @Query("query") query: String,
+        @Query("page") page:Int
+    ): Response<MoviesResponse>
+
 }
