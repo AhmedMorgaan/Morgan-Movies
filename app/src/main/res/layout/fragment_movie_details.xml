@@ -20,7 +20,7 @@
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:listitem="@layout/item_movie">
+                    tools:listitem="@layout/item_movie_details">
 
                 </androidx.recyclerview.widget.RecyclerView>
 

@@ -32,13 +32,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                tools:src="@drawable/black_widow" />
+                tools:src="@drawable/black_widow"
+                android:contentDescription="@string/todo" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/image_gradient"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:contentDescription="@string/todo" />
 
         </androidx.cardview.widget.CardView>
 
@@ -49,8 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_4sdp"
             android:textSize="@dimen/_11ssp"
-            android:text="@{model.originalTitle}"
+            android:text="@{model.title}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/ic_rate"
@@ -64,14 +67,16 @@
             android:layout_marginBottom="@dimen/_16sdp"
             android:layout_marginStart="@dimen/_8sdp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:contentDescription="@string/todo" />
 
         <TextView
             style="@style/Theme.MovieTitleCardTextStyle"
             android:id="@+id/movie_vote_rate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="@dimen/_10ssp"
+            android:layout_marginStart="@dimen/_3sdp"
             app:layout_constraintStart_toEndOf="@+id/ic_rate"
             app:layout_constraintTop_toTopOf="@+id/ic_rate"
             app:layout_constraintBottom_toBottomOf="@+id/ic_rate"

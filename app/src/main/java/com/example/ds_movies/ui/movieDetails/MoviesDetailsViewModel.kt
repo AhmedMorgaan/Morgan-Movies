@@ -2,10 +2,15 @@ package com.example.ds_movies.ui.movieDetails
 
 import android.util.Log
 import com.example.ds_movies.core.Result
+import com.example.ds_movies.core.SharedPreference
+import com.example.ds_movies.core.utils.Constant
 import com.example.ds_movies.data.models.Cast
+import com.example.ds_movies.data.models.CategoryResponse
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.data.repositories.MoviesRepository
 import com.example.ds_movies.ui.base.BaseViewModel
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -85,5 +90,38 @@ class MoviesDetailsViewModel @Inject constructor(
         return movieDetails
     }
 
+    fun addFavoriteMovie(movieItem: MovieItem){
+        moviesRepository.addFavoriteMovie(movieItem)
+    }
+    fun removeMovieFromFavorites(movieItem: MovieItem) {
+        moviesRepository.removeMovieFromFavorites(movieItem)
+    }
+
+    fun isMovieExist(movieItem: MovieItem): Boolean {
+        val currentList = Gson().fromJson<MutableList<MovieItem>>(
+            SharedPreference.getString(Constant.FAVORITE_LIST, ""),
+            object : TypeToken<MutableList<MovieItem>>() {}.type
+        )
+        if (!currentList.isNullOrEmpty()) {
+            return currentList.contains(movieItem)
+        }
+        return false
+    }
+
+    fun getCategoriesNames(genreIds: MutableList<Int?>?): String {
+        val categoriesList = Gson().fromJson<CategoryResponse>(
+            SharedPreference.getString(Constant.CATEGORIES_DATA, ""),
+            object : TypeToken<CategoryResponse>() {}.type
+        ).genres
+        var categoriesFilter: List<String>? = null
+        if (!genreIds.isNullOrEmpty()) {
+            categoriesFilter = categoriesList.filter {
+                genreIds.contains(it.id)
+            }.map {
+                it.name
+            }
+        }
+        return categoriesFilter.toString().replace("[", "").replace("]", "")
+    }
 
 }

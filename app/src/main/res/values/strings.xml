@@ -36,4 +36,12 @@
     <string name="there_are_no_videos_to_show">There are no videos to show</string>
     <string name="arabic">Arabic</string>
     <string name="english">English</string>
+    <string name="my_profile">My Profile</string>
+    <string name="search">search</string>
+    <string name="my_favorites">My Favorites</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="follow_us">Follow Us</string>
+    <string name="log_out">Log Out</string>
+    <string name="favorites">Favorites</string>
+    <string name="todo">TODO</string>
 </resources>
