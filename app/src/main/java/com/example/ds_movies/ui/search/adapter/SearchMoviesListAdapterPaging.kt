@@ -46,7 +46,8 @@ class SearchMoviesListAdapterPaging() :
             Glide.with(itemView.context)
                 .load("${Constant.BASE_POSTER_IMAGE_URL}${moviesItem?.posterPath}")
                 .into(binding.movieImage)
-            binding.movieVoteRate.text = String.format("%.1f", moviesItem?.voteAverage)
+            val rate = String.format("%.1f", moviesItem?.voteAverage)
+            binding.movieVoteRate.text = if (rate == "0.0") "N/A" else rate
         }
     }
 

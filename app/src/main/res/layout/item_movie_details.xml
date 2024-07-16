@@ -39,6 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_325sdp"
                 app:cardCornerRadius="15dp"
+                app:cardElevation="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/movie_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +125,8 @@
                     android:src="@drawable/icon_youtube"
                     app:layout_constraintBottom_toBottomOf="@id/txt_movie_trailer"
                     app:layout_constraintStart_toEndOf="@id/txt_movie_trailer"
-                    app:layout_constraintTop_toTopOf="@id/txt_movie_trailer" />
+                    app:layout_constraintTop_toTopOf="@id/txt_movie_trailer"
+                    android:contentDescription="@string/todo" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -165,6 +167,17 @@
                 android:textSize="@dimen/_11ssp"
                 app:layout_constraintStart_toEndOf="@+id/release_date_text"
                 app:layout_constraintTop_toTopOf="@id/release_date_text" />
+
+            <ImageView
+                android:id="@+id/favorite_icon"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:src="@drawable/ic_non_favorite"
+                android:layout_marginEnd="@dimen/_20sdp"
+                app:layout_constraintTop_toTopOf="@+id/movie_release_date"
+                app:layout_constraintBottom_toBottomOf="@+id/movie_release_date"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                android:contentDescription="@string/todo" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cast_recycler"
@@ -211,7 +224,8 @@
                     android:layout_height="@dimen/_12sdp"
                     android:src="@drawable/ic_language"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/todo" />
                 <TextView
                     android:id="@+id/txt_language"
                     android:layout_width="wrap_content"
@@ -235,11 +249,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_4sdp"
-                android:hint="@string/description"
                 android:textSize="@dimen/_12ssp"
+                android:text="@{model.overview}"
                 app:layout_constraintEnd_toEndOf="@id/guideline_end"
                 app:layout_constraintStart_toStartOf="@id/guideline_start"
-                app:layout_constraintTop_toBottomOf="@+id/over_view" />
+                app:layout_constraintTop_toBottomOf="@+id/over_view"
+                tools:text="@string/description"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

@@ -1,20 +1,16 @@
 package com.example.ds_movies.ui.movieDetails.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ds_movies.R
-import com.example.ds_movies.core.SharedPreference
 import com.example.ds_movies.core.utils.Constant.Companion.BASE_POSTER_IMAGE_URL
-import com.example.ds_movies.core.utils.Constant.Companion.CATEGORIES_DATA
-import com.example.ds_movies.data.models.CategoryResponse
 import com.example.ds_movies.data.models.MovieItem
-import com.example.ds_movies.databinding.ItemMovieBinding
+import com.example.ds_movies.databinding.ItemMovieDetailsBinding
 import com.example.ds_movies.ui.movieDetails.MoviesDetailsViewModel
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -26,9 +22,10 @@ class MovieDetailsAdapter(
     private var viewModel: MoviesDetailsViewModel
 ) : RecyclerView.Adapter<MovieDetailsAdapter.MyViewHolder>() {
     var isArLanguage = false
+    var isFavorite = false
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
-            ItemMovieBinding.inflate(
+            ItemMovieDetailsBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -75,8 +72,10 @@ class MovieDetailsAdapter(
         fun onItemClick(pos: Int, movie: MovieItem?)
     }
 
-    inner class MyViewHolder(var binding: ItemMovieBinding) :
+    inner class MyViewHolder(var binding: ItemMovieDetailsBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @OptIn(DelicateCoroutinesApi::class)
+        @SuppressLint("SetTextI18n")
         fun onBind() {
             val movie = movie
             binding.model = movie
@@ -85,19 +84,11 @@ class MovieDetailsAdapter(
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(binding.movieImage)
 
-            binding.movieVoteRate.text = String.format("%.1f", movie?.voteAverage)
+            val rate = String.format("%.1f", movie?.voteAverage)
+            binding.movieVoteRate.text = if (rate == "0.0") "N/A" else rate
 
-            val categoriesList = Gson().fromJson<CategoryResponse>(
-                SharedPreference.getString(CATEGORIES_DATA, ""),
-                object : TypeToken<CategoryResponse>() {}.type
-            ).genres
-            val categoriesFilter = categoriesList.filter {
-                movie?.genreIds!!.contains(it.id)
-            }.map {
-                it.name
-            }
-            val categories = categoriesFilter.toString().replace("[", "").replace("]", "")
-            binding.movieCategories.text = categories
+            binding.movieCategories.text = viewModel.getCategoriesNames(movie?.genreIds)
+
             binding.btnLang.setOnClickListener {
                 isArLanguage = !isArLanguage
                 if (isArLanguage) {
@@ -115,6 +106,24 @@ class MovieDetailsAdapter(
                 } else {
                     binding.movieDescription.text = movie?.overview
                     binding.txtLanguage.text = "Arabic"
+                }
+            }
+            if (movie != null) {
+                if (viewModel.isMovieExist(movie)){
+                    isFavorite = true
+                    binding.favoriteIcon.setImageResource(R.drawable.ic_favorite)
+                }
+            }
+            binding.favoriteIcon.setOnClickListener {
+                isFavorite = !isFavorite
+                if (movie != null) {
+                    if (isFavorite) {
+                        viewModel.addFavoriteMovie(movie)
+                        binding.favoriteIcon.setImageResource(R.drawable.ic_favorite)
+                    } else {
+                        viewModel.removeMovieFromFavorites(movie)
+                        binding.favoriteIcon.setImageResource(R.drawable.ic_non_favorite)
+                    }
                 }
             }
         }

@@ -13,7 +13,7 @@ import com.example.ds_movies.core.SharedPreference
 import com.example.ds_movies.core.utils.Constant
 import com.example.ds_movies.data.models.CategoryResponse
 import com.example.ds_movies.data.models.MovieItem
-import com.example.ds_movies.databinding.ItemMovieBinding
+import com.example.ds_movies.databinding.ItemMovieDetailsBinding
 import com.example.ds_movies.ui.movieDetails.MoviesDetailsViewModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -29,7 +29,7 @@ class MoviesDetailsListAdapterPaging(
     var isArLanguage = false
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
-            ItemMovieBinding.inflate(
+            ItemMovieDetailsBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -75,8 +75,9 @@ class MoviesDetailsListAdapterPaging(
         fun onItemClick(pos: Int, movie: MovieItem?)
     }
 
-    inner class MyViewHolder(var binding: ItemMovieBinding) :
+    inner class MyViewHolder(var binding: ItemMovieDetailsBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @OptIn(DelicateCoroutinesApi::class)
         @SuppressLint("SetTextI18n")
         fun onBind(moviesItem: MovieItem?) {
             binding.model = moviesItem
@@ -85,7 +86,8 @@ class MoviesDetailsListAdapterPaging(
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(binding.movieImage)
 
-            binding.movieVoteRate.text = String.format("%.1f", moviesItem?.voteAverage)
+            val rate = String.format("%.1f", moviesItem?.voteAverage)
+            binding.movieVoteRate.text = if (rate == "0.0") "N/A" else rate
 
             val categoriesList = Gson().fromJson<CategoryResponse>(
                 SharedPreference.getString(Constant.CATEGORIES_DATA, ""),

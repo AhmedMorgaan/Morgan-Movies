@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="My Profile"/>
-    <item android:title="Rate Us"/>
-    <item android:title="Follow Us"/>
+    <group>
+        <item
+            android:id="@+id/profile"
+            android:title="@string/my_profile"
+            android:icon="@drawable/ic_profile"/>
+
+        <item
+            android:id="@+id/favorite"
+            android:title="@string/my_favorites"
+            android:icon="@drawable/ic_favorite"/>
+
+        <item
+            android:id="@+id/rate_us"
+            android:title="@string/rate_us"
+            android:icon="@drawable/ic_star_rate"/>
+
+        <item
+            android:id="@+id/follow_us"
+            android:title="@string/follow_us"
+            android:icon="@drawable/ic_follow_us"/>
+    </group>
+
+    <item android:title="">
+
+        <menu>
+            <item
+                android:id="@+id/log_out"
+                android:title="@string/log_out"
+                android:icon="@drawable/ic_log_out"/>
+        </menu>
+    </item>
+
+
 </menu>

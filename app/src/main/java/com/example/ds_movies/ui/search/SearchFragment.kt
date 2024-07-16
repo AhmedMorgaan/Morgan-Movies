@@ -7,9 +7,11 @@ import android.text.TextWatcher
 import android.view.MotionEvent
 import android.view.View
 import androidx.activity.addCallback
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import com.example.ds_movies.R
 import com.example.ds_movies.core.SharedPreference
 import com.example.ds_movies.core.utils.Constant.Companion.MOVIE
@@ -22,6 +24,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.mancj.materialsearchbar.MaterialSearchBar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
@@ -88,6 +91,17 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(R.la
             }
         }
         binding.searchResultRecyclerview.adapter = adapter
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collectLatest { loadStates ->
+                binding.mainProgressBar.isVisible = loadStates.refresh is LoadState.Loading
+                binding.searchNoMovies.isVisible = loadStates.refresh is LoadState.Error
+                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0){
+                    binding.searchNoMovies.visibility = View.VISIBLE
+                }else{
+                    binding.searchNoMovies.visibility = View.GONE
+                }
+            }
+        }
         handelSuggestionItemClick(adapter)
     }
 

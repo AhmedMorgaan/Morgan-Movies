@@ -78,6 +78,9 @@
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favoriteMoviesFragment"
+            app:destination="@id/favoriteMoviesFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryMoviesListFragment"
@@ -96,6 +99,15 @@
         tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_searchFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteMoviesFragment"
+        android:name="com.example.ds_movies.ui.favoriteMovies.FavoriteMoviesFragment"
+        android:label="FavoriteMoviesFragment"
+        tools:layout="@layout/fragment_favorite_movies">
+        <action
+            android:id="@+id/action_favoriteMoviesFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
     </fragment>
 </navigation>

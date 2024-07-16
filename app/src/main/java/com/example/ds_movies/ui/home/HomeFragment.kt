@@ -5,9 +5,9 @@ import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.ds_movies.ui.base.BaseFragment
 import com.example.ds_movies.R
 import com.example.ds_movies.databinding.FragmentHomeBinding
+import com.example.ds_movies.ui.base.BaseFragment
 import com.example.ds_movies.ui.home.adapter.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +24,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         initTabLayoutView()
         initDrawerButton()
         handelSearchClick()
+        handelDrawerMenuClick()
     }
 
     private fun handelSearchClick(){
@@ -32,13 +33,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
             true
         }
     }
-
     private fun initDrawerButton() {
         binding.appbar.setNavigationOnClickListener {
             binding.mainDrawer.openDrawer(binding.navigationView)
         }
        actionBarDrawerToggle = ActionBarDrawerToggle(activity,binding.mainDrawer,R.string.app_name,R.string.app_name)
        actionBarDrawerToggle.syncState()
+    }
+    private fun handelDrawerMenuClick(){
+        binding.navigationView.setNavigationItemSelectedListener {
+            binding.mainDrawer.closeDrawer(binding.navigationView)
+            when(it.itemId){
+                R.id.favorite ->{
+                    findNavController().navigate(R.id.action_homeFragment_to_favoriteMoviesFragment)
+                }
+            }
+            return@setNavigationItemSelectedListener true
+        }
     }
 
     private fun initTabLayoutView(){
