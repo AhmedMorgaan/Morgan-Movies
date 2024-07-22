@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.ds_movies.R
-import kotlinx.android.synthetic.main.fragment_onboarding.*
+import kotlinx.android.synthetic.main.fragment_onboarding.btn_continue
 
-class OnboardingFragment : Fragment() {
+class OnBoardingFragment : Fragment() {
     
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +25,4 @@ class OnboardingFragment : Fragment() {
             findNavController().navigate(R.id.action_onboardingFragment_to_welcomeFragment)
         }
     }
-
-
 }
