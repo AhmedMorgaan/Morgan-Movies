@@ -3,7 +3,7 @@
 
     <group>
         <item
-            android:id="@+id/profile"
+            android:id="@+id/my_profile"
             android:title="@string/my_profile"
             android:icon="@drawable/ic_profile"/>
 
@@ -23,15 +23,15 @@
             android:icon="@drawable/ic_follow_us"/>
     </group>
 
-    <item android:title="">
+<!--    <item android:title="">-->
 
-        <menu>
-            <item
-                android:id="@+id/log_out"
-                android:title="@string/log_out"
-                android:icon="@drawable/ic_log_out"/>
-        </menu>
-    </item>
+<!--        <menu>-->
+<!--            <item-->
+<!--                android:id="@+id/log_out"-->
+<!--                android:title="@string/log_out"-->
+<!--                android:icon="@drawable/ic_log_out"/>-->
+<!--        </menu>-->
+<!--    </item>-->
 
 
 </menu>

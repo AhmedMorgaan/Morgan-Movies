@@ -1,11 +1,15 @@
 package com.example.ds_movies.ui.home
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.ds_movies.R
+import com.example.ds_movies.core.utils.Utils
 import com.example.ds_movies.databinding.FragmentHomeBinding
 import com.example.ds_movies.ui.base.BaseFragment
 import com.example.ds_movies.ui.home.adapter.ViewPagerAdapter
@@ -47,9 +51,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
                 R.id.favorite ->{
                     findNavController().navigate(R.id.action_homeFragment_to_favoriteMoviesFragment)
                 }
+                R.id.my_profile ->{
+                    val unicode = 0x1F601
+                    val emoji = getEmoji(unicode)
+                    Toast.makeText(context,"ايه مش عاجبك صورة اشرف عبدالباقى لو مش عاجبك طلقني (بصوت احمد حلمى $emoji ) ",Toast.LENGTH_LONG).show()
+                }
+                R.id.rate_us ->{
+                    val unicode = 0x1F602
+                    val emoji = getEmoji(unicode)
+                    Toast.makeText(context," تقيم ايه يا عم صلي على النبي ده كويس ان الأبلكيشن شغال اصلا $emoji  ",Toast.LENGTH_LONG).show()
+                }
+                R.id.follow_us ->{
+                    val unicode = 0x1F60A
+                    val emoji = getEmoji(unicode)
+                    Toast.makeText(context," يا عم مش عايز فولو ولا حاجة أذكر الله بس و انا هبقى مبسوط $emoji ",Toast.LENGTH_LONG).show()
+                }
             }
             return@setNavigationItemSelectedListener true
         }
+    }
+    fun getEmoji(unicode: Int): String {
+        return String(Character.toChars(unicode))
     }
 
     private fun initTabLayoutView(){
@@ -68,6 +90,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
         })
+    }
+
+    @RequiresApi(Build.VERSION_CODES.R)
+    override fun onResume() {
+        super.onResume()
+        Utils().hideSystemUI(requireActivity().window,R.id.main_view)
     }
 
     override fun getViewBinding(v: View): FragmentHomeBinding {

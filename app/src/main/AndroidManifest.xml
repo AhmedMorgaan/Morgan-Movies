@@ -21,9 +21,9 @@
     <application
         android:name=".data.MyApplicationClass"
         android:allowBackup="true"
-        android:icon="@drawable/ds"
+        android:icon="@mipmap/ic_ds_app"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_ds_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DS_Movies"
         android:usesCleartextTraffic="true" >
