@@ -10,9 +10,9 @@
 
     <ImageView
         android:id="@+id/image_profile"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@mipmap/profile_place_holder"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_90sdp"
+        android:src="@drawable/profile_place_holder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black_op"
         android:layout_marginTop="15dp"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@+id/image_profile"
         app:layout_constraintEnd_toEndOf="@id/image_profile"
         app:layout_constraintStart_toStartOf="@+id/image_profile"

@@ -12,14 +12,14 @@
         android:layout_height="match_parent"
         tools:context=".ui.tvShowsTab.TvShowsTabFragment">
 
-        <!-- TODO: Update blank fragment layout -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Coming Soon"
+            android:text="@string/coming_soon"
             android:textSize="50sp"
             android:textColor="@color/Red"
             android:textAlignment="center"
+            android:fontFamily="@font/comic_sans_bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

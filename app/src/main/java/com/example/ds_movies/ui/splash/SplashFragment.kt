@@ -24,7 +24,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding,SplashViewModel>(R.lay
 
         Handler().postDelayed({
         findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-        }, 4000)
+        }, 3000)
     }
     override fun getViewBinding(v: View): FragmentSplashBinding {
         return FragmentSplashBinding.bind(v)

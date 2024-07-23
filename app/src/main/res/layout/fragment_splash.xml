@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/splash_image_1"
-            android:layout_width="@dimen/_270sdp"
-            android:layout_height="@dimen/_270sdp"
+            android:layout_width="@dimen/_231sdp"
+            android:layout_height="@dimen/_231sdp"
             android:scaleType="fitXY"
             android:src="@drawable/splash_screen_1"
             app:layout_constraintBottom_toTopOf="@id/splash_image_2"
