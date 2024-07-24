@@ -95,7 +95,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(R.la
             adapter.loadStateFlow.collectLatest { loadStates ->
                 binding.mainProgressBar.isVisible = loadStates.refresh is LoadState.Loading
                 binding.searchNoMovies.isVisible = loadStates.refresh is LoadState.Error
-                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0){
+                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0 && !binding.searchNoMovies.isVisible){
                     binding.searchNoMovies.visibility = View.VISIBLE
                 }else{
                     binding.searchNoMovies.visibility = View.GONE
