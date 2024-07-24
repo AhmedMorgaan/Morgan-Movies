@@ -103,7 +103,7 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding, MoviesTabViewMo
             adapter.loadStateFlow.collectLatest { loadStates ->
                 binding.trendingProgressBar.isVisible = loadStates.refresh is LoadState.Loading
                 binding.trendingErrorMessage.isVisible = loadStates.refresh is LoadState.Error
-                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0){
+                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0 && !binding.trendingErrorMessage.isVisible){
                     binding.trendingNoMovies.visibility = View.VISIBLE
                 }else{
                     binding.trendingNoMovies.visibility = View.GONE
@@ -146,7 +146,7 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding, MoviesTabViewMo
             adapter.loadStateFlow.collectLatest { loadStates ->
                 binding.topRatedProgressBar.isVisible = loadStates.refresh is LoadState.Loading
                 binding.topRatedErrorMessage.isVisible = loadStates.refresh is LoadState.Error
-                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0){
+                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0 && !binding.topRatedErrorMessage.isVisible){
                     binding.topRatedNoMovies.visibility = View.VISIBLE
                 }else{
                     binding.topRatedNoMovies.visibility = View.GONE
@@ -194,7 +194,7 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding, MoviesTabViewMo
             adapter.loadStateFlow.collectLatest { loadStates ->
                 binding.popularProgressBar.isVisible = loadStates.refresh is LoadState.Loading
                 binding.popularErrorMessage.isVisible = loadStates.refresh is LoadState.Error
-                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0){
+                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0 && !binding.popularErrorMessage.isVisible){
                     binding.popularNoMovies.visibility = View.VISIBLE
                 }else{
                     binding.popularNoMovies.visibility = View.GONE
@@ -230,7 +230,7 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding, MoviesTabViewMo
             adapter.loadStateFlow.collectLatest { loadStates ->
                 binding.nowPlayingProgressBar.isVisible = loadStates.refresh is LoadState.Loading
                 binding.nowPlayingErrorMessage.isVisible = loadStates.refresh is LoadState.Error
-                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0){
+                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0 && !binding.nowPlayingErrorMessage.isVisible){
                     binding.nowPlayingNoMovies.visibility = View.VISIBLE
                 }else{
                     binding.nowPlayingNoMovies.visibility = View.GONE
@@ -266,7 +266,7 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding, MoviesTabViewMo
             adapter.loadStateFlow.collectLatest { loadStates ->
                 binding.upComingProgressBar.isVisible = loadStates.refresh is LoadState.Loading
                 binding.upComingErrorMessage.isVisible = loadStates.refresh is LoadState.Error
-                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0){
+                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0 && !binding.upComingErrorMessage.isVisible){
                     binding.upComingNoMovies.visibility = View.VISIBLE
                 }else{
                     binding.upComingNoMovies.visibility = View.GONE
