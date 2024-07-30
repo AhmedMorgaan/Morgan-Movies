@@ -2,6 +2,7 @@ package com.example.ds_movies.ui.moviesTab
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
@@ -20,6 +21,7 @@ import com.example.ds_movies.core.utils.Constant.Companion.POPULAR
 import com.example.ds_movies.core.utils.Constant.Companion.TOP_RATED
 import com.example.ds_movies.core.utils.Constant.Companion.TRENDING
 import com.example.ds_movies.core.utils.Constant.Companion.UP_COMING
+import com.example.ds_movies.core.utils.NetworkHelper
 import com.example.ds_movies.data.models.Genre
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.databinding.FragmentMoviesTabBinding
@@ -37,13 +39,51 @@ import kotlinx.coroutines.launch
 class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding, MoviesTabViewModel>(R.layout.fragment_movies_tab) {
 
     override val viewModel: MoviesTabViewModel by viewModels()
-    lateinit var tabInfo :Genre
+     var tabInfo :Genre? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initGenresTabs()
         initTrendingRecyclerViewPaging()
         handelSeeMoreClicks()
         handelCategoryNameClicks()
+        handelSwipeRefresh()
+        handelHideProgressBar()
+    }
+
+    private fun handelHideProgressBar() {
+        Handler().postDelayed({
+            if (binding.topRatedProgressBar.isVisible && binding.popularProgressBar.isVisible &&
+                binding.nowPlayingProgressBar.isVisible && binding.upComingProgressBar.isVisible){
+
+                binding.topRatedProgressBar.visibility = View.GONE
+                binding.topRatedErrorMessage.visibility = View.VISIBLE
+
+                binding.popularProgressBar.visibility = View.GONE
+                binding.popularErrorMessage.visibility = View.VISIBLE
+
+                binding.nowPlayingProgressBar.visibility = View.GONE
+                binding.nowPlayingErrorMessage.visibility = View.VISIBLE
+
+                binding.upComingProgressBar.visibility = View.GONE
+                binding.upComingErrorMessage.visibility = View.VISIBLE
+
+            }
+        },3000)
+    }
+    private fun handelSwipeRefresh(){
+        binding.swipeRefresh.setColorSchemeColors(resources.getColor(R.color.Red))
+        binding.swipeRefresh.setProgressBackgroundColorSchemeColor(resources.getColor(R.color.black_op))
+        binding.swipeRefresh.setOnRefreshListener {
+            if (NetworkHelper().isConnected(requireContext())){
+                initGenresTabs()
+                initTrendingRecyclerViewPaging()
+                binding.swipeRefresh.isRefreshing = false
+            }else{
+                viewModel.showMessage.postValue(requireContext().getString(R.string.no_internet_connection))
+                binding.swipeRefresh.isRefreshing = false
+            }
+        }
+
     }
 
     private fun initGenresTabs() {
@@ -56,7 +96,7 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding, MoviesTabViewMo
                     binding.genresTabs.newTab().setText(genre.name).setTag(genre)
                 )
             }
-            for (i in 0 until binding.genresTabs.getTabCount()) {
+            for (i in 0 until binding.genresTabs.tabCount) {
                 val tab = (binding.genresTabs.getChildAt(0) as ViewGroup).getChildAt(i)
                 val p = tab.layoutParams as MarginLayoutParams
                 p.setMargins(0, 0, 20, 0)
@@ -76,7 +116,6 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding, MoviesTabViewMo
             }
             override fun onTabUnselected(tab: TabLayout.Tab?) {
             }
-
             override fun onTabReselected(tab: TabLayout.Tab?) {
                 val genre = tab?.tag as Genre
                 initTopRatedRecyclerViewPaging(genre.id)
@@ -98,7 +137,6 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding, MoviesTabViewMo
             }
         }
         binding.trendingRecyclerview.adapter = adapter
-
         lifecycleScope.launch {
             adapter.loadStateFlow.collectLatest { loadStates ->
                 binding.trendingProgressBar.isVisible = loadStates.refresh is LoadState.Loading
@@ -109,6 +147,9 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding, MoviesTabViewMo
                     binding.trendingNoMovies.visibility = View.GONE
                 }
             }
+        }
+        if (adapter.itemCount==0){
+            adapter.retry()
         }
         adapter.onItemClickListener = object : TrendingMoviesListAdapterPaging.OnItemClickListener{
             override fun onItemClick(pos: Int, movie: MovieItem?) {
@@ -287,86 +328,139 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding, MoviesTabViewMo
     }
     private fun handelSeeMoreClicks(){
         binding.apply {
-            txtTrendingSeeMore.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString(MOVIE_TYPE, TRENDING)
-                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
-            }
-            txtTopRatedSeeMore.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString(MOVIE_TYPE, TOP_RATED)
-                if (tabInfo.id != 0) {
-                    bundle.putInt(GENRE_ID, tabInfo.id)
+                txtTrendingSeeMore.setOnClickListener {
+                        val bundle = Bundle()
+                        bundle.putString(MOVIE_TYPE, TRENDING)
+                        findNavController().navigate(
+                            R.id.action_homeFragment_to_categoryMoviesListFragment,
+                            bundle
+                        )
                 }
-                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
-            }
-            txtPopularSeeMore.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString(MOVIE_TYPE, POPULAR)
-                if (tabInfo.id != 0) {
-                    bundle.putInt(GENRE_ID, tabInfo.id)
+                txtTopRatedSeeMore.setOnClickListener {
+                    if (isHasAccess()) {
+                        val bundle = Bundle()
+                        bundle.putString(MOVIE_TYPE, TOP_RATED)
+                        if (tabInfo?.id != 0) {
+                            bundle.putInt(GENRE_ID, tabInfo!!.id)
+                        }
+                        findNavController().navigate(
+                            R.id.action_homeFragment_to_categoryMoviesListFragment,
+                            bundle
+                        )
+                    }
                 }
-                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
-            }
-            txtNowPlayingSeeMore.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString(MOVIE_TYPE, NOW_PLAYING)
-                if (tabInfo.id != 0) {
-                    bundle.putInt(GENRE_ID, tabInfo.id)
+                txtPopularSeeMore.setOnClickListener {
+                    if (isHasAccess()) {
+                        val bundle = Bundle()
+                        bundle.putString(MOVIE_TYPE, POPULAR)
+                        if (tabInfo?.id != 0) {
+                            bundle.putInt(GENRE_ID, tabInfo!!.id)
+                        }
+                        findNavController().navigate(
+                            R.id.action_homeFragment_to_categoryMoviesListFragment,
+                            bundle
+                        )
+                    }
                 }
-                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
-            }
-            txtUpComingSeeMore.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString(MOVIE_TYPE, UP_COMING)
-                if (tabInfo.id != 0) {
-                    bundle.putInt(GENRE_ID, tabInfo.id)
+                txtNowPlayingSeeMore.setOnClickListener {
+                    if (isHasAccess()) {
+                        val bundle = Bundle()
+                        bundle.putString(MOVIE_TYPE, NOW_PLAYING)
+                        if (tabInfo?.id != 0) {
+                            bundle.putInt(GENRE_ID, tabInfo!!.id)
+                        }
+                        findNavController().navigate(
+                            R.id.action_homeFragment_to_categoryMoviesListFragment,
+                            bundle
+                        )
+                    }
                 }
-                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
-            }
+                txtUpComingSeeMore.setOnClickListener {
+                    if (isHasAccess()) {
+                        val bundle = Bundle()
+                        bundle.putString(MOVIE_TYPE, UP_COMING)
+                        if (tabInfo?.id != 0) {
+                            bundle.putInt(GENRE_ID, tabInfo!!.id)
+                        }
+                        findNavController().navigate(
+                            R.id.action_homeFragment_to_categoryMoviesListFragment,
+                            bundle
+                        )
+                    }
+                }
         }
     }
     private fun handelCategoryNameClicks(){
         binding.apply {
-            txtTrending.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString(MOVIE_TYPE, TRENDING)
-                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
-
-            }
-            txtTopRated.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString(MOVIE_TYPE, TOP_RATED)
-                if (tabInfo.id != 0) {
-                    bundle.putInt(GENRE_ID, tabInfo.id)
+                txtTrending.setOnClickListener {
+                    val bundle = Bundle()
+                    bundle.putString(MOVIE_TYPE, TRENDING)
+                    findNavController().navigate(
+                        R.id.action_homeFragment_to_categoryMoviesListFragment,
+                        bundle
+                    )
                 }
-                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment, bundle)
-            }
-            txtPopular.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString(MOVIE_TYPE, POPULAR)
-                if (tabInfo.id != 0) {
-                    bundle.putInt(GENRE_ID, tabInfo.id)
+                txtTopRated.setOnClickListener {
+                    if (isHasAccess()) {
+                        val bundle = Bundle()
+                        bundle.putString(MOVIE_TYPE, TOP_RATED)
+                        if (tabInfo?.id != 0) {
+                            bundle.putInt(GENRE_ID, tabInfo!!.id)
+                        }
+                        findNavController().navigate(
+                            R.id.action_homeFragment_to_categoryMoviesListFragment,
+                            bundle
+                        )
+                    }
                 }
-                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
-            }
-            txtNowPlaying.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString(MOVIE_TYPE, NOW_PLAYING)
-                if (tabInfo.id != 0) {
-                    bundle.putInt(GENRE_ID, tabInfo.id)
+                txtPopular.setOnClickListener {
+                    if (isHasAccess()) {
+                        val bundle = Bundle()
+                        bundle.putString(MOVIE_TYPE, POPULAR)
+                        if (tabInfo?.id != 0) {
+                            bundle.putInt(GENRE_ID, tabInfo!!.id)
+                        }
+                        findNavController().navigate(
+                            R.id.action_homeFragment_to_categoryMoviesListFragment,
+                            bundle
+                        )
+                    }
                 }
-                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
-            }
-            txtUpComing.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString(MOVIE_TYPE, UP_COMING)
-                if (tabInfo.id != 0) {
-                    bundle.putInt(GENRE_ID, tabInfo.id)
+                txtNowPlaying.setOnClickListener {
+                    if (isHasAccess()) {
+                        val bundle = Bundle()
+                        bundle.putString(MOVIE_TYPE, NOW_PLAYING)
+                        if (tabInfo?.id != 0) {
+                            bundle.putInt(GENRE_ID, tabInfo!!.id)
+                        }
+                        findNavController().navigate(
+                            R.id.action_homeFragment_to_categoryMoviesListFragment,
+                            bundle
+                        )
+                    }
                 }
-                findNavController().navigate(R.id.action_homeFragment_to_categoryMoviesListFragment,bundle)
-            }
+                txtUpComing.setOnClickListener {
+                    if (isHasAccess()) {
+                        val bundle = Bundle()
+                        bundle.putString(MOVIE_TYPE, UP_COMING)
+                        if (tabInfo?.id != 0) {
+                            bundle.putInt(GENRE_ID, tabInfo!!.id)
+                        }
+                        findNavController().navigate(
+                            R.id.action_homeFragment_to_categoryMoviesListFragment,
+                            bundle
+                        )
+                    }
+                }
         }
+    }
+    private fun isHasAccess():Boolean {
+        var bool = true
+        if (!NetworkHelper().isConnected(requireContext()) && tabInfo == null){
+            viewModel.showMessage.postValue(requireContext().getString(R.string.no_internet_connection))
+            bool = false
+        }
+        return bool
     }
 
     override fun getViewBinding(v: View): FragmentMoviesTabBinding {

@@ -213,7 +213,7 @@
                 android:paddingStart="@dimen/_6sdp"
                 android:paddingEnd="@dimen/_6sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
-                android:background="@drawable/rounded_black_op_corner_50"
+                android:background="@drawable/rounded_black_op_corner_50_red_stroke"
                 app:layout_constraintEnd_toEndOf="@id/guideline_end"
                 app:layout_constraintTop_toTopOf="@+id/over_view"
                 app:layout_constraintBottom_toBottomOf="@+id/over_view">
