@@ -1,15 +1,12 @@
 package com.example.ds_movies.ui.home
 
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.ds_movies.R
-import com.example.ds_movies.core.utils.Utils
 import com.example.ds_movies.databinding.FragmentHomeBinding
 import com.example.ds_movies.ui.base.BaseFragment
 import com.example.ds_movies.ui.home.adapter.ViewPagerAdapter
@@ -90,12 +87,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
         })
-    }
-
-    @RequiresApi(Build.VERSION_CODES.R)
-    override fun onResume() {
-        super.onResume()
-        Utils().hideSystemUI(requireActivity().window,R.id.main_view)
     }
 
     override fun getViewBinding(v: View): FragmentHomeBinding {

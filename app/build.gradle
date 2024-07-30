@@ -103,6 +103,8 @@ dependencies {
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:custom-ui:12.1.0'
     //SearchBar
     implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
+    //Swipe Refresh
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 }
 kapt {
     correctErrorTypes = true

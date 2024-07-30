@@ -1,14 +1,17 @@
 package com.example.ds_movies.ui.videoTrailer
 
 import android.content.pm.ActivityInfo
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.activity.addCallback
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.ds_movies.R
 import com.example.ds_movies.core.utils.Constant.Companion.MOVIE_DETAILS
+import com.example.ds_movies.core.utils.Utils
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.data.models.VideoItem
 import com.example.ds_movies.databinding.FragmentVideoTrailerBinding
@@ -29,8 +32,10 @@ class VideoTrailerFragment :
     private var isFullscreen = false
     private lateinit var youTubePlayer: YouTubePlayer
 
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Utils().hideSystemUI(requireActivity().window,R.id.main_view)
        // initYouTubePlayer()
         getVideosId()
        // initYouTubePlayerWithDefaultPlayerUiController()
@@ -191,9 +196,17 @@ class VideoTrailerFragment :
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onResume() {
         super.onResume()
         handelBackPress()
+        Utils().hideSystemUI(requireActivity().window,R.id.main_view)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.R)
+    override fun onDestroy() {
+        super.onDestroy()
+        Utils().showSystemUI(requireActivity().window,R.id.main_view)
     }
 
     override fun getViewBinding(v: View): FragmentVideoTrailerBinding {

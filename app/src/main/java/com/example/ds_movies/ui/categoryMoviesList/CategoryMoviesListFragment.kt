@@ -2,20 +2,24 @@ package com.example.ds_movies.ui.categoryMoviesList
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import androidx.paging.filter
 import com.example.ds_movies.R
 import com.example.ds_movies.core.utils.Constant
 import com.example.ds_movies.core.utils.Constant.Companion.GENRE_ID
 import com.example.ds_movies.core.utils.Constant.Companion.MOVIE
 import com.example.ds_movies.core.utils.Constant.Companion.MOVIE_TYPE
+import com.example.ds_movies.core.utils.NetworkHelper
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.databinding.FragmentCategoryMoviesListBinding
 import com.example.ds_movies.ui.base.BaseFragment
 import com.example.ds_movies.ui.categoryMoviesList.adapter.CategoryMoviesListAdapterPaging
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
@@ -30,6 +34,13 @@ class CategoryMoviesListFragment : BaseFragment<FragmentCategoryMoviesListBindin
         val genreId = arguments?.getInt(GENRE_ID)
         initMovieRecyclerView(movieType,genreId)
         handelBackArrowClick()
+        handelInterNetError()
+    }
+
+    private fun handelInterNetError(){
+        if (!NetworkHelper().isConnected(requireContext())){
+            viewModel.showMessage.postValue(requireContext().getString(R.string.no_internet_connection))
+        }
     }
 
     private fun initMovieRecyclerView(movieType:String?,genreId:Int?){
@@ -80,6 +91,16 @@ class CategoryMoviesListFragment : BaseFragment<FragmentCategoryMoviesListBindin
             }
         }
         binding.categoryMoviesListRecyclerview.adapter = adapter
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collectLatest { loadStates ->
+                binding.mainProgressBar.isVisible = loadStates.refresh is LoadState.Loading
+                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0){
+                    binding.categoriesNoMovies.visibility = View.VISIBLE
+                }else{
+                    binding.categoriesNoMovies.visibility = View.GONE
+                }
+            }
+        }
     }
 
     private fun initTopRatedMoviesList(adapter: CategoryMoviesListAdapterPaging,genreId:Int?){
@@ -101,6 +122,17 @@ class CategoryMoviesListFragment : BaseFragment<FragmentCategoryMoviesListBindin
             }
         }
         binding.categoryMoviesListRecyclerview.adapter = adapter
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collectLatest { loadStates ->
+                binding.mainProgressBar.isVisible = loadStates.refresh is LoadState.Loading
+                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0){
+                    binding.categoriesNoMovies.visibility = View.VISIBLE
+                }else{
+                    binding.categoriesNoMovies.visibility = View.GONE
+                }
+            }
+        }
+
     }
     private fun initPopularMoviesList(adapter: CategoryMoviesListAdapterPaging,genreId:Int?){
         binding.apply {
@@ -121,6 +153,16 @@ class CategoryMoviesListFragment : BaseFragment<FragmentCategoryMoviesListBindin
             }
         }
         binding.categoryMoviesListRecyclerview.adapter = adapter
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collectLatest { loadStates ->
+                binding.mainProgressBar.isVisible = loadStates.refresh is LoadState.Loading
+                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0){
+                    binding.categoriesNoMovies.visibility = View.VISIBLE
+                }else{
+                    binding.categoriesNoMovies.visibility = View.GONE
+                }
+            }
+        }
     }
     private fun initNowPlayingMoviesList(adapter: CategoryMoviesListAdapterPaging,genreId:Int?){
         binding.apply {
@@ -141,6 +183,16 @@ class CategoryMoviesListFragment : BaseFragment<FragmentCategoryMoviesListBindin
             }
         }
         binding.categoryMoviesListRecyclerview.adapter = adapter
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collectLatest { loadStates ->
+                binding.mainProgressBar.isVisible = loadStates.refresh is LoadState.Loading
+                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0){
+                    binding.categoriesNoMovies.visibility = View.VISIBLE
+                }else{
+                    binding.categoriesNoMovies.visibility = View.GONE
+                }
+            }
+        }
     }
     private fun initUpComingMoviesList(adapter: CategoryMoviesListAdapterPaging,genreId:Int?){
         binding.apply {
@@ -161,6 +213,16 @@ class CategoryMoviesListFragment : BaseFragment<FragmentCategoryMoviesListBindin
             }
         }
         binding.categoryMoviesListRecyclerview.adapter = adapter
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collectLatest { loadStates ->
+                binding.mainProgressBar.isVisible = loadStates.refresh is LoadState.Loading
+                if (loadStates.refresh !is LoadState.Loading && adapter.itemCount == 0){
+                    binding.categoriesNoMovies.visibility = View.VISIBLE
+                }else{
+                    binding.categoriesNoMovies.visibility = View.GONE
+                }
+            }
+        }
     }
 
     override fun getViewBinding(v: View): FragmentCategoryMoviesListBinding {
