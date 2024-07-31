@@ -3,6 +3,7 @@ package com.example.ds_movies.ui.movieDetails
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.example.ds_movies.R
@@ -12,7 +13,9 @@ import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.databinding.FragmentMovieDetailsBinding
 import com.example.ds_movies.ui.base.BaseFragment
 import com.example.ds_movies.ui.movieDetails.adapter.MovieDetailsAdapter
+import com.example.ds_movies.ui.moviesTab.adapter.MoviesListAdapterPaging
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MovieDetailsFragment :
@@ -30,6 +33,13 @@ class MovieDetailsFragment :
         val adapter = MovieDetailsAdapter(movie,viewModel)
         binding.moviesRecyclerView.adapter = adapter
         PagerSnapHelper().attachToRecyclerView(binding.moviesRecyclerView)
+        val similarAdapter = MoviesListAdapterPaging()
+        lifecycleScope.launch {
+            viewModel.getSimilarMovies(movie?.id).collect {
+                similarAdapter.submitData(it)
+            }
+        }
+        adapter.initSimilarAdapter(similarAdapter)
         adapter.onItemClickListener = object : MovieDetailsAdapter.OnItemClickListener{
             override fun onItemClick(pos: Int, movie: MovieItem?) {
                 val bundle = Bundle()

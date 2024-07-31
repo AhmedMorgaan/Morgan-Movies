@@ -11,6 +11,7 @@ import com.example.ds_movies.core.utils.Constant.Companion.BASE_POSTER_IMAGE_URL
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.databinding.ItemMovieDetailsBinding
 import com.example.ds_movies.ui.movieDetails.MoviesDetailsViewModel
+import com.example.ds_movies.ui.moviesTab.adapter.MoviesListAdapterPaging
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -23,6 +24,7 @@ class MovieDetailsAdapter(
 ) : RecyclerView.Adapter<MovieDetailsAdapter.MyViewHolder>() {
     var isArLanguage = false
     var isFavorite = false
+     var mSimilarAdapter :MoviesListAdapterPaging? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
             ItemMovieDetailsBinding.inflate(
@@ -60,6 +62,27 @@ class MovieDetailsAdapter(
         holder.binding.btnMovieTrailer.setOnClickListener {
             onItemClickListener?.onItemClick(position, movie)
         }
+
+        if (mSimilarAdapter != null) {
+            holder.binding.similarMoviesRecyclerview.adapter = mSimilarAdapter
+        }
+        val mSimilarScrollChangeListener = object : RecyclerView.OnItemTouchListener {
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                when (e.action) {
+                    MotionEvent.ACTION_MOVE -> {
+                        rv.parent.requestDisallowInterceptTouchEvent(true)
+                    }
+                }
+                return false
+            }
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+        }
+        holder.binding.similarMoviesRecyclerview.addOnItemTouchListener(mSimilarScrollChangeListener)
+    }
+
+    fun initSimilarAdapter(similarAdapter :MoviesListAdapterPaging) {
+        mSimilarAdapter = similarAdapter
     }
 
     override fun getItemCount(): Int {
@@ -67,7 +90,6 @@ class MovieDetailsAdapter(
     }
 
     var onItemClickListener: OnItemClickListener? = null
-
     interface OnItemClickListener {
         fun onItemClick(pos: Int, movie: MovieItem?)
     }
