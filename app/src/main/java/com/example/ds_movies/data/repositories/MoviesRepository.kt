@@ -15,6 +15,7 @@ class MoviesRepository @Inject constructor(
     private val moviesApi :MoviesApi,
     private val retrofitExecutor: RetrofitExecutor
     ) {
+
     suspend fun getTrendingMovies (page:Int) = moviesApi.getTrendingMoviesPaging(page = page)
     suspend fun getTopRatedMoviesPaging(page:Int) = moviesApi.getTopRatedMoviesPaging(page)
     suspend fun getPopularMovies (page:Int) = moviesApi.getPopularMovies(page)
@@ -40,7 +41,6 @@ class MoviesRepository @Inject constructor(
             SharedPreference.saveString(FAVORITE_LIST, Gson().toJson(currentList))
         }
     }
-
     fun removeMovieFromFavorites(movie: MovieItem){
         val currentList = Gson().fromJson<MutableList<MovieItem>>(
             SharedPreference.getString(FAVORITE_LIST,""),

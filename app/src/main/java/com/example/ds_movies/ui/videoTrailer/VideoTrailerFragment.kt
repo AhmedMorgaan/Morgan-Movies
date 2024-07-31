@@ -36,9 +36,7 @@ class VideoTrailerFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Utils().hideSystemUI(requireActivity().window,R.id.main_view)
-       // initYouTubePlayer()
         getVideosId()
-       // initYouTubePlayerWithDefaultPlayerUiController()
         handelBackPress()
     }
     private fun getVideosId() {
@@ -58,94 +56,6 @@ class VideoTrailerFragment :
         }
 
     }
-//    private fun initYouTubePlayer() {
-//        val options: IFramePlayerOptions =
-//            IFramePlayerOptions.Builder().controls(1).fullscreen(1).build()
-//        binding.youtubePlayerView.enableAutomaticInitialization = false
-//
-//        binding.youtubePlayerView.addFullscreenListener(object : FullscreenListener {
-//            override fun onEnterFullscreen(fullscreenView: View, exitFullscreen: () -> Unit) {
-//                Log.e("onEnterFullscreen", "1233: ")
-//                isFullscreen = true
-//
-//                // the video will continue playing in fullscreenView
-//                binding.youtubePlayerView.visibility = View.GONE
-//                binding.fullScreenViewContainer.visibility = View.VISIBLE
-//                binding.fullScreenViewContainer.addView(fullscreenView)
-//
-//                // optionally request landscape orientation
-//                requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-//            }
-//
-//            override fun onExitFullscreen() {
-//                isFullscreen = false
-//                Log.e("onExitFullscreen", "213: ")
-//                // the video will continue playing in the player
-//                binding.youtubePlayerView.visibility = View.VISIBLE
-//                binding.fullScreenViewContainer.visibility = View.GONE
-//                binding.fullScreenViewContainer.removeAllViews()
-//                requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-//            }
-//        })
-//
-//        val listener: YouTubePlayerListener = object : AbstractYouTubePlayerListener() {
-//            override fun onReady(youTubePlayer: YouTubePlayer) {
-//                this@VideoTrailerFragment.youTubePlayer = youTubePlayer
-//                youTubePlayer.loadVideo("PLl99DlL6b4", 0f)
-//            }
-//        }
-//        binding.youtubePlayerView.initialize(listener, options)
-//        lifecycle.addObserver(binding.youtubePlayerView)
-//    }
-//    private fun initYouTubePlayerWithDefaultPlayerUiController() {
-//        val options: IFramePlayerOptions =
-//            IFramePlayerOptions.Builder().controls(0).fullscreen(1).build()
-//        binding.youtubePlayerView.enableAutomaticInitialization = false
-//
-//        binding.youtubePlayerView.addFullscreenListener(object : FullscreenListener {
-//            override fun onEnterFullscreen(fullscreenView: View, exitFullscreen: () -> Unit) {
-//                Log.e("onEnterFullscreen", "1233: ")
-//                isFullscreen = true
-//
-//                // the video will continue playing in fullscreenView
-//                binding.youtubePlayerView.visibility = View.GONE
-//                binding.fullScreenViewContainer.visibility = View.VISIBLE
-//                binding.fullScreenViewContainer.addView(fullscreenView)
-//
-//                // optionally request landscape orientation
-//                requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-//            }
-//
-//            override fun onExitFullscreen() {
-//                isFullscreen = false
-//                Log.e("onExitFullscreen", "213: ")
-//                // the video will continue playing in the player
-//                binding.youtubePlayerView.visibility = View.VISIBLE
-//                binding.fullScreenViewContainer.visibility = View.GONE
-//                binding.fullScreenViewContainer.removeAllViews()
-//                requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-//            }
-//        })
-//
-//        val listener: YouTubePlayerListener = object : AbstractYouTubePlayerListener() {
-//            override fun onReady(youTubePlayer: YouTubePlayer) {
-//                this@VideoTrailerFragment.youTubePlayer = youTubePlayer
-//                // using pre-made custom ui
-//                val defaultPlayerUiController = DefaultPlayerUiController(binding.youtubePlayerView, youTubePlayer)
-//                defaultPlayerUiController.setFullscreenButtonClickListener {
-//                    youTubePlayer.toggleFullscreen()
-//                }
-//                defaultPlayerUiController.showYouTubeButton(false)
-//                defaultPlayerUiController.showBufferingProgress(false)
-//                defaultPlayerUiController.showDuration(false)
-//                binding.youtubePlayerView.setCustomPlayerUi(defaultPlayerUiController.rootView)
-//                youTubePlayer.cueVideo("PLl99DlL6b4", 0f)
-//            }
-//        }
-//        binding.youtubePlayerView.initialize(listener, options)
-//        lifecycle.addObserver(binding.youtubePlayerView)
-//
-//    }
 
     private fun enterFullScreenMode(adapter: VideosTrailerListAdapter){
         adapter.onItemClickListener = object : VideosTrailerListAdapter.OnItemClickListener{
