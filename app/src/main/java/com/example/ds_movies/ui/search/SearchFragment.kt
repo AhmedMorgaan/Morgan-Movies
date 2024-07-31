@@ -73,9 +73,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(R.la
                 if(binding.searchBar.isSuggestionsVisible){
                     binding.searchBar.hideSuggestionsList()
                     binding.searchBar.clearFocus()
-                    hideKeyboard()
                 }
-
+                hideKeyboard()
             }
             false
         }
