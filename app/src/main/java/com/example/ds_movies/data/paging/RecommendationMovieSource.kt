@@ -6,7 +6,7 @@ import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.data.repositories.MoviesRepository
 import retrofit2.HttpException
 
-class SimilarMovieSource(
+class RecommendationMovieSource(
     private val moviesRepository: MoviesRepository,
     private val movieId : Int?
     ) : PagingSource<Int, MovieItem>() {
@@ -18,7 +18,7 @@ class SimilarMovieSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieItem> {
         return  try {
             val currentPage = params.key ?:1
-            val response = moviesRepository.getSimilarMovies(movieId ,currentPage)
+            val response = moviesRepository.getRecommendationMovies(movieId ,currentPage)
             val data = response.body()?.results?.toList()
             val responseData = mutableListOf<MovieItem>()
             responseData.addAll(data!!.toList())

@@ -18,8 +18,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingEnd="@dimen/_9sdp">
+            android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_start"
@@ -258,7 +257,7 @@
                 tools:text="@string/description"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/similar_movies_recyclerview"
+                android:id="@+id/recommendation_movies_recyclerview"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_16sdp"

@@ -12,7 +12,7 @@ import com.example.ds_movies.core.utils.Constant
 import com.example.ds_movies.data.models.Cast
 import com.example.ds_movies.data.models.CategoryResponse
 import com.example.ds_movies.data.models.MovieItem
-import com.example.ds_movies.data.paging.SimilarMovieSource
+import com.example.ds_movies.data.paging.RecommendationMovieSource
 import com.example.ds_movies.data.repositories.MoviesRepository
 import com.example.ds_movies.ui.base.BaseViewModel
 import com.google.gson.Gson
@@ -28,11 +28,11 @@ class MoviesDetailsViewModel @Inject constructor(
     private val moviesRepository: MoviesRepository
 ) : BaseViewModel() {
 
-    fun getSimilarMovies(movieId:Int?): Flow<PagingData<MovieItem>> {
-        val similarMoviesListPaging = Pager(PagingConfig(10)){
-            SimilarMovieSource(moviesRepository,movieId)
+    fun getRecommendationMovies(movieId:Int?): Flow<PagingData<MovieItem>> {
+        val recommendationMoviesListPaging = Pager(PagingConfig(10)){
+            RecommendationMovieSource(moviesRepository,movieId)
         }.flow.cachedIn(viewModelScope)
-        return similarMoviesListPaging
+        return recommendationMoviesListPaging
     }
 
     suspend fun getMovieCast(movieId: Int?):MutableList<Cast>? {

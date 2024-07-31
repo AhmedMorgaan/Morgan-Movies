@@ -64,7 +64,7 @@ class MovieDetailsAdapter(
         }
 
         if (mSimilarAdapter != null) {
-            holder.binding.similarMoviesRecyclerview.adapter = mSimilarAdapter
+            holder.binding.recommendationMoviesRecyclerview.adapter = mSimilarAdapter
         }
         val mSimilarScrollChangeListener = object : RecyclerView.OnItemTouchListener {
             override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
@@ -78,7 +78,7 @@ class MovieDetailsAdapter(
             }
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
         }
-        holder.binding.similarMoviesRecyclerview.addOnItemTouchListener(mSimilarScrollChangeListener)
+        holder.binding.recommendationMoviesRecyclerview.addOnItemTouchListener(mSimilarScrollChangeListener)
     }
 
     fun initSimilarAdapter(similarAdapter :MoviesListAdapterPaging) {
