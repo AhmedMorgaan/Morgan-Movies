@@ -1,18 +1,25 @@
 package com.example.ds_movies.ui.movieDetails
 
 import android.util.Log
+import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.example.ds_movies.core.Result
 import com.example.ds_movies.core.SharedPreference
 import com.example.ds_movies.core.utils.Constant
 import com.example.ds_movies.data.models.Cast
 import com.example.ds_movies.data.models.CategoryResponse
 import com.example.ds_movies.data.models.MovieItem
+import com.example.ds_movies.data.paging.RecommendationMovieSource
 import com.example.ds_movies.data.repositories.MoviesRepository
 import com.example.ds_movies.ui.base.BaseViewModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -20,6 +27,13 @@ import javax.inject.Inject
 class MoviesDetailsViewModel @Inject constructor(
     private val moviesRepository: MoviesRepository
 ) : BaseViewModel() {
+
+    fun getRecommendationMovies(movieId:Int?): Flow<PagingData<MovieItem>> {
+        val recommendationMoviesListPaging = Pager(PagingConfig(10)){
+            RecommendationMovieSource(moviesRepository,movieId)
+        }.flow.cachedIn(viewModelScope)
+        return recommendationMoviesListPaging
+    }
 
     suspend fun getMovieCast(movieId: Int?):MutableList<Cast>? {
         var castList: MutableList<Cast>? = null
