@@ -48,46 +48,46 @@ class MovieDetailsFragment :
             Glide.with(binding.root)
                 .load(Constant.BASE_POSTER_IMAGE_URL + movie?.posterPath)
                 .placeholder(R.drawable.ic_launcher_foreground)
-                .into(binding.movieImage)
+                .into(movieImage)
             val rate = String.format("%.1f", movie?.voteAverage)
-            binding.movieVoteRate.text = if (rate == "0.0") "N/A" else rate
+            movieVoteRate.text = if (rate == "0.0") "N/A" else rate
 
-            binding.movieCategories.text = viewModel.getCategoriesNames(movie?.genreIds)
+            movieCategories.text = viewModel.getCategoriesNames(movie?.genreIds)
 
-            binding.btnLang.setOnClickListener {
+            btnLang.setOnClickListener {
                 isArLanguage = !isArLanguage
                 if (isArLanguage) {
                     lifecycleScope.launch(Dispatchers.IO) {
                         val newMovieItem = viewModel.getArabicMovieDetails(movie?.id)
                         withContext(Dispatchers.Main) {
                             if (newMovieItem?.overview.isNullOrEmpty()){
-                                binding.movieDescription.text = getString(R.string.no_translate_to_arabic)
+                                movieDescription.text = getString(R.string.no_translate_to_arabic)
                             }else {
-                                binding.movieDescription.text = newMovieItem?.overview
+                                movieDescription.text = newMovieItem?.overview
                             }
-                            binding.txtLanguage.text = resources.getString(R.string.english)
+                            txtLanguage.text = resources.getString(R.string.english)
                         }
                     }
                 } else {
-                    binding.movieDescription.text = movie?.overview
-                    binding.txtLanguage.text = resources.getString(R.string.arabic)
+                    movieDescription.text = movie?.overview
+                    txtLanguage.text = resources.getString(R.string.arabic)
                 }
             }
             if (movie != null) {
                 if (viewModel.isMovieExist(movie)){
                     isFavorite = true
-                    binding.favoriteIcon.setImageResource(R.drawable.ic_favorite)
+                    favoriteIcon.setImageResource(R.drawable.ic_favorite)
                 }
             }
-            binding.favoriteIcon.setOnClickListener {
+            favoriteIcon.setOnClickListener {
                 isFavorite = !isFavorite
                 if (movie != null) {
                     if (isFavorite) {
                         viewModel.addFavoriteMovie(movie)
-                        binding.favoriteIcon.setImageResource(R.drawable.ic_favorite)
+                        favoriteIcon.setImageResource(R.drawable.ic_favorite)
                     } else {
                         viewModel.removeMovieFromFavorites(movie)
-                        binding.favoriteIcon.setImageResource(R.drawable.ic_non_favorite)
+                        favoriteIcon.setImageResource(R.drawable.ic_non_favorite)
                     }
                 }
             }
