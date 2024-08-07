@@ -103,7 +103,7 @@ class MovieDetailsAdapter(
             binding.model = movie
             Glide.with(binding.root)
                 .load(BASE_POSTER_IMAGE_URL + movie?.posterPath)
-                .placeholder(R.drawable.ic_launcher_foreground)
+                .placeholder(R.drawable.image_place_holder)
                 .into(binding.movieImage)
 
             val rate = String.format("%.1f", movie?.voteAverage)

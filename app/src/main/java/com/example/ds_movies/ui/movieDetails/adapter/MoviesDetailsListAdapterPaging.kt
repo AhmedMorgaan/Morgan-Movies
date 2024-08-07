@@ -83,7 +83,7 @@ class MoviesDetailsListAdapterPaging(
             binding.model = moviesItem
             Glide.with(binding.root)
                 .load(Constant.BASE_POSTER_IMAGE_URL + moviesItem?.posterPath)
-                .placeholder(R.drawable.ic_launcher_foreground)
+                .placeholder(R.drawable.image_place_holder)
                 .into(binding.movieImage)
 
             val rate = String.format("%.1f", moviesItem?.voteAverage)

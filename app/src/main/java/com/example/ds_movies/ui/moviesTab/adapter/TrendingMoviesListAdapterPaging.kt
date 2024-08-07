@@ -6,6 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.ds_movies.R
 import com.example.ds_movies.core.utils.Constant
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.databinding.ItemTrendingMovieCardBinding
@@ -43,6 +44,7 @@ class TrendingMoviesListAdapterPaging() : PagingDataAdapter<MovieItem, TrendingM
             binding.model = moviesItem
             Glide.with(itemView.context)
                 .load("${Constant.BASE_POSTER_IMAGE_URL}${moviesItem?.posterPath}")
+                .placeholder(R.drawable.image_place_holder)
                 .into(binding.movieImage)
             val rate = String.format("%.1f", moviesItem?.voteAverage)
             binding.movieVoteRate.text = if (rate == "0.0") "N/A" else rate

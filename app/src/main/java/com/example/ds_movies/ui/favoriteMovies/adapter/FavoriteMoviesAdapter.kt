@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.ds_movies.R
 import com.example.ds_movies.core.utils.Constant
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.databinding.ItemMovieSearchBinding
@@ -46,6 +47,7 @@ class FavoriteMoviesAdapter(
             binding.model = movie
             Glide.with(itemView.context)
                 .load("${Constant.BASE_POSTER_IMAGE_URL}${movie?.posterPath}")
+                .placeholder(R.drawable.image_place_holder)
                 .into(binding.movieImage)
             val rate = String.format("%.1f", movie?.voteAverage)
             binding.movieVoteRate.text = if (rate == "0.0") "N/A" else rate
