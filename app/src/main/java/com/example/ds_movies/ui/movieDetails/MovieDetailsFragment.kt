@@ -47,7 +47,7 @@ class MovieDetailsFragment :
             model = movie
             Glide.with(binding.root)
                 .load(Constant.BASE_POSTER_IMAGE_URL + movie?.posterPath)
-                .placeholder(R.drawable.ic_launcher_foreground)
+                .placeholder(R.drawable.image_place_holder)
                 .into(movieImage)
             val rate = String.format("%.1f", movie?.voteAverage)
             movieVoteRate.text = if (rate == "0.0") "N/A" else rate
