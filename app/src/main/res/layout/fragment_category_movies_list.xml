@@ -53,11 +53,11 @@
            android:layout_width="match_parent"
            android:layout_height="0dp"
            android:orientation="vertical"
-           android:paddingStart="@dimen/_16sdp"
-           android:paddingEnd="@dimen/_16sdp"
-           app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+           android:padding="@dimen/_4sdp"
+           app:spanCount="2"
+           app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
            app:layout_constraintTop_toBottomOf="@+id/app_bar_container"
-           tools:listitem="@layout/item_category_movie_list"/>
+           tools:listitem="@layout/item_movie_search"/>
         <LinearLayout
             android:id="@+id/categories_no_movies"
             android:layout_width="wrap_content"

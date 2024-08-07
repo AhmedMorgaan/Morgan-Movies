@@ -9,13 +9,13 @@ import com.bumptech.glide.Glide
 import com.example.ds_movies.R
 import com.example.ds_movies.core.utils.Constant
 import com.example.ds_movies.data.models.MovieItem
-import com.example.ds_movies.databinding.ItemCategoryMovieListBinding
+import com.example.ds_movies.databinding.ItemMovieSearchBinding
 
 class CategoryMoviesListAdapterPaging() : PagingDataAdapter<MovieItem, CategoryMoviesListAdapterPaging.MyViewHolder>(diffCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
-            ItemCategoryMovieListBinding.inflate(
+            ItemMovieSearchBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -37,7 +37,7 @@ class CategoryMoviesListAdapterPaging() : PagingDataAdapter<MovieItem, CategoryM
         fun onItemClick(pos: Int, movie: MovieItem?)
     }
 
-    inner class MyViewHolder(var binding: ItemCategoryMovieListBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MyViewHolder(var binding: ItemMovieSearchBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(moviesItem: MovieItem?) {
             binding.model = moviesItem

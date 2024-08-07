@@ -114,6 +114,12 @@ class MovieDetailsFragment :
                 }
             }
         }
+        similarAdapter.onItemClickListener = object : MoviesListAdapterPaging.OnItemClickListener{
+            override fun onItemClick(pos: Int, movie: MovieItem?) {
+                initMovieDetails(movie)
+                binding.mainNestedScrollView.scrollTo(0,0)
+            }
+        }
 
         val mSimilarScrollChangeListener = object : RecyclerView.OnItemTouchListener {
             override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
@@ -130,7 +136,6 @@ class MovieDetailsFragment :
         binding.recommendationMoviesRecyclerview.addOnItemTouchListener(mSimilarScrollChangeListener)
 
     }
-
     private fun initMovieCast(movieId:Int?) {
 
         lifecycleScope.launch(Dispatchers.IO) {
@@ -155,7 +160,6 @@ class MovieDetailsFragment :
         binding.castRecycler.addOnItemTouchListener(mScrollChangeListener)
 
     }
-
     private fun handelMovieTrailerClick(movie:MovieItem?) {
         binding.btnMovieTrailer.setOnClickListener {
             val bundle = Bundle()
