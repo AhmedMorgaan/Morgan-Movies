@@ -47,4 +47,3 @@ Finally, rebuild the project for changes to take effect
 ---
  <img src="screenshots/search.PNG" width="250" /> <img src="screenshots/my_favorites.PNG" width="250" />
 
----
