@@ -78,6 +78,10 @@ class MovieDetailsFragment :
                     isFavorite = true
                     favoriteIcon.setImageResource(R.drawable.ic_favorite)
                 }
+                else{
+                    isFavorite = false
+                    favoriteIcon.setImageResource(R.drawable.ic_non_favorite)
+                }
             }
             favoriteIcon.setOnClickListener {
                 isFavorite = !isFavorite
