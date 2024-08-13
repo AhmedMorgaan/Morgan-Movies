@@ -1,14 +1,12 @@
 package com.example.ds_movies.ui.movieDetails
 
 import android.os.Bundle
-import android.view.MotionEvent
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ds_movies.R
 import com.example.ds_movies.core.utils.Constant
@@ -96,8 +94,6 @@ class MovieDetailsFragment :
                 }
             }
         }
-
-
     }
 
     private fun initRecommendationMoviesAdapter(movie:MovieItem?){
@@ -124,21 +120,6 @@ class MovieDetailsFragment :
                 binding.mainNestedScrollView.scrollTo(0,0)
             }
         }
-
-        val mSimilarScrollChangeListener = object : RecyclerView.OnItemTouchListener {
-            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
-            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
-                when (e.action) {
-                    MotionEvent.ACTION_MOVE -> {
-                        rv.parent.requestDisallowInterceptTouchEvent(true)
-                    }
-                }
-                return false
-            }
-            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
-        }
-        binding.recommendationMoviesRecyclerview.addOnItemTouchListener(mSimilarScrollChangeListener)
-
     }
     private fun initMovieCast(movieId:Int?) {
 
@@ -149,20 +130,19 @@ class MovieDetailsFragment :
                 binding.castRecycler.adapter = adapter
             }
         }
-        val mScrollChangeListener = object : RecyclerView.OnItemTouchListener {
-            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
-            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
-                when (e.action) {
-                    MotionEvent.ACTION_MOVE -> {
-                        rv.parent.requestDisallowInterceptTouchEvent(true)
-                    }
-                }
-                return false
-            }
-            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
-        }
-        binding.castRecycler.addOnItemTouchListener(mScrollChangeListener)
-
+//        val mScrollChangeListener = object : RecyclerView.OnItemTouchListener {
+//            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+//            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+//                when (e.action) {
+//                    MotionEvent.ACTION_MOVE -> {
+//                        rv.parent.requestDisallowInterceptTouchEvent(true)
+//                    }
+//                }
+//                return false
+//            }
+//            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+//        }
+//        binding.castRecycler.addOnItemTouchListener(mScrollChangeListener)
     }
     private fun handelMovieTrailerClick(movie:MovieItem?) {
         binding.btnMovieTrailer.setOnClickListener {
@@ -172,14 +152,7 @@ class MovieDetailsFragment :
         }
     }
 
-
-
-
-
-
-
     override fun getViewBinding(v: View): FragmentMovieDetailsBinding {
         return FragmentMovieDetailsBinding.bind(v)
     }
-
 }
