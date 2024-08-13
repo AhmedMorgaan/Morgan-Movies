@@ -4,7 +4,7 @@ An android app built using [kotlin](https://kotlinlang.org/docs/getting-started.
 
 <p align="center"> <img src="screenshots/project_home.png" width="750"> </p>
 
-[<img src="screenshots/download_apk.png" width="300px" height="100px"/>](https://www.mediafire.com/file/d6nxa6gmzgjbshm/Morgan_Movies_V3.apk/file)
+[<img src="screenshots/download_apk.png" width="300px" height="100px"/>](https://www.mediafire.com/file/460otcjxzrvwn8d/Morgan_Movies_V4.apk/file)
 ---
 # Setup Requirements
 First, obtain your Bearer Token from [TMDB](https://developers.themoviedb.org/3/getting-started/introduction) and add it in a file named `local.properties` within the root directory:
