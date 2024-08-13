@@ -68,14 +68,16 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding, MoviesTabViewMo
                 binding.upComingErrorMessage.visibility = View.VISIBLE
 
             }
-        },3000)
+        },4000)
     }
     private fun handelSwipeRefresh(){
         binding.swipeRefresh.setColorSchemeColors(resources.getColor(R.color.Red))
         binding.swipeRefresh.setProgressBackgroundColorSchemeColor(resources.getColor(R.color.black_op))
         binding.swipeRefresh.setOnRefreshListener {
             if (NetworkHelper().isConnected(requireContext())){
-                initGenresTabs()
+                if(binding.genresTabs.tabCount == 0){
+                    viewModel.getMoviesCategories()
+                }
                 initTrendingRecyclerViewPaging()
                 binding.swipeRefresh.isRefreshing = false
             }else{
