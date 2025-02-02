@@ -3,14 +3,10 @@ package com.example.ds_movies.ui.actorDetails
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.cachedIn
 import com.example.ds_movies.core.Result
 import com.example.ds_movies.data.models.ActorDetailsResponse
 import com.example.ds_movies.data.models.ActorMoviesResponse
 import com.example.ds_movies.data.models.MovieItem
-import com.example.ds_movies.data.paging.ActorMoviesSource
 import com.example.ds_movies.data.repositories.MoviesRepository
 import com.example.ds_movies.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -33,9 +29,9 @@ class ActorDetailsViewModel @Inject constructor(
     val actorDetailsResponse = MutableLiveData<ActorDetailsResponse>()
     val arabicActorDetailsResponse = MutableLiveData<ActorDetailsResponse>()
 
-    val ActorsMoviesListPaging = Pager(PagingConfig(10)){
-        ActorMoviesSource(287,moviesRepository)
-    }.flow.cachedIn(viewModelScope)
+//    val ActorsMoviesListPaging = Pager(PagingConfig(10)){
+//        ActorMoviesSource(287,moviesRepository)
+//    }.flow.cachedIn(viewModelScope)
 
      fun getArabicActorDetails(actorId: Int?) {
         viewModelScope.launch {

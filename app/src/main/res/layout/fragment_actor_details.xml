@@ -259,7 +259,7 @@
                 android:fontFamily="@font/comic_sans_bold"
                 android:textColor="@color/silver"
                 android:textSize="@dimen/_12ssp"
-                android:text="Date"
+                android:text="@string/date"
                 app:layout_constraintEnd_toStartOf="@id/sort_icon"
                 app:layout_constraintTop_toTopOf="parent"/>
 
@@ -271,7 +271,7 @@
                 android:fontFamily="@font/comic_sans_bold"
                 android:textColor="@color/silver"
                 android:textSize="@dimen/_12ssp"
-                android:text="Rate"
+                android:text="@string/rate"
                 app:layout_constraintEnd_toStartOf="@id/btn_sort_by_date"
                 app:layout_constraintTop_toTopOf="parent"/>
 
