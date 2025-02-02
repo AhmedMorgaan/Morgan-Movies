@@ -63,6 +63,9 @@
         <action
             android:id="@+id/action_movieDetailsFragment_to_videoTrailerFragment"
             app:destination="@id/videoTrailerFragment" />
+        <action
+            android:id="@+id/action_movieDetailsFragment_to_actorDetailsFragment"
+            app:destination="@id/actorDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -81,6 +84,9 @@
         <action
             android:id="@+id/action_homeFragment_to_favoriteMoviesFragment"
             app:destination="@id/favoriteMoviesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_actorsFragment"
+            app:destination="@id/actorsFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryMoviesListFragment"
@@ -122,5 +128,23 @@
             app:popUpToInclusive="true"
             app:popUpTo="@id/splashFragment"
             />
+    </fragment>
+    <fragment
+        android:id="@+id/actorsFragment"
+        android:name="com.example.ds_movies.ui.trendingActorList.TrendingActorsFragment"
+        android:label="ActorsFragment"
+        tools:layout="@layout/fragment_trending_actors">
+        <action
+            android:id="@+id/action_actorsFragment_to_actorDetailsFragment"
+            app:destination="@id/actorDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/actorDetailsFragment"
+        android:name="com.example.ds_movies.ui.actorDetails.ActorDetailsFragment"
+        android:label="ActorDetailsFragment"
+        tools:layout="@layout/fragment_actor_details">
+        <action
+            android:id="@+id/action_actorDetailsFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
     </fragment>
 </navigation>

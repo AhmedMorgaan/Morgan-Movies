@@ -18,10 +18,18 @@ class MovieCastsAdapter(private var cast :MutableList<Cast>?)
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.onBind(position)
+        holder.itemView.setOnClickListener{
+            onItemClickListener?.onItemClick(position,cast?.get(position))
+        }
     }
 
     override fun getItemCount(): Int {
         return cast?.size?:0
+    }
+
+    var onItemClickListener: OnItemClickListener? = null
+    interface OnItemClickListener {
+        fun onItemClick(pos: Int, actorItem: Cast?)
     }
 
    inner class MyViewHolder(var binding:ItemCastBinding): RecyclerView.ViewHolder(binding.root){

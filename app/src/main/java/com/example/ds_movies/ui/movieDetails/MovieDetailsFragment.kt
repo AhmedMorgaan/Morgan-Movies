@@ -10,8 +10,11 @@ import androidx.paging.LoadState
 import com.bumptech.glide.Glide
 import com.example.ds_movies.R
 import com.example.ds_movies.core.utils.Constant
+import com.example.ds_movies.core.utils.Constant.Companion.ACTOR
 import com.example.ds_movies.core.utils.Constant.Companion.MOVIE
 import com.example.ds_movies.core.utils.Constant.Companion.MOVIE_DETAILS
+import com.example.ds_movies.data.models.ActorItem
+import com.example.ds_movies.data.models.Cast
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.databinding.FragmentMovieDetailsBinding
 import com.example.ds_movies.ui.base.BaseFragment
@@ -128,6 +131,15 @@ class MovieDetailsFragment :
             val adapter = MovieCastsAdapter(castList)
             withContext(Dispatchers.Main) {
                 binding.castRecycler.adapter = adapter
+
+            }
+            adapter.onItemClickListener = object : MovieCastsAdapter.OnItemClickListener{
+                override fun onItemClick(pos: Int, actorItem: Cast?) {
+                    val actorItemInstance = ActorItem(false,1,actorItem!!.id,"","","","",0.0,"")
+                    val bundle = Bundle()
+                    bundle.putParcelable(ACTOR, actorItemInstance)
+                    findNavController().navigate(R.id.action_movieDetailsFragment_to_actorDetailsFragment, bundle)
+                }
             }
         }
 //        val mScrollChangeListener = object : RecyclerView.OnItemTouchListener {

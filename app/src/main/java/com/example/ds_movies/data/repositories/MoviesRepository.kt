@@ -17,16 +17,23 @@ class MoviesRepository @Inject constructor(
     ) {
 
     suspend fun getTrendingMovies (page:Int) = moviesApi.getTrendingMoviesPaging(page = page)
+    suspend fun getTrendingActorsPaging (page:Int) = moviesApi.getTrendingActorsPaging(page = page)
     suspend fun getTopRatedMoviesPaging(page:Int) = moviesApi.getTopRatedMoviesPaging(page)
     suspend fun getPopularMovies (page:Int) = moviesApi.getPopularMovies(page)
     suspend fun getNowPlayingMovies (page:Int) = moviesApi.getNowPlayingMoviesPaging(page)
     suspend fun getUpComingMovies (page:Int) = moviesApi.getUpComingMoviesPaging(page)
     suspend fun getRecommendationMovies (movie_id: Int?, page:Int) = moviesApi.getRecommendationMovies(movie_id,page)
     suspend fun getSearchResult (query:String ,page:Int) = moviesApi.getSearchResult(query,page)
+
+    suspend fun getActorMovies (actorId: Int?) = retrofitExecutor.makeRequest { moviesApi.getActorMovies(actorId) }
+    suspend fun getActorMoviesPaging (actorId: Int?,page: Int) =  moviesApi.getActorMoviesPaging(actorId = actorId, page = page)
+    suspend fun getActorDetails (actorId: Int?) = retrofitExecutor.makeRequest { moviesApi.getActorDetails(actorId) }
+    suspend fun getArabicActorDetails (actorId: Int?) = retrofitExecutor.makeRequest { moviesApi.getArabicActorDetails(actorId) }
     suspend fun getMovieCast (movieId:Int?) = retrofitExecutor.makeRequest { moviesApi.getMovieCast(movieId) }
     suspend fun getMoviesCategory() = retrofitExecutor.makeRequest { moviesApi.getMoviesCategory() }
     suspend fun getMovieVideo(movieId: Int?) = retrofitExecutor.makeRequest { moviesApi.getMovieVideo(movieId) }
     suspend fun getArabicMovieDetails(movieId: Int?) = retrofitExecutor.makeRequest { moviesApi.getArabicMovieDetails(movieId) }
+
 
     fun addFavoriteMovie(movie: MovieItem) {
         val currentList = Gson().fromJson<MutableList<MovieItem>>(

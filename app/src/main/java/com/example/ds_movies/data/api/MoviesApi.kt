@@ -1,9 +1,12 @@
 package com.example.ds_movies.data.api
 
+import com.example.ds_movies.data.models.ActorDetailsResponse
+import com.example.ds_movies.data.models.ActorMoviesResponse
 import com.example.ds_movies.data.models.CastResponse
 import com.example.ds_movies.data.models.CategoryResponse
 import com.example.ds_movies.data.models.MovieItem
 import com.example.ds_movies.data.models.MoviesResponse
+import com.example.ds_movies.data.models.TrendingActorResponse
 import com.example.ds_movies.data.models.VideoResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -48,14 +51,14 @@ interface MoviesApi {
 
     @GET("movie/{movie_id}/credits")
     suspend fun getMovieCast(
-        @Path("movie_id") movie_id:Int?,
+        @Path("movie_id") movieId:Int?,
         @Query("language") language:String = "en"
     ) : Response<CastResponse>
 
 
     @GET("movie/{movie_id}")
     suspend fun getArabicMovieDetails(
-        @Path("movie_id") movie_id:Int?,
+        @Path("movie_id") movieId:Int?,
         @Query("language") language:String = "ar"
     ) : Response<MovieItem>
 
@@ -69,7 +72,7 @@ interface MoviesApi {
 
     @GET("movie/{movie_id}/videos")
     suspend fun getMovieVideo(
-        @Path("movie_id") movie_id: Int?
+        @Path("movie_id") movieId: Int?
     ): Response<VideoResponse>
 
     @GET("search/movie")
@@ -80,8 +83,40 @@ interface MoviesApi {
 
     @GET("movie/{movie_id}/recommendations")
     suspend fun getRecommendationMovies(
-        @Path("movie_id") movie_id: Int?,
+        @Path("movie_id") movieId: Int?,
         @Query("page") page:Int
     ): Response<MoviesResponse>
+
+    @GET("trending/person/{time_window}")
+    suspend fun getTrendingActorsPaging(
+        @Path("time_window") movieId:String = "week",
+        @Query("page") page:Int,
+        @Query("language") language:String = "en"
+    ) : Response<TrendingActorResponse>
+
+    @GET("person/{person_id}")
+    suspend fun getActorDetails(
+        @Path("person_id") actorId: Int?,
+        @Query("language") language:String = "en"
+    ): Response<ActorDetailsResponse>
+
+    @GET("person/{person_id}")
+    suspend fun getArabicActorDetails(
+        @Path("person_id") actorId: Int?,
+        @Query("language") language:String = "ar"
+    ): Response<ActorDetailsResponse>
+
+    @GET("person/{person_id}/movie_credits")
+    suspend fun getActorMovies(
+        @Path("person_id") actorId: Int?,
+        @Query("language") language:String = "en",
+    ): Response<ActorMoviesResponse>
+
+    @GET("person/{person_id}/movie_credits")
+    suspend fun getActorMoviesPaging(
+        @Path("person_id") actorId: Int?,
+        @Query("language") language:String = "en",
+        @Query("page") page:Int,
+    ): Response<ActorMoviesResponse>
 
 }

@@ -63,6 +63,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
                     val emoji = getEmoji(unicode)
                     Toast.makeText(context," يا عم مش عايز فولو ولا حاجة أذكر الله بس و انا هبقى مبسوط $emoji ",Toast.LENGTH_LONG).show()
                 }
+                R.id.trending_actors ->{
+                    findNavController().navigate(R.id.action_homeFragment_to_actorsFragment)
+                }
             }
             return@setNavigationItemSelectedListener true
         }
