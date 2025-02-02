@@ -80,13 +80,13 @@
             app:destination="@id/categoryMoviesListFragment" />
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/moviesSearchFragment" />
         <action
             android:id="@+id/action_homeFragment_to_favoriteMoviesFragment"
             app:destination="@id/favoriteMoviesFragment" />
         <action
             android:id="@+id/action_homeFragment_to_actorsFragment"
-            app:destination="@id/actorsFragment" />
+            app:destination="@id/trendingActorsFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryMoviesListFragment"
@@ -99,8 +99,8 @@
             app:destination="@id/movieDetailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.example.ds_movies.ui.search.SearchFragment"
+        android:id="@+id/moviesSearchFragment"
+        android:name="com.example.ds_movies.ui.search.MoviesSearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search">
         <action
@@ -130,13 +130,16 @@
             />
     </fragment>
     <fragment
-        android:id="@+id/actorsFragment"
+        android:id="@+id/trendingActorsFragment"
         android:name="com.example.ds_movies.ui.trendingActorList.TrendingActorsFragment"
         android:label="ActorsFragment"
         tools:layout="@layout/fragment_trending_actors">
         <action
-            android:id="@+id/action_actorsFragment_to_actorDetailsFragment"
+            android:id="@+id/action_trendingActorsFragment_to_actorDetailsFragment"
             app:destination="@id/actorDetailsFragment" />
+        <action
+            android:id="@+id/action_trendingActorsFragment_to_actorsSearchFragment"
+            app:destination="@id/actorsSearchFragment" />
     </fragment>
     <fragment
         android:id="@+id/actorDetailsFragment"
@@ -146,5 +149,14 @@
         <action
             android:id="@+id/action_actorDetailsFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/actorsSearchFragment"
+        android:name="com.example.ds_movies.ui.actorsSearch.ActorsSearchFragment"
+        android:label="ActorsSearchFragment"
+        tools:layout="@layout/fragment_actors_search">
+        <action
+            android:id="@+id/action_actorsSearchFragment_to_actorDetailsFragment"
+            app:destination="@id/actorDetailsFragment" />
     </fragment>
 </navigation>

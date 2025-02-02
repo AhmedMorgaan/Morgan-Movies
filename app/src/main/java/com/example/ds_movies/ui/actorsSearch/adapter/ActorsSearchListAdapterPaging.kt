@@ -1,4 +1,4 @@
-package com.example.ds_movies.ui.trendingActorList.adapter
+package com.example.ds_movies.ui.actorsSearch.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,9 +11,10 @@ import com.example.ds_movies.core.utils.Constant
 import com.example.ds_movies.data.models.ActorItem
 import com.example.ds_movies.databinding.ItemActorSearchBinding
 
-class TrendingActorsListAdapterPaging() : PagingDataAdapter<ActorItem, TrendingActorsListAdapterPaging.MyViewHolder>(
-    diffCallBack
-) {
+class ActorsSearchListAdapterPaging() :
+    PagingDataAdapter<ActorItem, ActorsSearchListAdapterPaging.MyViewHolder>(
+        diffCallBack
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
@@ -30,17 +31,19 @@ class TrendingActorsListAdapterPaging() : PagingDataAdapter<ActorItem, TrendingA
         holder.onBind(currentItem)
         holder.setIsRecyclable(false)
         holder.itemView.setOnClickListener {
-            onItemClickListener?.onItemClick(position,currentItem)
+            onItemClickListener?.onItemClick(position, currentItem)
         }
     }
 
     var onItemClickListener: OnItemClickListener? = null
+
     interface OnItemClickListener {
-        fun onItemClick(pos: Int, actor: ActorItem?)
+        fun onItemClick(pos: Int, actorItem: ActorItem?)
     }
 
-    inner class MyViewHolder(var binding: ItemActorSearchBinding):RecyclerView.ViewHolder(binding.root){
-        fun onBind(actorItem :ActorItem?){
+    inner class MyViewHolder(var binding: ItemActorSearchBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun onBind(actorItem: ActorItem?) {
             binding.actorName.text = actorItem?.name
             Glide.with(itemView.context)
                 .load("${Constant.BASE_POSTER_IMAGE_URL}${actorItem?.profilePath}")
@@ -50,10 +53,11 @@ class TrendingActorsListAdapterPaging() : PagingDataAdapter<ActorItem, TrendingA
     }
 
     companion object {
-        val diffCallBack = object : DiffUtil.ItemCallback<ActorItem>(){
+        val diffCallBack = object : DiffUtil.ItemCallback<ActorItem>() {
             override fun areItemsTheSame(oldItem: ActorItem, newItem: ActorItem): Boolean {
                 return oldItem.id == newItem.id
             }
+
             override fun areContentsTheSame(oldItem: ActorItem, newItem: ActorItem): Boolean {
                 return oldItem == newItem
             }

@@ -35,7 +35,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/movies_search_recyclerview"
+            android:id="@+id/actors_search_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:padding="@dimen/_4sdp"
@@ -44,10 +44,10 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintTop_toBottomOf="@+id/searchBar"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:listitem="@layout/item_movie_search"/>
+            tools:listitem="@layout/item_actor_search"/>
 
         <LinearLayout
-            android:id="@+id/search_no_movies"
+            android:id="@+id/search_no_actors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -70,7 +70,7 @@
                 android:textColor="@color/semi_gray"
                 android:textStyle="bold"
                 android:textSize="@dimen/_16ssp"
-                android:text="@string/there_are_no_movies_to_show"/>
+                android:text="@string/there_are_no_actors_to_show"/>
         </LinearLayout>
 
         <ProgressBar

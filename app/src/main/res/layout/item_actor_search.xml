@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/_140sdp"
+        android:layout_height="@dimen/_230sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_4sdp">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/actor_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                tools:src="@drawable/actor_image"
+                android:contentDescription="@string/todo" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/image_gradient"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/todo" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/actor_name"
+            style="@style/Theme.MovieTitleCardTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Dwayne Johnson" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

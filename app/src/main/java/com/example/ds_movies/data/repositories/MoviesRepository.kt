@@ -23,7 +23,8 @@ class MoviesRepository @Inject constructor(
     suspend fun getNowPlayingMovies (page:Int) = moviesApi.getNowPlayingMoviesPaging(page)
     suspend fun getUpComingMovies (page:Int) = moviesApi.getUpComingMoviesPaging(page)
     suspend fun getRecommendationMovies (movie_id: Int?, page:Int) = moviesApi.getRecommendationMovies(movie_id,page)
-    suspend fun getSearchResult (query:String ,page:Int) = moviesApi.getSearchResult(query,page)
+    suspend fun getMoviesSearchResult (query:String, page:Int) = moviesApi.getMoviesSearchResult(query,page)
+    suspend fun getActorsSearchResult (query:String, page:Int) = moviesApi.getActorsSearchResult(query,page)
 
     suspend fun getActorMovies (actorId: Int?) = retrofitExecutor.makeRequest { moviesApi.getActorMovies(actorId) }
     suspend fun getActorMoviesPaging (actorId: Int?,page: Int) =  moviesApi.getActorMoviesPaging(actorId = actorId, page = page)

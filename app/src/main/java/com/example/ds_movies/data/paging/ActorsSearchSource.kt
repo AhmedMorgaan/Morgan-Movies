@@ -2,25 +2,25 @@ package com.example.ds_movies.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.ds_movies.data.models.MovieItem
+import com.example.ds_movies.data.models.ActorItem
 import com.example.ds_movies.data.repositories.MoviesRepository
 import retrofit2.HttpException
 
-class SearchMovieSource(
+class ActorsSearchSource(
     private val moviesRepository: MoviesRepository,
     private val query : String
-    ) : PagingSource<Int, MovieItem>() {
+    ) : PagingSource<Int, ActorItem>() {
 
-    override fun getRefreshKey(state: PagingState<Int, MovieItem>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, ActorItem>): Int? {
         return null
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieItem> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ActorItem> {
         return  try {
             val currentPage = params.key ?:1
-            val response = moviesRepository.getSearchResult(query,currentPage)
+            val response = moviesRepository.getActorsSearchResult(query,currentPage)
             val data = response.body()?.results?.toList()
-            val responseData = mutableListOf<MovieItem>()
+            val responseData = mutableListOf<ActorItem>()
             responseData.addAll(data!!.toList())
 
             LoadResult.Page(

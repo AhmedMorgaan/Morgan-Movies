@@ -135,7 +135,7 @@ class MovieDetailsFragment :
             }
             adapter.onItemClickListener = object : MovieCastsAdapter.OnItemClickListener{
                 override fun onItemClick(pos: Int, actorItem: Cast?) {
-                    val actorItemInstance = ActorItem(false,1,actorItem!!.id,"","","","",0.0,"")
+                    val actorItemInstance = ActorItem(false,1,actorItem!!.id,null,"","","","",0.0,"")
                     val bundle = Bundle()
                     bundle.putParcelable(ACTOR, actorItemInstance)
                     findNavController().navigate(R.id.action_movieDetailsFragment_to_actorDetailsFragment, bundle)

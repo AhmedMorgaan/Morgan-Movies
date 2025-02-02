@@ -24,7 +24,7 @@ class TrendingActorsFragment : BaseFragment<FragmentTrendingActorsBinding,Trendi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        handelBackClick()
+        handelBackAndSearchClick()
         initTrendingActorsRecyclerview()
     }
 
@@ -56,14 +56,17 @@ class TrendingActorsFragment : BaseFragment<FragmentTrendingActorsBinding,Trendi
             override fun onItemClick(pos: Int, actor: ActorItem?) {
                 val bundle = Bundle()
                 bundle.putParcelable(ACTOR,actor)
-                findNavController().navigate(R.id.action_actorsFragment_to_actorDetailsFragment,bundle)
+                findNavController().navigate(R.id.action_trendingActorsFragment_to_actorDetailsFragment,bundle)
             }
         }
     }
 
-    private fun handelBackClick() {
+    private fun handelBackAndSearchClick() {
         binding.backArrow.setOnClickListener {
             findNavController().popBackStack()
+        }
+        binding.actorSearchIcon.setOnClickListener {
+            findNavController().navigate(R.id.action_trendingActorsFragment_to_actorsSearchFragment)
         }
     }
     override fun getViewBinding(v: View): FragmentTrendingActorsBinding {

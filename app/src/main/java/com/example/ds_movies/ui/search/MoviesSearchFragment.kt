@@ -29,9 +29,9 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(R.layout.fragment_search)  {
+class MoviesSearchFragment : BaseFragment<FragmentSearchBinding, MoviesSearchViewModel>(R.layout.fragment_search)  {
 
-    override val viewModel: SearchViewModel by viewModels()
+    override val viewModel: MoviesSearchViewModel by viewModels()
     private lateinit var suggestionsList :MutableList<*>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,11 +64,11 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(R.la
             }
 
             override fun afterTextChanged(s: Editable?) {
-                getSearchResult(s.toString())
+                getMoviesSearchResult(s.toString())
 
             }
         })
-        binding.searchResultRecyclerview.setOnTouchListener { _, event ->
+        binding.moviesSearchRecyclerview.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_MOVE) {
                 if(binding.searchBar.isSuggestionsVisible){
                     binding.searchBar.hideSuggestionsList()
@@ -79,17 +79,17 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(R.la
             false
         }
     }
-    private fun getSearchResult(query:String){
+    private fun getMoviesSearchResult(query:String){
         val adapter = SearchMoviesListAdapterPaging()
         binding.apply {
             lifecycleScope.launch {
-                viewModel.getSearchResult(query).collect{
+                viewModel.getMoviesSearchResult(query).collect{
                     adapter.submitData(it)
 
                 }
             }
         }
-        binding.searchResultRecyclerview.adapter = adapter
+        binding.moviesSearchRecyclerview.adapter = adapter
         lifecycleScope.launch {
             adapter.loadStateFlow.collectLatest { loadStates ->
                 binding.mainProgressBar.isVisible = loadStates.refresh is LoadState.Loading
@@ -100,10 +100,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(R.la
                 }
             }
         }
-        handelSuggestionItemClick(adapter)
+        handelSearchItemClick(adapter)
     }
 
-    private fun handelSuggestionItemClick(adapterPaging: SearchMoviesListAdapterPaging){
+    private fun handelSearchItemClick(adapterPaging: SearchMoviesListAdapterPaging){
         adapterPaging.onItemClickListener = object :SearchMoviesListAdapterPaging.OnItemClickListener{
             override fun onItemClick(pos: Int, movie: MovieItem?) {
                 val bundle = Bundle()

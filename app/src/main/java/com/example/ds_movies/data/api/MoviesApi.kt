@@ -76,10 +76,16 @@ interface MoviesApi {
     ): Response<VideoResponse>
 
     @GET("search/movie")
-    suspend fun getSearchResult(
+    suspend fun getMoviesSearchResult(
         @Query("query") query: String,
         @Query("page") page:Int
     ): Response<MoviesResponse>
+
+    @GET("search/person")
+    suspend fun getActorsSearchResult(
+        @Query("query") query: String,
+        @Query("page") page:Int
+    ): Response<TrendingActorResponse>
 
     @GET("movie/{movie_id}/recommendations")
     suspend fun getRecommendationMovies(
