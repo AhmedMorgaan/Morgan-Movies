@@ -6,7 +6,7 @@
     <data>
         <variable
             name="model"
-            type="com.example.ds_movies.data.models.MovieItem" />
+            type="com.morgan.movies.data.models.MovieItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -14,11 +14,12 @@ android {
     compileSdkVersion 34
 
     defaultConfig {
-        applicationId "com.example.ds_movies"
-        minSdkVersion 21
+        applicationId "com.morgan.movies"
+        minSdkVersion 23
+        //noinspection OldTargetApi
         targetSdkVersion 34
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

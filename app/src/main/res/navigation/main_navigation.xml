@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="com.example.ds_movies.ui.onboarding.OnBoardingFragment"
+        android:name="com.morgan.movies.ui.onboarding.OnBoardingFragment"
         android:label="fragment_onboarding"
         tools:layout="@layout/fragment_onboarding" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.example.ds_movies.ui.onboarding.WelcomeFragment"
+        android:name="com.morgan.movies.ui.onboarding.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.ds_movies.ui.login.LoginFragment"
+        android:name="com.morgan.movies.ui.login.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login_tap">
         <action
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.ds_movies.ui.register.SignUpFragment"
+        android:name="com.morgan.movies.ui.register.SignUpFragment"
         android:label="SignUpFragment"
         tools:layout="@layout/fragment_sign_up_tap">
         <action
@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/videoTrailerFragment"
-        android:name="com.example.ds_movies.ui.videoTrailer.VideoTrailerFragment"
+        android:name="com.morgan.movies.ui.videoTrailer.VideoTrailerFragment"
         android:label="fragment_video_trailer"
         tools:layout="@layout/fragment_video_trailer">
 
@@ -57,7 +57,7 @@
 
     <fragment
         android:id="@+id/movieDetailsFragment"
-        android:name="com.example.ds_movies.ui.movieDetails.MovieDetailsFragment"
+        android:name="com.morgan.movies.ui.movieDetails.MovieDetailsFragment"
         android:label="MovieDetailsFragment"
         tools:layout="@layout/fragment_movie_details">
         <action
@@ -69,7 +69,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.ds_movies.ui.home.HomeFragment"
+        android:name="com.morgan.movies.ui.home.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
@@ -90,7 +90,7 @@
     </fragment>
     <fragment
         android:id="@+id/categoryMoviesListFragment"
-        android:name="com.example.ds_movies.ui.categoryMoviesList.CategoryMoviesListFragment"
+        android:name="com.morgan.movies.ui.categoryMoviesList.CategoryMoviesListFragment"
         android:label="CategoryMoviesListFragment"
         tools:layout="@layout/fragment_category_movies_list">
 
@@ -100,7 +100,7 @@
     </fragment>
     <fragment
         android:id="@+id/moviesSearchFragment"
-        android:name="com.example.ds_movies.ui.search.MoviesSearchFragment"
+        android:name="com.morgan.movies.ui.search.MoviesSearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search">
         <action
@@ -109,7 +109,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteMoviesFragment"
-        android:name="com.example.ds_movies.ui.favoriteMovies.FavoriteMoviesFragment"
+        android:name="com.morgan.movies.ui.favoriteMovies.FavoriteMoviesFragment"
         android:label="FavoriteMoviesFragment"
         tools:layout="@layout/fragment_favorite_movies">
         <action
@@ -118,7 +118,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.ds_movies.ui.splash.SplashFragment"
+        android:name="com.morgan.movies.ui.splash.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
         <action
@@ -131,7 +131,7 @@
     </fragment>
     <fragment
         android:id="@+id/trendingActorsFragment"
-        android:name="com.example.ds_movies.ui.trendingActorList.TrendingActorsFragment"
+        android:name="com.morgan.movies.ui.trendingActorList.TrendingActorsFragment"
         android:label="ActorsFragment"
         tools:layout="@layout/fragment_trending_actors">
         <action
@@ -143,7 +143,7 @@
     </fragment>
     <fragment
         android:id="@+id/actorDetailsFragment"
-        android:name="com.example.ds_movies.ui.actorDetails.ActorDetailsFragment"
+        android:name="com.morgan.movies.ui.actorDetails.ActorDetailsFragment"
         android:label="ActorDetailsFragment"
         tools:layout="@layout/fragment_actor_details">
         <action
@@ -152,7 +152,7 @@
     </fragment>
     <fragment
         android:id="@+id/actorsSearchFragment"
-        android:name="com.example.ds_movies.ui.actorsSearch.ActorsSearchFragment"
+        android:name="com.morgan.movies.ui.actorsSearch.ActorsSearchFragment"
         android:label="ActorsSearchFragment"
         tools:layout="@layout/fragment_actors_search">
         <action

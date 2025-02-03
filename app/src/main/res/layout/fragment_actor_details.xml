@@ -6,7 +6,7 @@
     <data>
         <variable
             name="model"
-            type="com.example.ds_movies.data.models.ActorDetailsResponse" />
+            type="com.morgan.movies.data.models.ActorDetailsResponse" />
     </data>
 
     <androidx.core.widget.NestedScrollView
