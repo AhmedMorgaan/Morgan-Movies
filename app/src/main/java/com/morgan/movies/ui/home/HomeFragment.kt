@@ -6,12 +6,13 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.tabs.TabLayout
 import com.morgan.movies.R
 import com.morgan.movies.databinding.FragmentHomeBinding
 import com.morgan.movies.ui.base.BaseFragment
 import com.morgan.movies.ui.home.adapter.ViewPagerAdapter
-import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.drawer_header.view.image_profile
 
 
 @AndroidEntryPoint
@@ -26,6 +27,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         initDrawerButton()
         handelSearchClick()
         handelDrawerMenuClick()
+        handelProfileImageClick()
     }
 
     private fun handelSearchClick(){
@@ -40,6 +42,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         }
        actionBarDrawerToggle = ActionBarDrawerToggle(activity,binding.mainDrawer,R.string.app_name,R.string.app_name)
        actionBarDrawerToggle.syncState()
+    }
+    private fun handelProfileImageClick(){
+        val header = binding.navigationView.getHeaderView(0)
+        val image = header.image_profile
+        image.setOnClickListener {
+            val unicode = 0x1F612
+            val emoji = getEmoji(unicode)
+            Toast.makeText(context," عيب عليك لما تدوس على راجل قد ابوك $emoji",Toast.LENGTH_LONG).show()
+        }
     }
     private fun handelDrawerMenuClick(){
         binding.navigationView.setNavigationItemSelectedListener {
