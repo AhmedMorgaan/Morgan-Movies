@@ -52,7 +52,7 @@
     <string name="no_translate_to_arabic">"للأسف لا يوجد ترجمة للغة العربية "</string>
     <string name="recommendation">Recommendation</string>
     <string name="actors">Actors</string>
-    <string name="trending_actors">Trending Actors</string>
+    <string name="popular_actors">Popular Actors</string>
     <string name="birthday">Birthday:</string>
     <string name="died">Died:</string>
     <string name="born">Born:</string>

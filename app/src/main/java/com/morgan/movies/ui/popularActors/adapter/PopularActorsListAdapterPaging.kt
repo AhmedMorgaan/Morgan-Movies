@@ -1,4 +1,4 @@
-package com.morgan.movies.ui.trendingActorList.adapter
+package com.morgan.movies.ui.popularActors.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,7 +11,7 @@ import com.morgan.movies.core.utils.Constant
 import com.morgan.movies.data.models.ActorItem
 import com.morgan.movies.databinding.ItemActorSearchBinding
 
-class TrendingActorsListAdapterPaging() : PagingDataAdapter<ActorItem, TrendingActorsListAdapterPaging.MyViewHolder>(
+class PopularActorsListAdapterPaging() : PagingDataAdapter<ActorItem, PopularActorsListAdapterPaging.MyViewHolder>(
     diffCallBack
 ) {
 

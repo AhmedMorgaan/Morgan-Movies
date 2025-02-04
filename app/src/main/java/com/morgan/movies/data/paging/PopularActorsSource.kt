@@ -6,7 +6,7 @@ import com.morgan.movies.data.models.ActorItem
 import com.morgan.movies.data.repositories.MoviesRepository
 import retrofit2.HttpException
 
-class TrendingActorsSource(
+class PopularActorsSource(
     private val moviesRepository: MoviesRepository) : PagingSource<Int, ActorItem>() {
 
     override fun getRefreshKey(state: PagingState<Int, ActorItem>): Int? {
@@ -16,7 +16,7 @@ class TrendingActorsSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ActorItem> {
         return  try {
             val currentPage = params.key ?:1
-            val response = moviesRepository.getTrendingActorsPaging(currentPage)
+            val response = moviesRepository.getPopularActorsPaging(currentPage)
             val data = response.body()?.results?.toList()
             val responseData = mutableListOf<ActorItem>()
             responseData.addAll(data!!.toList())

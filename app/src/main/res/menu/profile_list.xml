@@ -8,8 +8,8 @@
             android:icon="@drawable/ic_profile"/>
 
         <item
-            android:id="@+id/trending_actors"
-            android:title="@string/trending_actors"
+            android:id="@+id/popular_actors"
+            android:title="@string/popular_actors"
             android:icon="@drawable/actor"/>
 
         <item

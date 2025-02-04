@@ -12,6 +12,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.mancj.materialsearchbar.MaterialSearchBar
 import com.morgan.movies.R
 import com.morgan.movies.core.SharedPreference
 import com.morgan.movies.core.utils.Constant.Companion.ACTOR
@@ -20,9 +23,6 @@ import com.morgan.movies.data.models.ActorItem
 import com.morgan.movies.databinding.FragmentActorsSearchBinding
 import com.morgan.movies.ui.actorsSearch.adapter.ActorsSearchListAdapterPaging
 import com.morgan.movies.ui.base.BaseFragment
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.mancj.materialsearchbar.MaterialSearchBar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -107,8 +107,7 @@ class ActorsSearchFragment : BaseFragment<FragmentActorsSearchBinding, ActorsSea
         adapterPaging.onItemClickListener = object : ActorsSearchListAdapterPaging.OnItemClickListener{
             override fun onItemClick(pos: Int, actorItem: ActorItem?) {
                 val bundle = Bundle()
-                val actorItemInstance = ActorItem(false,1,actorItem!!.id,null,"","","","",0.0,"")
-                bundle.putParcelable(ACTOR,actorItemInstance)
+                bundle.putParcelable(ACTOR,actorItem)
                 findNavController().navigate(R.id.action_actorsSearchFragment_to_actorDetailsFragment,bundle)
             }
         }

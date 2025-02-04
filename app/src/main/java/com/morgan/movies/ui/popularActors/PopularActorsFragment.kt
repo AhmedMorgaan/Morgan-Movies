@@ -1,4 +1,4 @@
-package com.morgan.movies.ui.trendingActorList
+package com.morgan.movies.ui.popularActors
 
 import android.os.Bundle
 import android.view.View
@@ -10,29 +10,29 @@ import androidx.paging.LoadState
 import com.morgan.movies.R
 import com.morgan.movies.core.utils.Constant.Companion.ACTOR
 import com.morgan.movies.data.models.ActorItem
-import com.morgan.movies.databinding.FragmentTrendingActorsBinding
+import com.morgan.movies.databinding.FragmentPopularActorsBinding
 import com.morgan.movies.ui.base.BaseFragment
-import com.morgan.movies.ui.trendingActorList.adapter.TrendingActorsListAdapterPaging
+import com.morgan.movies.ui.popularActors.adapter.PopularActorsListAdapterPaging
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class TrendingActorsFragment : BaseFragment<FragmentTrendingActorsBinding,TrendingActorsViewModel>(R.layout.fragment_trending_actors) {
+class PopularActorsFragment : BaseFragment<FragmentPopularActorsBinding,PopularActorsViewModel>(R.layout.fragment_popular_actors) {
 
-    override val viewModel: TrendingActorsViewModel by viewModels()
+    override val viewModel: PopularActorsViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         handelBackAndSearchClick()
-        initTrendingActorsRecyclerview()
+        initPopularActorsRecyclerview()
     }
 
-    private fun initTrendingActorsRecyclerview(){
-        val adapter = TrendingActorsListAdapterPaging()
+    private fun initPopularActorsRecyclerview(){
+        val adapter = PopularActorsListAdapterPaging()
         binding.apply {
             lifecycleScope.launch {
-                viewModel.trendingActorsListPaging.collect {
+                viewModel.popularActorsListPaging.collect {
                     adapter.submitData(it)
                 }
             }
@@ -51,12 +51,12 @@ class TrendingActorsFragment : BaseFragment<FragmentTrendingActorsBinding,Trendi
         handelActorItemClick(adapter)
 
     }
-    private fun handelActorItemClick(adapter: TrendingActorsListAdapterPaging){
-        adapter.onItemClickListener = object : TrendingActorsListAdapterPaging.OnItemClickListener{
+    private fun handelActorItemClick(adapter: PopularActorsListAdapterPaging){
+        adapter.onItemClickListener = object : PopularActorsListAdapterPaging.OnItemClickListener{
             override fun onItemClick(pos: Int, actor: ActorItem?) {
                 val bundle = Bundle()
                 bundle.putParcelable(ACTOR,actor)
-                findNavController().navigate(R.id.action_trendingActorsFragment_to_actorDetailsFragment,bundle)
+                findNavController().navigate(R.id.action_popularActorsFragment_to_actorDetailsFragment,bundle)
             }
         }
     }
@@ -66,10 +66,10 @@ class TrendingActorsFragment : BaseFragment<FragmentTrendingActorsBinding,Trendi
             findNavController().popBackStack()
         }
         binding.actorSearchIcon.setOnClickListener {
-            findNavController().navigate(R.id.action_trendingActorsFragment_to_actorsSearchFragment)
+            findNavController().navigate(R.id.action_popularActorsFragment_to_actorsSearchFragment)
         }
     }
-    override fun getViewBinding(v: View): FragmentTrendingActorsBinding {
-      return  FragmentTrendingActorsBinding.bind(v)
+    override fun getViewBinding(v: View): FragmentPopularActorsBinding {
+      return  FragmentPopularActorsBinding.bind(v)
     }
 }

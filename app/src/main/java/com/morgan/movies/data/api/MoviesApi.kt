@@ -6,7 +6,7 @@ import com.morgan.movies.data.models.CastResponse
 import com.morgan.movies.data.models.CategoryResponse
 import com.morgan.movies.data.models.MovieItem
 import com.morgan.movies.data.models.MoviesResponse
-import com.morgan.movies.data.models.TrendingActorResponse
+import com.morgan.movies.data.models.PopularActorsResponse
 import com.morgan.movies.data.models.VideoResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -85,7 +85,7 @@ interface MoviesApi {
     suspend fun getActorsSearchResult(
         @Query("query") query: String,
         @Query("page") page:Int
-    ): Response<TrendingActorResponse>
+    ): Response<PopularActorsResponse>
 
     @GET("movie/{movie_id}/recommendations")
     suspend fun getRecommendationMovies(
@@ -93,12 +93,11 @@ interface MoviesApi {
         @Query("page") page:Int
     ): Response<MoviesResponse>
 
-    @GET("trending/person/{time_window}")
-    suspend fun getTrendingActorsPaging(
-        @Path("time_window") movieId:String = "week",
+    @GET("person/popular")
+    suspend fun getPopularActorsPaging(
         @Query("page") page:Int,
         @Query("language") language:String = "en"
-    ) : Response<TrendingActorResponse>
+    ) : Response<PopularActorsResponse>
 
     @GET("person/{person_id}")
     suspend fun getActorDetails(

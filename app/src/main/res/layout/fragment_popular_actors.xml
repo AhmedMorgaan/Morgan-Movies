@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="@color/black_op"
         android:fitsSystemWindows="true"
-        tools:context=".ui.trendingActorList.TrendingActorsFragment">
+        tools:context=".ui.popularActors.PopularActorsFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/app_bar_container"
@@ -38,12 +38,12 @@
                 android:layout_marginStart="@dimen/_14sdp"
                 android:textColor="@color/semi_gray"
                 android:textSize="@dimen/_17ssp"
-                android:text="@string/trending_actors"
+                android:text="@string/popular_actors"
                 android:fontFamily="@font/comic_sans_bold"
                 app:layout_constraintStart_toEndOf="@+id/back_arrow"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:text="@string/trending_actors"/>
+                tools:text="@string/popular_actors"/>
 
             <ImageView
                 android:id="@+id/actor_search_icon"

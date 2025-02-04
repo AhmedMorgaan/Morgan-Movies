@@ -1,12 +1,12 @@
 package com.morgan.movies.data.repositories
 
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.morgan.movies.core.SharedPreference
 import com.morgan.movies.core.utils.Constant.Companion.FAVORITE_LIST
 import com.morgan.movies.data.api.MoviesApi
 import com.morgan.movies.data.base.RetrofitExecutor
 import com.morgan.movies.data.models.MovieItem
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -17,7 +17,7 @@ class MoviesRepository @Inject constructor(
     ) {
 
     suspend fun getTrendingMovies (page:Int) = moviesApi.getTrendingMoviesPaging(page = page)
-    suspend fun getTrendingActorsPaging (page:Int) = moviesApi.getTrendingActorsPaging(page = page)
+    suspend fun getPopularActorsPaging (page:Int) = moviesApi.getPopularActorsPaging(page = page)
     suspend fun getTopRatedMoviesPaging(page:Int) = moviesApi.getTopRatedMoviesPaging(page)
     suspend fun getPopularMovies (page:Int) = moviesApi.getPopularMovies(page)
     suspend fun getNowPlayingMovies (page:Int) = moviesApi.getNowPlayingMoviesPaging(page)

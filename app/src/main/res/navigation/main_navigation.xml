@@ -85,8 +85,8 @@
             android:id="@+id/action_homeFragment_to_favoriteMoviesFragment"
             app:destination="@id/favoriteMoviesFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_actorsFragment"
-            app:destination="@id/trendingActorsFragment" />
+            android:id="@+id/action_homeFragment_to_popularActorsFragment"
+            app:destination="@id/popularActorsFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryMoviesListFragment"
@@ -130,15 +130,15 @@
             />
     </fragment>
     <fragment
-        android:id="@+id/trendingActorsFragment"
-        android:name="com.morgan.movies.ui.trendingActorList.TrendingActorsFragment"
-        android:label="ActorsFragment"
-        tools:layout="@layout/fragment_trending_actors">
+        android:id="@+id/popularActorsFragment"
+        android:name="com.morgan.movies.ui.popularActors.PopularActorsFragment"
+        android:label="PopularActorsFragment"
+        tools:layout="@layout/fragment_popular_actors">
         <action
-            android:id="@+id/action_trendingActorsFragment_to_actorDetailsFragment"
+            android:id="@+id/action_popularActorsFragment_to_actorDetailsFragment"
             app:destination="@id/actorDetailsFragment" />
         <action
-            android:id="@+id/action_trendingActorsFragment_to_actorsSearchFragment"
+            android:id="@+id/action_popularActorsFragment_to_actorsSearchFragment"
             app:destination="@id/actorsSearchFragment" />
     </fragment>
     <fragment
