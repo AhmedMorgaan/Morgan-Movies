@@ -128,13 +128,13 @@ class NewNotificationMessage {
             nm.notify(NOTIFICATION_TAG, i++, notification)
         }
 
-        fun cancel(context: Context) {
-            val nm = context
-                .getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            nm.cancel(
-                NOTIFICATION_TAG,
-                i
-            )
-        }
+//        fun cancel(context: Context) {
+//            val nm = context
+//                .getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+//            nm.cancel(
+//                NOTIFICATION_TAG,
+//                i
+//            )
+//        }
     }
 }

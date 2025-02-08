@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId "com.morgan.movies"
-        minSdkVersion 23
+        minSdkVersion 24
         //noinspection OldTargetApi
         targetSdkVersion 34
         versionCode 1
