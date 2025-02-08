@@ -53,7 +53,7 @@
             android:resource="@color/white" />
 
         <service
-            android:name=".service.MyFirebaseMessagingService"
+            android:name=".service.fcm.MyFirebaseMessagingService"
             android:exported="false"
             tools:ignore="Instantiatable" >
             <intent-filter>

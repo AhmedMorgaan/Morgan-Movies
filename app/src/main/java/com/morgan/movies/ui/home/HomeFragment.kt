@@ -28,6 +28,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         handelSearchClick()
         handelDrawerMenuClick()
         handelProfileImageClick()
+        viewModel.requestFirebaseTokenWithoutLogin()
     }
 
     private fun handelSearchClick(){
