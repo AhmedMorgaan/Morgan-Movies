@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.ds_movies" >
+    package="com.morgan.movies" >
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -15,17 +15,18 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32" />
+        android:maxSdkVersion="32"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
-        android:name=".data.MyApplicationClass"
+        android:name=".application.MyApplicationClass"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_ds_app"
+        android:icon="@mipmap/ic_morgan_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_ds_app_round"
+        android:roundIcon="@mipmap/ic_morgan_logo_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DS_Movies"
+        android:theme="@style/Theme.Morgan.Movies"
         android:usesCleartextTraffic="true" >
 
         <activity
@@ -44,10 +45,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".ui.MainLoginActivity"
-            android:exported="true" >
-        </activity>
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
@@ -56,12 +53,8 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/white" />
 
-        <activity
-            android:name=".ui.splash.SplashActivity"
-            android:exported="true" />
-
         <service
-            android:name=".service.MyFirebaseMessagingService"
+            android:name=".service.fcm.MyFirebaseMessagingService"
             android:exported="false"
             tools:ignore="Instantiatable" >
             <intent-filter>

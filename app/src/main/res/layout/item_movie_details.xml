@@ -7,7 +7,7 @@
     <data>
         <variable
             name="model"
-            type="com.example.ds_movies.data.models.MovieItem" />
+            type="com.morgan.movies.data.models.MovieItem" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -163,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_3sdp"
                 android:text="@{model.releaseDate}"
-                android:hint="@string/date"
+                android:hint="@string/date_11_5_2021"
                 android:textSize="@dimen/_11ssp"
                 app:layout_constraintStart_toEndOf="@+id/release_date_text"
                 app:layout_constraintTop_toTopOf="@id/release_date_text" />

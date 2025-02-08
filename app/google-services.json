@@ -2,14 +2,14 @@
   "project_info": {
     "project_number": "672694236370",
     "project_id": "morgan-movies",
-    "storage_bucket": "morgan-movies.appspot.com"
+    "storage_bucket": "morgan-movies.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:672694236370:android:276342d20e950b30bda90b",
+        "mobilesdk_app_id": "1:672694236370:android:7f51263204c4f15abda90b",
         "android_client_info": {
-          "package_name": "com.example.ds_movies"
+          "package_name": "com.morgan.movies"
         }
       },
       "oauth_client": [

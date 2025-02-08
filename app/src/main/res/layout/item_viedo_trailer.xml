@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="com.example.ds_movies.data.models.VideoItem" />
+            type="com.morgan.movies.data.models.VideoItem" />
     </data>
 
 

@@ -3,8 +3,9 @@
     <string name="morgan_movies">Morgan Movies</string>
     <string name="black_widow">Black Widow</string>
     <string name="description">Washed-up MMA fighter Cole Young, unaware of his heritage, and hunted by Emperor Shang Tsung\'s best warrior, Sub-Zero, seeks out and trains with Earth\'s greatest champions as he prepares to stand against the enemies of Outworld in a high stakes battle for the universe.</string>
+    <string name="biography_description">An American and Canadian actor, producer and semi-retired professional wrestler, signed with WWE.  Johnson is half-Black and half-Samoan. His father, Rocky Johnson, is a Black Canadian, from Nova Scotia, and part of the first Black tag team champions in WWE history back when it was known as the WWF along with Tony Atlas. His mother is Samoan and the daughter of Peter Maivia, who was also a pro wrestler askjdasjd has doihao oiashd as foiahsiof asououas uasfiohaou auo ouafjsdhuisw we98 w0lkdnf oua h8wemuofqheui tqamasn jadn fuer ygrgmnwsj hweuioq dfkjasg f8qoifslmkvnwpi j80q asdb aniufgwiuf 9qwe guwehfousdh fousahdoiuafouiwh 8fwe0sdoi 08w yu8we ihiw 80yw08 w0eioweh 80wey 8wehwe908 yw80 ywohw80wy 80w oiush d8f sjfnsjd 80wws wuweg ywet fow nolw 0. </string>
     <string name="overview">Overview</string>
-    <string name="date">11/5/2021</string>
+    <string name="date_11_5_2021">11/5/2021</string>
     <string name="release_date">Release Date : </string>
     <string name="_7_5">7.5</string>
     <string name="movie_poster">Movie Poster</string>
@@ -33,6 +34,7 @@
     <string name="arrow"><![CDATA[>]]></string>
     <string name="comedy">Comedy</string>
     <string name="there_are_no_movies_to_show">There are no movies to show</string>
+    <string name="there_are_no_actors_to_show">There are no actors to show</string>
     <string name="there_are_no_videos_to_show">There are no videos to show</string>
     <string name="arabic">Arabic</string>
     <string name="english">English</string>
@@ -49,4 +51,13 @@
     <string name="ooops">Ooops!</string>
     <string name="no_translate_to_arabic">"للأسف لا يوجد ترجمة للغة العربية "</string>
     <string name="recommendation">Recommendation</string>
+    <string name="actors">Actors</string>
+    <string name="popular_actors">Popular Actors</string>
+    <string name="birthday">Birthday:</string>
+    <string name="died">Died:</string>
+    <string name="born">Born:</string>
+    <string name="biography">Biography</string>
+    <string name="movies">Movies</string>
+    <string name="date">Date</string>
+    <string name="rate">Rate</string>
 </resources>
