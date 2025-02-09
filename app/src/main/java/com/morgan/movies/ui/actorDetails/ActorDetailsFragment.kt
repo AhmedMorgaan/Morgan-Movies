@@ -93,14 +93,14 @@ class ActorDetailsFragment :
                 binding.btnSortByDate.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
-                        R.color.Red
+                        R.color.Pink
                     )
                 )
             } else {
                 binding.btnSortByDate.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
-                        R.color.silver
+                        R.color.Gray
                     )
                 )
             }
@@ -110,14 +110,14 @@ class ActorDetailsFragment :
                 binding.btnSortByRate.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
-                        R.color.Red
+                        R.color.Pink
                     )
                 )
             } else {
                 binding.btnSortByRate.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
-                        R.color.silver
+                        R.color.Gray
                     )
                 )
             }

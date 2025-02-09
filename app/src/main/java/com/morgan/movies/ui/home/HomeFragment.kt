@@ -48,9 +48,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         val header = binding.navigationView.getHeaderView(0)
         val image = header.image_profile
         image.setOnClickListener {
-            val unicode = 0x1F612
+            val unicode = 0x1F62D
             val emoji = getEmoji(unicode)
-            Toast.makeText(context," عيب عليك لما تدوس على راجل قد ابوك $emoji",Toast.LENGTH_LONG).show()
+            Toast.makeText(context," حرام عليكى بدوسى عليا ليه ( يا خــالى يا عوض $emoji ) ",Toast.LENGTH_LONG).show()
         }
     }
     private fun handelDrawerMenuClick(){
@@ -63,17 +63,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
                 R.id.my_profile ->{
                     val unicode = 0x1F601
                     val emoji = getEmoji(unicode)
-                    Toast.makeText(context,"ايه مش عاجبك صورة اشرف عبدالباقى لو مش عاجبك طلقني (بصوت احمد حلمى $emoji ) ",Toast.LENGTH_LONG).show()
+                    Toast.makeText(context,"ايه مش عجباكي صورة مربوحة احمدى ربنا انى محطتهاش بالطقمة $emoji ",Toast.LENGTH_LONG).show()
                 }
                 R.id.rate_us ->{
                     val unicode = 0x1F602
                     val emoji = getEmoji(unicode)
-                    Toast.makeText(context," تقيم ايه يا عم صلي على النبي ده كويس ان الأبلكيشن شغال اصلا $emoji  ",Toast.LENGTH_LONG).show()
+                    Toast.makeText(context," تقيم ايه ياستى صلي على النبي ده كويس ان الأبلكيشن شغال اصلا $emoji  ",Toast.LENGTH_LONG).show()
                 }
                 R.id.follow_us ->{
                     val unicode = 0x1F60A
                     val emoji = getEmoji(unicode)
-                    Toast.makeText(context," يا عم مش عايز فولو ولا حاجة أذكر الله بس و انا هبقى مبسوط $emoji ",Toast.LENGTH_LONG).show()
+                    Toast.makeText(context," يا ستى مش عايز فولو ولا حاجة أذكرى الله و قومى صلى بس و انا هبقى مبسوط $emoji ",Toast.LENGTH_LONG).show()
                 }
                 R.id.popular_actors ->{
                     findNavController().navigate(R.id.action_homeFragment_to_popularActorsFragment)

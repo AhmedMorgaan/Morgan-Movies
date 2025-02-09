@@ -22,26 +22,26 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:padding">10dp</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:textColorHint">@color/silver</item>
+        <item name="android:textColorHint">@color/Gray</item>
         <item name="android:fontFamily">@font/comic_sans</item>
         <item name="android:background">@drawable/shape_edit_text</item>
     </style>
 
     <style name="Theme.MovieTextStyle" parent="">
         <!-- Primary brand color. -->
-        <item name="android:textColor">@color/silver</item>
+        <item name="android:textColor">@color/Gray</item>
         <item name="fontFamily"> @font/comic_sans</item>
-        <item name="android:textColorHint"> @color/silver</item>
+        <item name="android:textColorHint"> @color/Gray</item>
         <!-- Customize your theme here. -->
     </style>
 
     <style name="Theme.HomeTitleTextStyle" parent="">
-        <item name="android:textColor">@color/semi_gray</item>
+        <item name="android:textColor">@color/Gray</item>
         <item name="fontFamily"> @font/comic_sans_bold</item>
         <item name="android:textSize">25sp</item>
     </style>
     <style name="Theme.SeeMoreTextStyle" parent="">
-        <item name="android:textColor">@color/Red</item>
+        <item name="android:textColor">@color/Pink</item>
         <item name="fontFamily"> @font/comic_sans_bold</item>
         <item name="android:textSize">16sp</item>
     </style>
@@ -72,7 +72,7 @@
 
 
     <style name="AppTabLayout" parent="Widget.Design.TabLayout">
-        <item name="tabIndicatorColor">@color/Red</item>
+        <item name="tabIndicatorColor">@color/Pink</item>
         <item name="tabPaddingStart">20dp</item>
         <item name="tabPaddingEnd">20dp</item>
         <item name="tabTextAppearance">@style/AppTabTextAppearance</item>

@@ -81,7 +81,7 @@
                     android:visibility="visible"
                     android:indeterminate="true"
                     android:indeterminateTintMode="src_atop"
-                    android:indeterminateTint="@color/Red"
+                    android:indeterminateTint="@color/Pink"
                     app:layout_constraintBottom_toBottomOf="@id/trending_recyclerview"
                     app:layout_constraintEnd_toEndOf="@id/trending_recyclerview"
                     app:layout_constraintStart_toStartOf="@id/trending_recyclerview"
@@ -107,7 +107,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:textColor="@color/semi_gray"
+                        android:textColor="@color/Gray"
                         android:textStyle="bold"
                         android:textSize="@dimen/_12ssp"
                         android:text="@string/something_went_wrong"/>
@@ -128,12 +128,12 @@
                     <ImageView
                         android:layout_width="@dimen/_45sdp"
                         android:layout_height="@dimen/_45sdp"
-                        android:src="@drawable/no_movies_image"/>
+                        android:src="@drawable/no_movies_image_pink"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:textColor="@color/semi_gray"
+                        android:textColor="@color/Gray"
                         android:textStyle="bold"
                         android:textSize="@dimen/_12ssp"
                         android:text="@string/there_are_no_movies_to_show"/>
@@ -214,12 +214,12 @@
                     <ImageView
                         android:layout_width="@dimen/_45sdp"
                         android:layout_height="@dimen/_45sdp"
-                        android:src="@drawable/no_movies_image"/>
+                        android:src="@drawable/no_movies_image_pink"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:textColor="@color/semi_gray"
+                        android:textColor="@color/Gray"
                         android:textStyle="bold"
                         android:textSize="@dimen/_12ssp"
                         android:text="@string/there_are_no_movies_to_show"/>
@@ -245,7 +245,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:textColor="@color/semi_gray"
+                        android:textColor="@color/Gray"
                         android:textStyle="bold"
                         android:textSize="@dimen/_12ssp"
                         android:text="@string/something_went_wrong"/>
@@ -260,7 +260,7 @@
                     android:visibility="visible"
                     android:indeterminate="true"
                     android:indeterminateTintMode="src_atop"
-                    android:indeterminateTint="@color/Red"
+                    android:indeterminateTint="@color/Pink"
                     app:layout_constraintBottom_toBottomOf="@id/top_rated_recyclerview"
                     app:layout_constraintEnd_toEndOf="@id/top_rated_recyclerview"
                     app:layout_constraintStart_toStartOf="@id/top_rated_recyclerview"
@@ -312,12 +312,12 @@
                     <ImageView
                         android:layout_width="@dimen/_45sdp"
                         android:layout_height="@dimen/_45sdp"
-                        android:src="@drawable/no_movies_image"/>
+                        android:src="@drawable/no_movies_image_pink"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:textColor="@color/semi_gray"
+                        android:textColor="@color/Gray"
                         android:textStyle="bold"
                         android:textSize="@dimen/_12ssp"
                         android:text="@string/there_are_no_movies_to_show"/>
@@ -343,7 +343,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:textColor="@color/semi_gray"
+                        android:textColor="@color/Gray"
                         android:textStyle="bold"
                         android:textSize="@dimen/_12ssp"
                         android:text="@string/something_went_wrong"/>
@@ -356,7 +356,7 @@
                     android:visibility="visible"
                     android:indeterminate="true"
                     android:indeterminateTintMode="src_atop"
-                    android:indeterminateTint="@color/Red"
+                    android:indeterminateTint="@color/Pink"
                     app:layout_constraintBottom_toBottomOf="@id/popular_recyclerview"
                     app:layout_constraintEnd_toEndOf="@id/popular_recyclerview"
                     app:layout_constraintStart_toStartOf="@id/popular_recyclerview"
@@ -408,12 +408,12 @@
                     <ImageView
                         android:layout_width="@dimen/_45sdp"
                         android:layout_height="@dimen/_45sdp"
-                        android:src="@drawable/no_movies_image"/>
+                        android:src="@drawable/no_movies_image_pink"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:textColor="@color/semi_gray"
+                        android:textColor="@color/Gray"
                         android:textStyle="bold"
                         android:textSize="@dimen/_12ssp"
                         android:text="@string/there_are_no_movies_to_show"/>
@@ -426,7 +426,7 @@
                     android:visibility="visible"
                     android:indeterminate="true"
                     android:indeterminateTintMode="src_atop"
-                    android:indeterminateTint="@color/Red"
+                    android:indeterminateTint="@color/Pink"
                     app:layout_constraintBottom_toBottomOf="@id/now_playing_recyclerview"
                     app:layout_constraintEnd_toEndOf="@id/now_playing_recyclerview"
                     app:layout_constraintStart_toStartOf="@id/now_playing_recyclerview"
@@ -452,7 +452,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:textColor="@color/semi_gray"
+                        android:textColor="@color/Gray"
                         android:textStyle="bold"
                         android:textSize="@dimen/_12ssp"
                         android:text="@string/something_went_wrong"/>
@@ -503,12 +503,12 @@
                     <ImageView
                         android:layout_width="@dimen/_45sdp"
                         android:layout_height="@dimen/_45sdp"
-                        android:src="@drawable/no_movies_image"/>
+                        android:src="@drawable/no_movies_image_pink"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:textColor="@color/semi_gray"
+                        android:textColor="@color/Gray"
                         android:textStyle="bold"
                         android:textSize="@dimen/_12ssp"
                         android:text="@string/there_are_no_movies_to_show"/>
@@ -521,7 +521,7 @@
                     android:visibility="visible"
                     android:indeterminate="true"
                     android:indeterminateTintMode="src_atop"
-                    android:indeterminateTint="@color/Red"
+                    android:indeterminateTint="@color/Pink"
                     app:layout_constraintBottom_toBottomOf="@id/up_coming_recyclerview"
                     app:layout_constraintEnd_toEndOf="@id/up_coming_recyclerview"
                     app:layout_constraintStart_toStartOf="@id/up_coming_recyclerview"
@@ -547,7 +547,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:textColor="@color/semi_gray"
+                        android:textColor="@color/Gray"
                         android:textStyle="bold"
                         android:textSize="@dimen/_12ssp"
                         android:text="@string/something_went_wrong"/>
@@ -563,7 +563,7 @@
             android:visibility="visible"
             android:indeterminate="true"
             android:indeterminateTintMode="src_atop"
-            android:indeterminateTint="@color/Red"
+            android:indeterminateTint="@color/Pink"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

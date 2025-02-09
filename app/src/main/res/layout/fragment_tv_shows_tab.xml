@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:text="@string/coming_soon"
             android:textSize="50sp"
-            android:textColor="@color/Red"
+            android:textColor="@color/Pink"
             android:textAlignment="center"
             android:fontFamily="@font/comic_sans_bold"
             app:layout_constraintBottom_toBottomOf="parent"

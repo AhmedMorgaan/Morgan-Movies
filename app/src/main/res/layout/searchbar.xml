@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         app:cardBackgroundColor="@color/searchBarPrimaryColor"
-        app:strokeColor="@color/Red"
+        app:strokeColor="@color/Pink"
         app:strokeWidth="1dp"
         app:cardCornerRadius="2dp"
         app:cardElevation="2dp"

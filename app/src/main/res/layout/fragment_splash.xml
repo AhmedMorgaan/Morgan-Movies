@@ -14,30 +14,41 @@
         tools:context=".ui.splash.SplashFragment">
 
         <ImageView
-            android:id="@+id/splash_image_1"
-            android:layout_width="@dimen/_231sdp"
-            android:layout_height="@dimen/_231sdp"
+            android:id="@+id/splash_logo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_130sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
             android:contentDescription="@string/todo"
             android:scaleType="fitXY"
-            android:src="@drawable/splash_screen_0"
-            app:layout_constraintBottom_toTopOf="@id/splash_image_2"
+            android:src="@drawable/splash_logo"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/splash_image_1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_350sdp"
+            android:contentDescription="@string/todo"
+            android:scaleType="fitXY"
+            android:src="@drawable/splash_family"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/splash_logo"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <ImageView
             android:id="@+id/splash_image_2"
-            android:layout_width="@dimen/_270sdp"
-            android:layout_height="@dimen/_231sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
             android:contentDescription="@string/todo"
             android:scaleType="fitXY"
-            android:src="@drawable/splash_screen_2"
+            android:src="@drawable/splash_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/splash_image_1" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

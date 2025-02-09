@@ -26,7 +26,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/bilboswashcaps"
         android:text="Welcome To Morgan Movies"
-        android:textColor="@color/silver"
+        android:textColor="@color/Gray"
         android:textSize="40sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

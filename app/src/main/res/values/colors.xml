@@ -9,11 +9,9 @@
     <color name="semi_black">#E1000000</color>
     <color name="black_op">#323232</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="silver">#E1E1E1</color>
-    <color name="semi_gray">#E1E1E1</color>
     <color name="semi_white">#E3DEDE</color>
     <color name="yellow">#FFEB3B</color>
-    <color name="Red">#e3514c</color>
+    <color name="Pink">#FB508C</color>
     <color name="Gray">#E1E1E1</color>
     <color name="gray_op">#1AD3D3D3</color>
     <color name="transparent">#00D3D3D3</color>

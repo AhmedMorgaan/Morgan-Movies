@@ -77,11 +77,11 @@ class MovieDetailsFragment :
             if (movie != null) {
                 if (viewModel.isMovieExist(movie)){
                     isFavorite = true
-                    favoriteIcon.setImageResource(R.drawable.ic_favorite)
+                    favoriteIcon.setImageResource(R.drawable.ic_favorite_pink)
                 }
                 else{
                     isFavorite = false
-                    favoriteIcon.setImageResource(R.drawable.ic_non_favorite)
+                    favoriteIcon.setImageResource(R.drawable.ic_non_favorite_pink)
                 }
             }
             favoriteIcon.setOnClickListener {
@@ -89,10 +89,10 @@ class MovieDetailsFragment :
                 if (movie != null) {
                     if (isFavorite) {
                         viewModel.addFavoriteMovie(movie)
-                        favoriteIcon.setImageResource(R.drawable.ic_favorite)
+                        favoriteIcon.setImageResource(R.drawable.ic_favorite_pink)
                     } else {
                         viewModel.removeMovieFromFavorites(movie)
-                        favoriteIcon.setImageResource(R.drawable.ic_non_favorite)
+                        favoriteIcon.setImageResource(R.drawable.ic_non_favorite_pink)
                     }
                 }
             }

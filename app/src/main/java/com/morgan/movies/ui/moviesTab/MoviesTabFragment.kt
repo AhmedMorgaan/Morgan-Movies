@@ -71,7 +71,7 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding, MoviesTabViewMo
         },4000)
     }
     private fun handelSwipeRefresh(){
-        binding.swipeRefresh.setColorSchemeColors(resources.getColor(R.color.Red))
+        binding.swipeRefresh.setColorSchemeColors(resources.getColor(R.color.Pink))
         binding.swipeRefresh.setProgressBackgroundColorSchemeColor(resources.getColor(R.color.black_op))
         binding.swipeRefresh.setOnRefreshListener {
             if (NetworkHelper().isConnected(requireContext())){

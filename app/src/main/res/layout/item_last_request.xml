@@ -18,7 +18,7 @@
         android:id="@+id/imageView"
         android:src="@drawable/ic_history_black_48dp"
         android:padding="13dp"
-        app:tint="@color/semi_gray" />
+        app:tint="@color/Gray" />
 
     <TextView
         android:layout_width="0dp"
@@ -28,7 +28,7 @@
         android:textStyle="italic"
         android:fontFamily="@font/comic_sans"
         android:id="@+id/text"
-        android:textColor="@color/semi_gray"
+        android:textColor="@color/Gray"
         tools:text="Last request"/>
 
     <ImageView
@@ -38,5 +38,5 @@
         android:padding="13dp"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:tint="@color/semi_gray" />
+        app:tint="@color/Gray" />
 </LinearLayout>

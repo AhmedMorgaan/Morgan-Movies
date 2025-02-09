@@ -23,12 +23,14 @@ class SplashFragment : BaseFragment<FragmentSplashBinding,SplashViewModel>(R.lay
         Utils().hideSystemUI(requireActivity().window,R.id.main_view)
         val topAnim = AnimationUtils.loadAnimation(context,R.anim.top_animation)
         val bottomAnim = AnimationUtils.loadAnimation(context,R.anim.bottom_animation)
-        binding.splashImage1.animation = topAnim
+        val leftAnim = AnimationUtils.loadAnimation(context,R.anim.slide_in_left)
+        binding.splashLogo.animation = topAnim
+        binding.splashImage1.animation = leftAnim
         binding.splashImage2.animation = bottomAnim
 
         Handler().postDelayed({
         findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-        }, 3000)
+        }, 5000)
     }
 
     override fun onDestroy() {
