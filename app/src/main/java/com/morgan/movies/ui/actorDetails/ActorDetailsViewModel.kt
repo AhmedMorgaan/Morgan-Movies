@@ -25,9 +25,9 @@ class ActorDetailsViewModel @Inject constructor(
      val isSortByRate = MutableLiveData<Boolean>(false)
 
     val savedRecyclerViewData = MutableLiveData<MutableList<MovieItem>?>()
-    val actorMoviesResponse = MutableLiveData<ActorMoviesResponse>()
-    val actorDetailsResponse = MutableLiveData<ActorDetailsResponse>()
-    val arabicActorDetailsResponse = MutableLiveData<ActorDetailsResponse>()
+    val actorMoviesResponse = MutableLiveData<ActorMoviesResponse?>()
+    val actorDetailsResponse = MutableLiveData<ActorDetailsResponse?>()
+    val arabicActorDetailsResponse = MutableLiveData<ActorDetailsResponse?>()
 
 //    val ActorsMoviesListPaging = Pager(PagingConfig(10)){
 //        ActorMoviesSource(287,moviesRepository)

@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.morgan.movies.R
-import kotlinx.android.synthetic.main.fragment_onboarding.btn_continue
 
 class OnBoardingFragment : Fragment() {
     
@@ -21,8 +19,8 @@ class OnBoardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_continue.setOnClickListener {
-            findNavController().navigate(R.id.action_onboardingFragment_to_welcomeFragment)
-        }
+//        btn_continue.setOnClickListener {
+//            findNavController().navigate(R.id.action_onboardingFragment_to_welcomeFragment)
+//        }
     }
 }

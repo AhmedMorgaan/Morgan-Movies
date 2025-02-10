@@ -25,10 +25,10 @@
             app:mt_backIconTint="@color/Red"
             app:mt_clearIconTint="@color/Red"
             app:mt_hint="Search"
-            app:mt_hintColor="@color/semi_gray"
+            app:mt_hintColor="@color/Gray"
             app:mt_placeholder="Search"
-            app:mt_textColor="@color/semi_gray"
-            app:mt_placeholderColor="@color/semi_gray"
+            app:mt_textColor="@color/Gray"
+            app:mt_placeholderColor="@color/Gray"
             app:mt_searchBarColor="@color/black_op"
             app:mt_maxSuggestionsCount="3"
             app:mt_roundedSearchBarEnabled="true"
@@ -56,7 +56,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:layout_width="@dimen/_85sdp"
@@ -67,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:textColor="@color/semi_gray"
+                android:textColor="@color/Gray"
                 android:textStyle="bold"
                 android:textSize="@dimen/_16ssp"
                 android:text="@string/there_are_no_movies_to_show"/>

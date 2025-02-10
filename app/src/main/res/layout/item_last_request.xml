@@ -16,9 +16,10 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/imageView"
+        android:contentDescription="@string/todo"
         android:src="@drawable/ic_history_black_48dp"
         android:padding="13dp"
-        app:tint="@color/semi_gray" />
+        app:tint="@color/Gray" />
 
     <TextView
         android:layout_width="0dp"
@@ -28,15 +29,16 @@
         android:textStyle="italic"
         android:fontFamily="@font/comic_sans"
         android:id="@+id/text"
-        android:textColor="@color/semi_gray"
+        android:textColor="@color/Gray"
         tools:text="Last request"/>
 
     <ImageView
         android:id="@+id/iv_delete"
+        android:contentDescription="@string/todo"
         android:src="@drawable/ic_close_black_48dp"
         android:background="?attr/selectableItemBackground"
         android:padding="13dp"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:tint="@color/semi_gray" />
+        app:tint="@color/Gray" />
 </LinearLayout>

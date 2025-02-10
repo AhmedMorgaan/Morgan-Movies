@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.morgan.movies.R
-import kotlinx.android.synthetic.main.fragment_welcome.*
 
 
 class WelcomeFragment : Fragment() {
@@ -23,12 +21,12 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btn_Create_new_account.setOnClickListener {
-            findNavController().navigate(R.id.action_welcomeFragment_to_signUpFragment)
-        }
-        btn_signin.setOnClickListener {
-            findNavController().navigate(R.id.action_welcomeFragment_to_loginFragment)
-        }
+//        btn_Create_new_account.setOnClickListener {
+//            findNavController().navigate(R.id.action_welcomeFragment_to_signUpFragment)
+//        }
+//        btn_signin.setOnClickListener {
+//            findNavController().navigate(R.id.action_welcomeFragment_to_loginFragment)
+//        }
     }
 
 

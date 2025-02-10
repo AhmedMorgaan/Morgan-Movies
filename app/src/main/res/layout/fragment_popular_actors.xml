@@ -28,7 +28,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:src="@drawable/ic_back_arrow_semi_gray"
+                android:src="@drawable/ic_back_arrow_gray"
                 android:contentDescription="@string/todo" />
 
             <TextView
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_14sdp"
-                android:textColor="@color/semi_gray"
+                android:textColor="@color/Gray"
                 android:textSize="@dimen/_17ssp"
                 android:text="@string/popular_actors"
                 android:fontFamily="@font/comic_sans_bold"
@@ -84,13 +84,13 @@
             <ImageView
                 android:layout_width="@dimen/_85sdp"
                 android:layout_height="@dimen/_85sdp"
-                android:src="@drawable/no_movies_image"
+                android:src="@drawable/no_actors"
                 android:contentDescription="@string/todo" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:textColor="@color/semi_gray"
+                android:textColor="@color/Gray"
                 android:textStyle="bold"
                 android:textSize="@dimen/_16ssp"
                 android:text="@string/there_are_no_actors_to_show"/>
