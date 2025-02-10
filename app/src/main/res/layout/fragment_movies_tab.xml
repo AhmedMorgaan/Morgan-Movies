@@ -57,6 +57,7 @@
                     android:id="@+id/txt_trending_see_more"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@string/todo"
                     android:src="@drawable/ic_arrow_for_button"
                     app:layout_constraintBottom_toBottomOf="@id/txt_trending"
                     app:layout_constraintEnd_toEndOf="@id/guideline_end"
@@ -97,11 +98,13 @@
                     app:layout_constraintBottom_toBottomOf="@id/trending_recyclerview"
                     app:layout_constraintEnd_toEndOf="@id/trending_recyclerview"
                     app:layout_constraintStart_toStartOf="@id/trending_recyclerview"
-                    app:layout_constraintTop_toTopOf="@id/trending_recyclerview">
+                    app:layout_constraintTop_toTopOf="@id/trending_recyclerview"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="@dimen/_45sdp"
                         android:layout_height="@dimen/_45sdp"
+                        android:contentDescription="@string/todo"
                         android:src="@drawable/icon_warning"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -123,11 +126,13 @@
                     app:layout_constraintBottom_toBottomOf="@id/trending_recyclerview"
                     app:layout_constraintEnd_toEndOf="@id/trending_recyclerview"
                     app:layout_constraintStart_toStartOf="@id/trending_recyclerview"
-                    app:layout_constraintTop_toTopOf="@id/trending_recyclerview">
+                    app:layout_constraintTop_toTopOf="@id/trending_recyclerview"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="@dimen/_45sdp"
                         android:layout_height="@dimen/_45sdp"
+                        android:contentDescription="@string/todo"
                         android:src="@drawable/no_movies_image_pink"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -153,6 +158,7 @@
                     android:id="@+id/txt_top_rated_see_more"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@string/todo"
                     android:src="@drawable/ic_arrow_for_button"
                     app:layout_constraintBottom_toBottomOf="@id/txt_top_rated"
                     app:layout_constraintEnd_toEndOf="@id/guideline_end"
@@ -209,11 +215,13 @@
                     app:layout_constraintBottom_toBottomOf="@id/top_rated_recyclerview"
                     app:layout_constraintEnd_toEndOf="@id/top_rated_recyclerview"
                     app:layout_constraintStart_toStartOf="@id/top_rated_recyclerview"
-                    app:layout_constraintTop_toTopOf="@id/top_rated_recyclerview">
+                    app:layout_constraintTop_toTopOf="@id/top_rated_recyclerview"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="@dimen/_45sdp"
                         android:layout_height="@dimen/_45sdp"
+                        android:contentDescription="@string/todo"
                         android:src="@drawable/no_movies_image_pink"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -235,11 +243,13 @@
                     app:layout_constraintBottom_toBottomOf="@id/top_rated_recyclerview"
                     app:layout_constraintEnd_toEndOf="@id/top_rated_recyclerview"
                     app:layout_constraintStart_toStartOf="@id/top_rated_recyclerview"
-                    app:layout_constraintTop_toTopOf="@id/top_rated_recyclerview">
+                    app:layout_constraintTop_toTopOf="@id/top_rated_recyclerview"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="@dimen/_45sdp"
                         android:layout_height="@dimen/_45sdp"
+                        android:contentDescription="@string/todo"
                         android:src="@drawable/icon_warning"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -280,6 +290,7 @@
                     android:id="@+id/txt_popular_see_more"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@string/todo"
                     android:src="@drawable/ic_arrow_for_button"
                     app:layout_constraintBottom_toBottomOf="@id/txt_popular"
                     app:layout_constraintEnd_toEndOf="@id/guideline_end"
@@ -307,11 +318,13 @@
                     app:layout_constraintBottom_toBottomOf="@id/popular_recyclerview"
                     app:layout_constraintEnd_toEndOf="@id/popular_recyclerview"
                     app:layout_constraintStart_toStartOf="@id/popular_recyclerview"
-                    app:layout_constraintTop_toTopOf="@id/popular_recyclerview">
+                    app:layout_constraintTop_toTopOf="@id/popular_recyclerview"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="@dimen/_45sdp"
                         android:layout_height="@dimen/_45sdp"
+                        android:contentDescription="@string/todo"
                         android:src="@drawable/no_movies_image_pink"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -333,11 +346,13 @@
                     app:layout_constraintBottom_toBottomOf="@id/popular_recyclerview"
                     app:layout_constraintEnd_toEndOf="@id/popular_recyclerview"
                     app:layout_constraintStart_toStartOf="@id/popular_recyclerview"
-                    app:layout_constraintTop_toTopOf="@id/popular_recyclerview">
+                    app:layout_constraintTop_toTopOf="@id/popular_recyclerview"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="@dimen/_45sdp"
                         android:layout_height="@dimen/_45sdp"
+                        android:contentDescription="@string/todo"
                         android:src="@drawable/icon_warning"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -376,6 +391,7 @@
                     android:id="@+id/txt_now_playing_see_more"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@string/todo"
                     android:src="@drawable/ic_arrow_for_button"
                     app:layout_constraintBottom_toBottomOf="@id/txt_now_Playing"
                     app:layout_constraintEnd_toEndOf="@id/guideline_end"
@@ -403,11 +419,13 @@
                     app:layout_constraintBottom_toBottomOf="@id/now_playing_recyclerview"
                     app:layout_constraintEnd_toEndOf="@id/now_playing_recyclerview"
                     app:layout_constraintStart_toStartOf="@id/now_playing_recyclerview"
-                    app:layout_constraintTop_toTopOf="@id/now_playing_recyclerview">
+                    app:layout_constraintTop_toTopOf="@id/now_playing_recyclerview"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="@dimen/_45sdp"
                         android:layout_height="@dimen/_45sdp"
+                        android:contentDescription="@string/todo"
                         android:src="@drawable/no_movies_image_pink"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -442,11 +460,13 @@
                     app:layout_constraintBottom_toBottomOf="@id/now_playing_recyclerview"
                     app:layout_constraintEnd_toEndOf="@id/now_playing_recyclerview"
                     app:layout_constraintStart_toStartOf="@id/now_playing_recyclerview"
-                    app:layout_constraintTop_toTopOf="@id/now_playing_recyclerview">
+                    app:layout_constraintTop_toTopOf="@id/now_playing_recyclerview"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="@dimen/_45sdp"
                         android:layout_height="@dimen/_45sdp"
+                        android:contentDescription="@string/todo"
                         android:src="@drawable/icon_warning"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -471,6 +491,7 @@
                     android:id="@+id/txt_up_coming_see_more"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@string/todo"
                     android:src="@drawable/ic_arrow_for_button"
                     app:layout_constraintBottom_toBottomOf="@id/txt_up_coming"
                     app:layout_constraintEnd_toEndOf="@id/guideline_end"
@@ -498,11 +519,13 @@
                     app:layout_constraintBottom_toBottomOf="@id/up_coming_recyclerview"
                     app:layout_constraintEnd_toEndOf="@id/up_coming_recyclerview"
                     app:layout_constraintStart_toStartOf="@id/up_coming_recyclerview"
-                    app:layout_constraintTop_toTopOf="@id/up_coming_recyclerview">
+                    app:layout_constraintTop_toTopOf="@id/up_coming_recyclerview"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="@dimen/_45sdp"
                         android:layout_height="@dimen/_45sdp"
+                        android:contentDescription="@string/todo"
                         android:src="@drawable/no_movies_image_pink"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -537,11 +560,13 @@
                     app:layout_constraintBottom_toBottomOf="@id/up_coming_recyclerview"
                     app:layout_constraintEnd_toEndOf="@id/up_coming_recyclerview"
                     app:layout_constraintStart_toStartOf="@id/up_coming_recyclerview"
-                    app:layout_constraintTop_toTopOf="@id/up_coming_recyclerview">
+                    app:layout_constraintTop_toTopOf="@id/up_coming_recyclerview"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="@dimen/_45sdp"
                         android:layout_height="@dimen/_45sdp"
+                        android:contentDescription="@string/todo"
                         android:src="@drawable/icon_warning"/>
                     <TextView
                         android:layout_width="wrap_content"

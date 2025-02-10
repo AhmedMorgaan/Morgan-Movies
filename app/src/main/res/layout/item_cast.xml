@@ -25,6 +25,7 @@
                 android:id="@+id/cast_image"
                 android:layout_height="@dimen/_46sdp"
                 android:layout_width="@dimen/_46sdp"
+                android:contentDescription="@string/todo"
                 android:src="@drawable/black_widow"
                 android:scaleType="centerCrop"/>
         </androidx.cardview.widget.CardView>
