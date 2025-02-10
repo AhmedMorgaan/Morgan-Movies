@@ -319,7 +319,7 @@
             <ImageView
                 android:layout_width="@dimen/_85sdp"
                 android:layout_height="@dimen/_85sdp"
-                android:src="@drawable/no_actors_pink"
+                android:src="@drawable/no_movies_image_pink"
                 android:contentDescription="@string/todo" />
             <TextView
                 android:layout_width="wrap_content"

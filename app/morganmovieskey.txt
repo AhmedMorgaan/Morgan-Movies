@@ -1,3 +1,4 @@
-morganmovieskey
-alis:morgankey
-password:morgan123456
+storeFile: morganmovieskey
+storePassword: morgan123456
+keyAlias: morgankey
+keyPassword: morgan123456
