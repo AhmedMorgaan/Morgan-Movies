@@ -2,7 +2,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
+    id 'kotlin-parcelize'
     id 'com.google.gms.google-services'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-kapt'
@@ -11,6 +11,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file(key_name)
+            storePassword key_password
+            keyAlias key_alias
+            keyPassword key_password
+        }
+    }
     compileSdkVersion 34
 
     defaultConfig {
@@ -47,14 +55,15 @@ android {
         dataBinding true
         viewBinding true
     }
+    namespace 'com.morgan.movies'
 }
 
 
 dependencies {
 
     //noinspection GradleDependency
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.7.10'
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.13.0'
     //Android support
     implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.9.0'
@@ -72,7 +81,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.14.2'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.1'
+    kapt 'com.github.bumptech.glide:compiler:4.14.2'
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0 '
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
@@ -83,7 +92,7 @@ dependencies {
     // LiveData
     implementation('androidx.lifecycle:lifecycle-livedata-ktx:2.5.1')
     //Coroutine
-    implementation('org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4')
+    implementation('org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0')
     //FireBase
     implementation platform('com.google.firebase:firebase-bom:31.1.1')
     implementation 'com.google.firebase:firebase-analytics-ktx:21.2.0'
@@ -94,8 +103,8 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:2.5.3")
     //hilt
-    implementation 'com.google.dagger:hilt-android:2.45'
-    kapt 'com.google.dagger:hilt-compiler:2.45'
+    implementation "com.google.dagger:hilt-android:2.52"
+    kapt "com.google.dagger:hilt-compiler:2.52"
     //ExoPlayer
     implementation 'com.google.android.exoplayer:exoplayer:2.18.3'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.3'

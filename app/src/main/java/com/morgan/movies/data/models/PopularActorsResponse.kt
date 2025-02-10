@@ -3,7 +3,7 @@ package com.morgan.movies.data.models
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 data class PopularActorsResponse(
     @SerializedName("page")

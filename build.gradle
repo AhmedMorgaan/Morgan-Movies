@@ -1,6 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = '1.6.0'
+    ext{
+        ext.kotlin_version = '1.9.25'
+        key_name = "morganmovieskey"
+        key_alias = 'morgankey'
+        key_password = 'morgan123456'
+        kotlin_version = '1.9.25'
+    }
     repositories {
         google()
         mavenCentral()
@@ -8,10 +14,10 @@ buildscript {
     dependencies {
 
         classpath 'com.google.gms:google-services:4.3.15'
-        classpath 'com.android.tools.build:gradle:7.3.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10"
+        classpath 'com.android.tools.build:gradle:8.1.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3"
-        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.45'
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.52'
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong

@@ -132,12 +132,12 @@ class ActorDetailsFragment :
                     adapter?.updateMoviesList(viewModel.savedRecyclerViewData.value)
                 }
             }else {
-               adapter = ActorMovieAdapter(result.cast)
+               adapter = ActorMovieAdapter(result?.cast)
             }
 
             binding.actorMoviesRecyclerview.adapter = adapter
 
-            if (result.cast.isEmpty()) {
+            if (result?.cast!!.isEmpty()) {
                 binding.actorMoviesRecyclerview.visibility = View.GONE
                 binding.actorNoMovies.visibility = View.VISIBLE
             }
