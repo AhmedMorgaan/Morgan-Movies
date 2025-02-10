@@ -37,7 +37,7 @@
                 app:navigationIcon="@drawable/ic_menu_24"
                 app:title="Morgan Movies"
                 app:titleTextAppearance="@style/AppTabTextAppearance"
-                app:titleTextColor="@color/semi_gray"
+                app:titleTextColor="@color/Gray"
                 app:titleCentered="true"
                 app:menu="@menu/appbar_menu"
                 app:collapseIcon="@drawable/ic_search_24"
@@ -84,7 +84,7 @@
             android:layout_height="match_parent"
             android:background="@color/black_op"
             app:headerLayout="@layout/drawer_header"
-            app:itemTextColor="@color/semi_gray"
+            app:itemTextColor="@color/Gray"
             app:itemIconTint="@color/Red"
             app:itemTextAppearance="@style/ComicTextViewStyle"
             app:menu="@menu/profile_list" />

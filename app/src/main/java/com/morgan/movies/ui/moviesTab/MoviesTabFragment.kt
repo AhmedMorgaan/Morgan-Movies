@@ -6,12 +6,14 @@ import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.paging.filter
+import com.google.android.material.tabs.TabLayout
 import com.morgan.movies.R
 import com.morgan.movies.core.utils.Constant.Companion.GENRE_ID
 import com.morgan.movies.core.utils.Constant.Companion.MOVIE
@@ -28,7 +30,6 @@ import com.morgan.movies.databinding.FragmentMoviesTabBinding
 import com.morgan.movies.ui.base.BaseFragment
 import com.morgan.movies.ui.moviesTab.adapter.MoviesListAdapterPaging
 import com.morgan.movies.ui.moviesTab.adapter.TrendingMoviesListAdapterPaging
-import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
@@ -71,8 +72,8 @@ class MoviesTabFragment : BaseFragment<FragmentMoviesTabBinding, MoviesTabViewMo
         },4000)
     }
     private fun handelSwipeRefresh(){
-        binding.swipeRefresh.setColorSchemeColors(resources.getColor(R.color.Red))
-        binding.swipeRefresh.setProgressBackgroundColorSchemeColor(resources.getColor(R.color.black_op))
+        binding.swipeRefresh.setColorSchemeColors(ContextCompat.getColor(requireContext(),R.color.Red))
+        binding.swipeRefresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(requireContext(),R.color.black_op))
         binding.swipeRefresh.setOnRefreshListener {
             if (NetworkHelper().isConnected(requireContext())){
                 if(binding.genresTabs.tabCount == 0){

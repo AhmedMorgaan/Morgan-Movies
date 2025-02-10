@@ -25,6 +25,7 @@
                 android:id="@+id/cast_image"
                 android:layout_height="@dimen/_46sdp"
                 android:layout_width="@dimen/_46sdp"
+                android:contentDescription="@string/todo"
                 android:src="@drawable/black_widow"
                 android:scaleType="centerCrop"/>
         </androidx.cardview.widget.CardView>
@@ -34,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="@color/semi_gray"
+            android:textColor="@color/Gray"
             android:textSize="@dimen/_8ssp"
             app:layout_constraintStart_toStartOf="@id/image_card"
             app:layout_constraintEnd_toEndOf="@id/image_card"

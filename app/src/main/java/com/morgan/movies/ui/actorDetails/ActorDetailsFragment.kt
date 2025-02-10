@@ -100,7 +100,7 @@ class ActorDetailsFragment :
                 binding.btnSortByDate.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
-                        R.color.silver
+                        R.color.Gray
                     )
                 )
             }
@@ -117,7 +117,7 @@ class ActorDetailsFragment :
                 binding.btnSortByRate.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
-                        R.color.silver
+                        R.color.Gray
                     )
                 )
             }
