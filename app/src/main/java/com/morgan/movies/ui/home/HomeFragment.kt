@@ -2,6 +2,7 @@ package com.morgan.movies.ui.home
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.viewModels
@@ -12,7 +13,6 @@ import com.morgan.movies.databinding.FragmentHomeBinding
 import com.morgan.movies.ui.base.BaseFragment
 import com.morgan.movies.ui.home.adapter.ViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.drawer_header.view.image_profile
 
 
 @AndroidEntryPoint
@@ -46,7 +46,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     }
     private fun handelProfileImageClick(){
         val header = binding.navigationView.getHeaderView(0)
-        val image = header.image_profile
+        val image = header.findViewById<ImageView>(R.id.image_profile)
         image.setOnClickListener {
             val unicode = 0x1F612
             val emoji = getEmoji(unicode)

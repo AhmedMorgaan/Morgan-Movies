@@ -3,9 +3,10 @@ package com.morgan.movies.ui.base
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.ProgressBar
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_movies_tab.view.main_progress_bar
+import com.morgan.movies.R
 
 abstract class BaseFragment<T : ViewDataBinding , VM : BaseViewModel>(resId :Int) : Fragment(resId) {
      private var baseActivity : BaseActivity<*,*>? = null
@@ -30,10 +31,11 @@ abstract class BaseFragment<T : ViewDataBinding , VM : BaseViewModel>(resId :Int
 
     private fun showHideProgressBar(){
         viewModel.progressBar.observe(viewLifecycleOwner) {
+            val mainProgressBar = binding.root.findViewById<ProgressBar>(R.id.main_progress_bar)
             if (it) {
-                binding.root.main_progress_bar.visibility = View.VISIBLE
+                mainProgressBar.visibility = View.VISIBLE
             } else {
-                binding.root.main_progress_bar.visibility = View.GONE
+                mainProgressBar.visibility = View.GONE
             }
         }
     }
