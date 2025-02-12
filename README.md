@@ -1,10 +1,10 @@
-# Morgan Movies
+# MorGan Movies
 
-An android app built using [kotlin](https://kotlinlang.org/docs/getting-started.html) that consumes [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction) to display the current trending, upcoming, top rated, and popular movies and tv-shows. It also suggests films based on your watch list.
+An Android app built with [kotlin](https://kotlinlang.org/docs/getting-started.html) that integrates [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction) to display trending, upcoming, top-rated, and popular movies, as well as popular actors and TV shows. The app also includes a search feature to find movies or actors by name and provides personalized film recommendations based on your watchlist.
 
 <p align="center"> <img src="screenshots/project_home.png" width="750"> </p>
 
-[<img src="screenshots/download_apk.png" width="300px" height="100px"/>](https://www.mediafire.com/file/460otcjxzrvwn8d/Morgan_Movies_V4.apk/file)
+[<img src="screenshots/download_apk.png" width="300px" height="100px"/>](https://www.mediafire.com/file/0gdzfb7gac1icd9/MorGan_Movies_V5.apk/file)
 ---
 # Setup Requirements
 First, obtain your Bearer Token from [TMDB](https://developers.themoviedb.org/3/getting-started/introduction) and add it in a file named `local.properties` within the root directory:
@@ -21,12 +21,12 @@ Finally, rebuild the project for changes to take effect
 - [Hilt](https://dagger.dev/hilt/) - Hilt provides a standard way to incorporate Dagger dependency injection into an Android application.
 - [XML](https://developer.android.com/develop/ui/views/layout/declaring-layout)-  toolkit for building native UI.
 - [Jetpack Components](https://developer.android.com/jetpack)
-    - [Android KTX](https://developer.android.com/kotlin/ktx.html) - Provide concise, idiomatic Kotlin to Jetpack and Android platform APIs.
-    - [AndroidX](https://developer.android.com/jetpack/androidx) - Major improvement to the original Android [Support Library](https://developer.android.com/topic/libraries/support-library/index), which is no longer maintained.
-    - [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - Perform actions in response to a change in the lifecycle status of another component, such as activities and fragments.
-    - [Preferences Datastore](https://developer.android.com/topic/libraries/architecture/datastore) - Jetpack DataStore is a data storage solution that allows you to store key-value pairs or typed objects with protocol buffers. DataStore uses Kotlin coroutines and Flow to store data asynchronously, consistently, and transactionally.
-    - [Navigation](https://developer.android.com/guide/navigation) - Navigation refers to the interactions that allow users to navigate across, into, and back out from the different pieces of content within your app using a single activity and multiple Fragments.
-    - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Designed to store and manage UI-related data in a lifecycle conscious way. The ViewModel class allows data to survive configuration changes such as screen rotations.
+  - [Android KTX](https://developer.android.com/kotlin/ktx.html) - Provide concise, idiomatic Kotlin to Jetpack and Android platform APIs.
+  - [AndroidX](https://developer.android.com/jetpack/androidx) - Major improvement to the original Android [Support Library](https://developer.android.com/topic/libraries/support-library/index), which is no longer maintained.
+  - [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - Perform actions in response to a change in the lifecycle status of another component, such as activities and fragments.
+  - [Preferences Datastore](https://developer.android.com/topic/libraries/architecture/datastore) - Jetpack DataStore is a data storage solution that allows you to store key-value pairs or typed objects with protocol buffers. DataStore uses Kotlin coroutines and Flow to store data asynchronously, consistently, and transactionally.
+  - [Navigation](https://developer.android.com/guide/navigation) - Navigation refers to the interactions that allow users to navigate across, into, and back out from the different pieces of content within your app using a single activity and multiple Fragments.
+  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Designed to store and manage UI-related data in a lifecycle conscious way. The ViewModel class allows data to survive configuration changes such as screen rotations.
 - [Glide](https://github.com/bumptech/glide) - Glide is a image loading library which fetches and displays network images
 - [Paging 3](https://developer.android.com/jetpack/androidx/releases/paging) - The Paging Library makes it easier for you to load data gradually and gracefully within your app.
 - [Retrofit](https://square.github.io/retrofit/) - Type-safe http client and supports coroutines out of the box.
@@ -40,11 +40,10 @@ Finally, rebuild the project for changes to take effect
 ---
 # Screenshots
 
-<img src="screenshots/home.PNG" width="250" /> <img src="screenshots/home_2.PNG" width="250" /> <img src="screenshots/home_3.PNG" width="250" />
+<img src="screenshots/home_1.png" width="240" /> <img src="screenshots/home_2.PNG" width="240" /> <img src="screenshots/home_3.PNG" width="240" /> <img src="screenshots/search.PNG" width="240" />     
 
 ---
-<img src="screenshots/details.PNG" width="250" /> <img src="screenshots/details_2.PNG" width="250" /> <img src="screenshots/videos.PNG" width="250" /> 
+<img src="screenshots/details_1.png" width="240" /> <img src="screenshots/details_2.PNG" width="240" />  <img src="screenshots/details_3.png" width="240" />
 
 ---
- <img src="screenshots/search.PNG" width="250" /> <img src="screenshots/my_favorites.PNG" width="250" />
-
+ <img src="screenshots/actors.png" width="240" />  <img src="screenshots/actor_details.png" width="240" /> <img src="screenshots/favorites.png" width="240" />
