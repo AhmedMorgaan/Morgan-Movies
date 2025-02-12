@@ -26,6 +26,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding,SplashViewModel>(R.lay
         binding.splashImage1.animation = topAnim
         binding.splashImage2.animation = bottomAnim
 
+        viewModel.requestFirebaseTokenWithoutLogin()
         Handler().postDelayed({
         findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
         }, 3000)
