@@ -40,7 +40,7 @@ Finally, rebuild the project for changes to take effect
 ---
 # Screenshots
 
-<img src="screenshots/home_1.png" width="240" /> <img src="screenshots/home_2.PNG" width="240" /> <img src="screenshots/home_3.PNG" width="240" /> <img src="screenshots/search.PNG" width="240" />     
+<img src="screenshots/home_1.png" width="230" /> <img src="screenshots/home_2.PNG" width="230" /> <img src="screenshots/home_3.PNG" width="230" /> <img src="screenshots/search.PNG" width="230" />     
 
 ---
 <img src="screenshots/details_1.png" width="240" /> <img src="screenshots/details_2.PNG" width="240" />  <img src="screenshots/details_3.png" width="240" />
