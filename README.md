@@ -1,6 +1,6 @@
-# Morgan Movies
+# MorGan Movies
 
-An android app built using [kotlin](https://kotlinlang.org/docs/getting-started.html) that consumes [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction) to display the current trending, upcoming, top rated, and popular movies and tv-shows. It also suggests films based on your watch list.
+An Android app built with [kotlin](https://kotlinlang.org/docs/getting-started.html) that integrates [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction) to display trending, upcoming, top-rated, and popular movies, as well as popular actors and TV shows. The app also includes a search feature to find movies or actors by name and provides personalized film recommendations based on your watchlist.
 
 <p align="center"> <img src="screenshots/project_home.png" width="750"> </p>
 
@@ -40,11 +40,11 @@ Finally, rebuild the project for changes to take effect
 ---
 # Screenshots
 
-<img src="screenshots/home.PNG" width="250" /> <img src="screenshots/home_2.PNG" width="250" /> <img src="screenshots/home_3.PNG" width="250" />
+<img src="screenshots/home_1.png" width="240" /> <img src="screenshots/home_2.PNG" width="240" /> <img src="screenshots/home_3.PNG" width="240" /> <img src="screenshots/search.PNG" width="240" />     
 
 ---
-<img src="screenshots/details.PNG" width="250" /> <img src="screenshots/details_2.PNG" width="250" /> <img src="screenshots/videos.PNG" width="250" /> 
+<img src="screenshots/details_1.png" width="240" /> <img src="screenshots/details_2.PNG" width="240" />  <img src="screenshots/details_3.png" width="240" />
 
 ---
- <img src="screenshots/search.PNG" width="250" /> <img src="screenshots/my_favorites.PNG" width="250" />
+ <img src="screenshots/actors.png" width="240" />  <img src="screenshots/actor_details.png" width="240" /> <img src="screenshots/favorites.png" width="240" />
 
